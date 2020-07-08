@@ -45,8 +45,16 @@
 
 
 
-            <v-btn class="mr-4" @click="$v.$touch(), $emit('submit', dataFields)">submit</v-btn>
-            <v-btn @click="clear">clear</v-btn>
+            <v-btn
+              class="mr-4 rounded-sm"
+              :loading="loadingIcon"
+              @click="$v.$touch(), clear, $emit('submit', dataFields)"
+            >
+            <!-- <v-icon left>done</v-icon> -->
+            submit</v-btn>
+
+            <v-btn @click="clear" class="rounded-sm">clear</v-btn>
+
         </form>
 
   </v-container>
@@ -59,6 +67,9 @@
 
   export default {
     mixins: [validationMixin],
+    props: {
+        'loadingIcon': Boolean
+    },
 
     validations: {
 

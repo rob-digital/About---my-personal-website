@@ -5,7 +5,8 @@
 
 <p>Email: {{ $contact['email'] }}</p>
 
-{{ $contact['message'] }}
+
+<p>Message: {{ $contact['message'] }}</p>
 
 Thanks,<br>
 {{ config('app.name') }}

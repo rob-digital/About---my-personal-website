@@ -5,7 +5,7 @@
 
         <v-layout justify-end>
         <v-icon
-        class="material-icons "
+        class="material-icons"
         :left="true"
         align-end
         @click="toggleTheme"
