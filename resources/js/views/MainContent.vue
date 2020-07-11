@@ -1,22 +1,32 @@
 <template>
     <div>
-        <v-container>
+
 
             <div v-if="isError500">
                 <fatal-error ></fatal-error>
             </div>
 
             <div v-else>
+
+
+
                  <submit-form
                  :loadingIcon="submitting"
                 v-on:submit="submitContactForm"
                 ></submit-form>
-            </div>
+
+            <transition name="fade">
+            <website-like
+            v-show="!ratingApplied"
+            v-on:rating="ratingRecived"
+            ></website-like>
+            </transition>
+
 
               <v-snackbar
-                v-model="snackbar"
+                v-model="snackbar1"
                 >
-                {{ text }}
+                {{ snackbarText1 }}
 
                 <template v-slot:action="{ attrs }">
                     <v-btn
@@ -24,33 +34,62 @@
                     text
                     class="rounded-0"
                     v-bind="attrs"
-                    @click="snackbar = false"
+                    @click="snackbar1 = false"
                     >
                     Close
                     </v-btn>
                 </template>
                 </v-snackbar>
 
-        </v-container>
+                <v-snackbar
+                v-model="snackbar2"
+                >
+                {{ snackbarText2 }}
+
+                <template v-slot:action="{ attrs }">
+                    <v-btn
+                    color="yellow"
+                    text
+                    class="rounded-0"
+                    v-bind="attrs"
+                    @click="snackbar2 = false"
+                    >
+                    Close
+                    </v-btn>
+                </template>
+                </v-snackbar>
+
+
+            </div>
+
     </div>
 </template>
 
 <script>
 import SubmitForm from '../components/SubmitForm'
 import FatalError from '../components/FatalError'
+import WebsiteLike from '../components/WebsiteLike'
+
 
     export default {
          components: {
             SubmitForm,
-            FatalError
+            FatalError,
+            WebsiteLike,
+            
+
         },
         data() {
             return {
                 status: null,
                 errors: null,
                 submitting: false,
-                snackbar: false,
-                 text: 'Message sent succesfully',
+                ratingApplied: false,
+                snackbar1: false,
+                snackbarText1: 'Message sent succesfully',
+
+                snackbar2: false,
+                snackbarText2: 'Thank you for your feedback',
             }
         },
 
@@ -73,7 +112,7 @@ import FatalError from '../components/FatalError'
 
                    setTimeout(() => (
                        this.submitting = false,
-                       this.snackbar = true
+                       this.snackbar1 = true
                        ), 1000)
                })
                .catch(err => {
@@ -84,7 +123,18 @@ import FatalError from '../components/FatalError'
                })
 
             },
-            },
+            ratingRecived(rating) {
+
+                let number = {
+                    'likes': rating
+                }
+                this.snackbar2 = true
+                this.ratingApplied = true
+                return axios.post('/api/likes', number)
+                .then(response => console.log('ok') )
+                .catch(err => console.log(err.response.data))
+            }
+        },
 
             computed: {
                 isError500() {
@@ -95,5 +145,12 @@ import FatalError from '../components/FatalError'
 </script>
 
 <style lang="scss" scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: .5;
+}
 
 </style>

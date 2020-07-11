@@ -1,12 +1,12 @@
 import VueRouter from 'vue-router'
-import MainPage from './views/MainPage'
+import MainLayout from './views/MainLayout'
 import ExampleComponent from './components/ExampleComponent'
 
 const routes = [
     {
         path: '/',
-        component: MainPage,
-        name: 'main-page'
+        component: MainLayout,
+        name: 'main-layout'
     },
     {
         path: '/example',

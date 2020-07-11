@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('contact', 'Api\SubmitFormController@store')->name('send.email');
+
+Route::post('likes', 'Api\WebsiteLikesController@store')->name('store.likes');
