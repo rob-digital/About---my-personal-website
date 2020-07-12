@@ -1,13 +1,19 @@
 <template>
+
+    <v-container>
+
+
+    <v-card
+      class=" align-center justify-center pa-4 mx-auto"
+      max-width="550"
+      min-height="76"
+      :loading="sendingFeedback"
+    >
+      <div :class="`text-h5 text-sm-h4 text-center mb-6 mt-6`">
+        {{ ratingQuestion }}
+      </div>
+
     <v-layout mt-4 justify-space-around>
-         <!-- <v-btn
-        fab
-        dark
-        small
-        color="green"
-      >
-        <v-icon>thumb_up</v-icon>
-      </v-btn> -->
 
       <v-btn
         fab
@@ -23,28 +29,44 @@
         fab
         dark
         small
-        color="red"
+
         @click.prevent="$emit('rating', 0)"
       >
         <v-icon>thumb_down</v-icon>
       </v-btn>
+
+
     </v-layout>
+    </v-card>
+    </v-container>
 </template>
 
 <script>
     export default {
         name: 'WebsiteLike',
+        props: {
+            sendingFeedback: Boolean
+        },
+        data() {
+            return {
+                ratingQuestion: 'Like the design?',
+            }
+        },
         computed: {
             hasOneLike() {
                 return 1
             },
             hasNoLike() {
                 return 0
-            }
+            },
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
+@import '~@/_variables.scss';
+button {
+    background-color: $red !important;
+}
 </style>
+

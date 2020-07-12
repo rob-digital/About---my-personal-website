@@ -1,13 +1,15 @@
 <template>
     <div>
-
-
             <div v-if="isError500">
                 <fatal-error ></fatal-error>
             </div>
 
+
+
+
             <div v-else>
 
+                <parallax></parallax>
 
 
                  <submit-form
@@ -15,12 +17,17 @@
                 v-on:submit="submitContactForm"
                 ></submit-form>
 
-            <transition name="fade">
-            <website-like
-            v-show="!ratingApplied"
-            v-on:rating="ratingRecived"
-            ></website-like>
-            </transition>
+<!-- //! Rate the design -->
+                <v-container class="likesDiv" >
+
+                <v-fade-transition>
+                    <website-like
+                    :sendingFeedback="ratingApplied ? true : false"
+                    v-on:rating="ratingRecived"
+                    v-show="displayWebsiteLikeCard"
+                    ></website-like>
+                </v-fade-transition>
+                </v-container>
 
 
               <v-snackbar
@@ -66,6 +73,7 @@
 </template>
 
 <script>
+import Parallax from '../components/Parallax'
 import SubmitForm from '../components/SubmitForm'
 import FatalError from '../components/FatalError'
 import WebsiteLike from '../components/WebsiteLike'
@@ -76,7 +84,8 @@ import WebsiteLike from '../components/WebsiteLike'
             SubmitForm,
             FatalError,
             WebsiteLike,
-            
+            Parallax
+
 
         },
         data() {
@@ -85,6 +94,8 @@ import WebsiteLike from '../components/WebsiteLike'
                 errors: null,
                 submitting: false,
                 ratingApplied: false,
+                displayWebsiteLikeCard: true,
+
                 snackbar1: false,
                 snackbarText1: 'Message sent succesfully',
 
@@ -95,7 +106,7 @@ import WebsiteLike from '../components/WebsiteLike'
 
         methods: {
              submitContactForm(data) {
-                 this.submitting = true
+
                  let sendEmail = {
                      name    : data.name,
                      email   : data.email,
@@ -108,12 +119,13 @@ import WebsiteLike from '../components/WebsiteLike'
                return axios.post('/api/contact', sendEmail )
 
                .then(response => {
+                   this.submitting = true
                    this.status = response.status
 
                    setTimeout(() => (
                        this.submitting = false,
                        this.snackbar1 = true
-                       ), 1000)
+                       ), 3000)
                })
                .catch(err => {
                    if(422 === err.response.status) {
@@ -128,8 +140,14 @@ import WebsiteLike from '../components/WebsiteLike'
                 let number = {
                     'likes': rating
                 }
-                this.snackbar2 = true
                 this.ratingApplied = true
+                setTimeout(() => {
+                    this.ratingApplied = false
+                    this.snackbar2 = true
+                    this.displayWebsiteLikeCard = false
+                }, 2000)
+
+
                 return axios.post('/api/likes', number)
                 .then(response => console.log('ok') )
                 .catch(err => console.log(err.response.data))
@@ -147,10 +165,12 @@ import WebsiteLike from '../components/WebsiteLike'
 <style lang="scss" scoped>
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 2s;
+  transition: all 2s ease;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: .5;
 }
-
+.likesDiv{
+    min-height: 220px;
+}
 </style>

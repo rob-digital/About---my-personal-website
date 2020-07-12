@@ -2,30 +2,45 @@
     <div>
         <v-container >
 
+           <v-row>
+                    <v-col
+                    cols="12"
+                    md="6"
+                    >
+                    <v-text-field
+                        v-model="dataFields.name"
+                        :error-messages="nameErrors"
+                        :counter="20"
+                        label="Name"
+                        required
+                        clearable
+
+                        clear-icon="cancel"
+                        @input="$v.dataFields.name.$touch()"
+                        @blur="$v.dataFields.name.$touch()"
+                        ></v-text-field>
+                    </v-col>
+
+                    <v-col
+                    cols="12"
+                    md="6"
+                    >
+                        <v-text-field
+                            v-model="dataFields.email"
+                            :error-messages="emailErrors"
+                            label="E-mail"
+                            required
+                            clearable
+                            clear-icon="cancel"
+                            @input="$v.dataFields.email.$touch()"
+                            @blur="$v.dataFields.email.$touch()"
+                            ></v-text-field>
+                    </v-col>
+
+
+                </v-row>
+
         <form>
-            <v-text-field
-            v-model="dataFields.name"
-            :error-messages="nameErrors"
-            :counter="20"
-            label="Name"
-            required
-            clearable
-            clear-icon="cancel"
-            @input="$v.dataFields.name.$touch()"
-            @blur="$v.dataFields.name.$touch()"
-            ></v-text-field>
-
-            <v-text-field
-            v-model="dataFields.email"
-            :error-messages="emailErrors"
-            label="E-mail"
-            required
-            clearable
-            clear-icon="cancel"
-            @input="$v.dataFields.email.$touch()"
-            @blur="$v.dataFields.email.$touch()"
-            ></v-text-field>
-
 
 
             <v-col cols="12" >
@@ -48,7 +63,7 @@
             <v-btn
               class="mr-4 rounded-sm"
               :loading="loadingIcon"
-              @click="$v.$touch(), clear, $emit('submit', dataFields)"
+              @click=" $v.$touch(), clear, $emit('submit', dataFields)"
             >
             <!-- <v-icon left>done</v-icon> -->
             submit</v-btn>
@@ -129,5 +144,7 @@
 </script>
 
 <style lang="scss" scoped>
+form {
 
+}
 </style>

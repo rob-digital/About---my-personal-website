@@ -12,4 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    // .mix.copyDirectory('resources/assets/fonts/Lato', 'public/fonts')
+    .webpackConfig({ resolve: { alias: { '@': path.resolve('resources/sass') } } })
+    ;

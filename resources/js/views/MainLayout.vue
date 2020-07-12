@@ -65,7 +65,7 @@ import MainContent from './MainContent'
     data: () => ({
       drawer: null,
       items: [
-          { title: 'Dashboard', icon: 'thumb_up' },
+          { title: 'Dashboardggg', icon: 'thumb_up' },
           { title: 'Photos', icon: 'image' },
           { title: 'About', icon: 'thumb_down' },
         ],
@@ -84,9 +84,7 @@ import MainContent from './MainContent'
         mini() {
             return this.$vuetify.breakpoint.xsOnly;
         },
-          notOnMobile() {
-            return this.$vuetify.breakpoint.smAndUp
-        }
+
     }
 
   }

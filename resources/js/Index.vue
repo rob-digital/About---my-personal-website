@@ -1,22 +1,28 @@
 <template>
     <v-app>
-        <v-container>
 
+
+
+    <v-container class="lightDarkToggleContainer">
 
         <v-layout justify-end>
         <v-icon
-        class="material-icons"
+        class="material-icons absolute"
         :left="true"
         align-end
+        color="yellow"
         @click="toggleTheme"
         >
         wb_sunny
         </v-icon>
         </v-layout>
 
+    </v-container>
+
+
     <router-view></router-view>
 
-        </v-container>
+
     </v-app>
 </template>
 
@@ -36,6 +42,14 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+// @import '~@/app.scss';
+// body {
+//     font-family:  $body-font-family, sans-serif;
+// }
 
+.lightDarkToggleContainer{
+    position: absolute;
+    z-index: 100;
+}
 </style>
