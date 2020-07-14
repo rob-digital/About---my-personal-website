@@ -52,4 +52,8 @@
     position: absolute;
     z-index: 100;
 }
+
+.introSlot {
+    text-transform: uppercase;
+}
 </style>

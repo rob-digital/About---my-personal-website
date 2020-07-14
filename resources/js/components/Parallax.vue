@@ -2,16 +2,16 @@
 
       <v-parallax
             dark
-            height="600"
-            :src="getImageUrl('web.jpg')"
+            :height="height"
+            :src="getImageUrl(`${image}`)"
         >
             <v-row
             align="center"
             justify="center"
             >
             <v-col class="text-center" cols="12">
-                <h1 class="display-1 font-weight-thin mb-4">Vuetify.js</h1>
-                <h4 class="subheading">Build your application today!</h4>
+                <h1 class="display-1 font-weight-thin mb-4">{{ text1 }}</h1>
+                <h4 class="subheading">{{ text2 }}</h4>
             </v-col>
             </v-row>
         </v-parallax>
@@ -22,6 +22,25 @@
 // import LaptopImg from '../../assets/images/laptop-web.jpg'
 
     export default {
+        props: {
+            height: {
+                type: Number,
+                required: true
+            },
+            image: {
+                type: String,
+                required: true
+            },
+            text1: {
+                type: String,
+                required: true
+            },
+            text2: {
+                type: String,
+                required: true
+            },
+
+        },
         methods: {
             getImageUrl(img) {
             return require(`../../assets/images/${img}`)

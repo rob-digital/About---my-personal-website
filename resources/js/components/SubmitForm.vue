@@ -144,7 +144,5 @@
 </script>
 
 <style lang="scss" scoped>
-form {
 
-}
 </style>

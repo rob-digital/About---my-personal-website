@@ -1,20 +1,41 @@
 <template>
-    <div>
+    <v-main>
             <div v-if="isError500">
                 <fatal-error ></fatal-error>
             </div>
 
 
-
-
             <div v-else>
 
-                <parallax></parallax>
+
+                <parallax
+                image="web.jpg"
+                :height="600"
+                text1="Vuetify.js"
+                text2="Build something nice"
+                ></parallax>
 
 
+                <about id="scroll-target-about"></about>
+
+
+                <services id="scroll-target-services"></services>
+
+
+                <parallax
+                image="comp.jpg"
+                :height="400"
+                text1="modern, clean and creative design solutions"
+                
+                ></parallax>
+
+
+                <p>{{ target }}</p>
                  <submit-form
+                 id="scroll-target-submit"
                  :loadingIcon="submitting"
-                v-on:submit="submitContactForm"
+                 v-on:submit="submitContactForm"
+
                 ></submit-form>
 
 <!-- //! Rate the design -->
@@ -22,6 +43,7 @@
 
                 <v-fade-transition>
                     <website-like
+                    id="scroll-target-likes"
                     :sendingFeedback="ratingApplied ? true : false"
                     v-on:rating="ratingRecived"
                     v-show="displayWebsiteLikeCard"
@@ -29,6 +51,18 @@
                 </v-fade-transition>
                 </v-container>
 
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+Second
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
 
               <v-snackbar
                 v-model="snackbar1"
@@ -69,24 +103,30 @@
 
             </div>
 
-    </div>
+    </v-main>
 </template>
 
 <script>
 import Parallax from '../components/Parallax'
+import About from '../components/About'
+import Services from '../components/Services'
 import SubmitForm from '../components/SubmitForm'
 import FatalError from '../components/FatalError'
 import WebsiteLike from '../components/WebsiteLike'
 
 
     export default {
+        props: [
+            'target'
+
+        ],
          components: {
             SubmitForm,
             FatalError,
             WebsiteLike,
-            Parallax
-
-
+            Services,
+            Parallax,
+            About
         },
         data() {
             return {
@@ -101,6 +141,8 @@ import WebsiteLike from '../components/WebsiteLike'
 
                 snackbar2: false,
                 snackbarText2: 'Thank you for your feedback',
+
+
             }
         },
 
@@ -140,17 +182,24 @@ import WebsiteLike from '../components/WebsiteLike'
                 let number = {
                     'likes': rating
                 }
-                this.ratingApplied = true
-                setTimeout(() => {
-                    this.ratingApplied = false
-                    this.snackbar2 = true
-                    this.displayWebsiteLikeCard = false
-                }, 2000)
+
 
 
                 return axios.post('/api/likes', number)
-                .then(response => console.log('ok') )
-                .catch(err => console.log(err.response.data))
+                .then(response => {
+                    this.ratingApplied = true
+                    setTimeout(() => {
+                        this.ratingApplied = false
+                        this.snackbar2 = true
+                        this.displayWebsiteLikeCard = false
+                    }, 2000)
+                } )
+                .catch(err => {
+                    if(422 === err.response.status) {
+                       this.errors = err.response.data.errors
+                   }
+                   this.status = err.response.status
+                })
             }
         },
 

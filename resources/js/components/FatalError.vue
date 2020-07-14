@@ -3,6 +3,7 @@
     <v-icon class="mdiBomb" >error_outline</v-icon>
     <h1 class="mt-4">We've encountered a problem</h1>
     <h2>Unfortunately we cannot proceed</h2>
+    <h3>Please refresh the page</h3>
   </div>
 </template>
 

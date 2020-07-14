@@ -10,6 +10,7 @@ import VueRouter from 'vue-router'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 import 'vuetify/dist/vuetify.min.css'
+import colors from 'vuetify/lib/util/colors'
 import Vuetify from 'vuetify'
 import Vuelidate from 'vuelidate'
 
@@ -32,6 +33,20 @@ const app = new Vue({
     vuetify: new Vuetify({
         icons: {
             iconfont: 'mdiSvg', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
+          },
+          theme: {
+            themes: {
+              light: {
+                primary: '#363636', // #E53935
+                secondary: colors.red.lighten4, // #FFCDD2
+                accent: colors.indigo.base, // #3F51B5
+                colorBrown: colors.brown.darken4,
+                colorBlueDarken: colors.blueGrey.darken4
+              },
+              dark: {
+                primary: '#363636',
+              }
+            },
           },
     }),
 });
