@@ -12,7 +12,7 @@ const routes = [
         path: '/example',
         component: ExampleComponent,
         name: 'example-component'
-    }
+    },
 ]
 
 const router = new VueRouter({

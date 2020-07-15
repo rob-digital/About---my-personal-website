@@ -4,27 +4,28 @@
     <v-navigation-drawer
       v-model="drawer"
       app
+      :flat="false"
       floating
       :permanent="true"
       width="170"
       :mini-variant.sync="mini"
       color="#263238"
-      class="myDrawer"
+        multiple
 
     >
 
     <v-list class="mt-6">
-
+         <v-list-item-group v-model="model"  color="white">
         <v-tooltip bottom>
-      <template v-slot:activator="{ on, attrs }">
-        <v-img
-        v-bind="attrs"
-          v-on="on"
-        class="logo"
-        :src="getImageUrl('rrwd-logo-closed-white.svg')"
-        ></v-img>
-      </template>
-      <span>Robert Roksela - Web Development</span>
+            <template v-slot:activator="{ on, attrs }">
+                <v-img
+                v-bind="attrs"
+                v-on="on"
+                class="logo"
+                :src="getImageUrl('rrwd-logo-closed-white.svg')"
+                ></v-img>
+            </template>
+            <span>Robert Roksela - Web Development</span>
         </v-tooltip>
 
        <v-list-item
@@ -43,6 +44,7 @@
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+         </v-list-item-group>
         </v-list>
 
     </v-navigation-drawer>
@@ -51,7 +53,7 @@
 
 
 
-         <main-content :target="targetItem"></main-content>
+         <main-content :target="targetItem" v-on:positionYOfElements="positionYReceived"></main-content>
 
 
 
@@ -60,6 +62,7 @@
     <v-footer
       :inset="footer.inset"
       app
+      :fixed="footer.fixed"
     >
       <span class="px-4">&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
@@ -69,6 +72,7 @@
 
 <script>
 import MainContent from './MainContent'
+
 
   export default {
       components:{
@@ -83,6 +87,12 @@ import MainContent from './MainContent'
     },
     data: () => ({
       drawer: null,
+      model: {
+        type: Number,
+        require: false
+      },
+      currentScroll: null,
+      currentPositions: null,
       items: [
           { title: 'about', icon: 'portrait' },
           { title: 'services', icon: 'build' },
@@ -90,18 +100,35 @@ import MainContent from './MainContent'
           { title: 'likes', icon: 'thumb_down' },
         ],
        footer: {
-        inset: false,
+        inset: true,
+        fixed: false
       },
       targetItem: null
     }),
-
-    mounted() {
-        console.log('------------------------------------');
-        console.log(`Small and Down: ${this.$vuetify.breakpoint.xsOnly}`);
-        console.log(`MD and Up: ${this.$vuetify.breakpoint.smAndUp}`);
-        console.log('------------------------------------');
+     mounted() {
+        window.addEventListener('scroll', this.checkScroll)
     },
-    computed: {
+
+
+    methods: {
+        targetedListItem(t) {
+            this.targetItem = t.title
+        },
+        getImageUrl(img) {
+            return require(`../../assets/images/${img}`)
+        },
+        positionYReceived(el) {
+           this.currentPositions = el
+
+        },
+        checkScroll(event) {
+
+                const wind = window.pageYOffset
+                this.currentScroll = wind
+
+        }
+    },
+     computed: {
         mini() {
             return this.$vuetify.breakpoint.xsOnly;
         },
@@ -111,15 +138,26 @@ import MainContent from './MainContent'
                 duration: 1000
         }
       },
-    },
-    methods: {
-        targetedListItem(t) {
-            this.targetItem = t.title
-        },
-        getImageUrl(img) {
-            return require(`../../assets/images/${img}`)
+      checkScrollLevel() {
+
+        if (this.currentScroll >= this.currentPositions[0].top ) {
+               for(let i = 0; i < this.currentPositions.length; i++) {
+
+                // if(this.currentScroll < this.currentPositions[i].top) {
+                //     this.model = 10
+                //   }
+                if (this.currentScroll >= this.currentPositions[i].top && this.currentScroll <= this.currentPositions[i].bottom) {
+                  return   this.model = i
+                  }
             }
-    }
+        } else {
+           return this.model = null
+        }
+
+
+
+    },
+  }
   }
 </script>
 

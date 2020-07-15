@@ -26,7 +26,7 @@
                 image="comp.jpg"
                 :height="400"
                 text1="modern, clean and creative design solutions"
-                
+
                 ></parallax>
 
 
@@ -35,7 +35,7 @@
                  id="scroll-target-submit"
                  :loadingIcon="submitting"
                  v-on:submit="submitContactForm"
-
+                @scroll="$emit('checkScroll', submitComponent)"
                 ></submit-form>
 
 <!-- //! Rate the design -->
@@ -113,9 +113,11 @@ import Services from '../components/Services'
 import SubmitForm from '../components/SubmitForm'
 import FatalError from '../components/FatalError'
 import WebsiteLike from '../components/WebsiteLike'
+import { positionY } from '../shared/utils/positionYOfComponentsMixin'
 
 
     export default {
+        mixins: [positionY],
         props: [
             'target'
 
@@ -141,7 +143,6 @@ import WebsiteLike from '../components/WebsiteLike'
 
                 snackbar2: false,
                 snackbarText2: 'Thank you for your feedback',
-
 
             }
         },
@@ -206,8 +207,9 @@ import WebsiteLike from '../components/WebsiteLike'
             computed: {
                 isError500() {
                     return 500 === this.status
-                }
-        }
+                },
+         },
+
     }
 </script>
 

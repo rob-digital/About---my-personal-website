@@ -2057,11 +2057,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     text1: {
       type: String,
-      required: true
+      required: false
     },
     text2: {
       type: String,
-      required: true
+      required: false
     }
   },
   methods: {
@@ -2083,6 +2083,14 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_slots_Heading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/slots/Heading */ "./resources/js/components/slots/Heading.vue");
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2471,6 +2479,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SubmitForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SubmitForm */ "./resources/js/components/SubmitForm.vue");
 /* harmony import */ var _components_FatalError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/FatalError */ "./resources/js/components/FatalError.vue");
 /* harmony import */ var _components_WebsiteLike__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/WebsiteLike */ "./resources/js/components/WebsiteLike.vue");
+/* harmony import */ var _shared_utils_positionYOfComponentsMixin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shared/utils/positionYOfComponentsMixin */ "./resources/js/shared/utils/positionYOfComponentsMixin.js");
 //
 //
 //
@@ -2579,6 +2588,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -2586,6 +2596,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [_shared_utils_positionYOfComponentsMixin__WEBPACK_IMPORTED_MODULE_6__["positionY"]],
   props: ['target'],
   components: {
     SubmitForm: _components_SubmitForm__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -2744,6 +2755,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2759,6 +2773,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       drawer: null,
+      model: {
+        type: Number,
+        require: false
+      },
+      currentScroll: null,
+      currentPositions: null,
       items: [{
         title: 'about',
         icon: 'portrait'
@@ -2773,16 +2793,29 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'thumb_down'
       }],
       footer: {
-        inset: false
+        inset: true,
+        fixed: false
       },
       targetItem: null
     };
   },
   mounted: function mounted() {
-    console.log('------------------------------------');
-    console.log("Small and Down: ".concat(this.$vuetify.breakpoint.xsOnly));
-    console.log("MD and Up: ".concat(this.$vuetify.breakpoint.smAndUp));
-    console.log('------------------------------------');
+    window.addEventListener('scroll', this.checkScroll);
+  },
+  methods: {
+    targetedListItem: function targetedListItem(t) {
+      this.targetItem = t.title;
+    },
+    getImageUrl: function getImageUrl(img) {
+      return __webpack_require__("./resources/assets/images sync recursive ^\\.\\/.*$")("./".concat(img));
+    },
+    positionYReceived: function positionYReceived(el) {
+      this.currentPositions = el;
+    },
+    checkScroll: function checkScroll(event) {
+      var wind = window.pageYOffset;
+      this.currentScroll = wind;
+    }
   },
   computed: {
     mini: function mini() {
@@ -2793,14 +2826,20 @@ __webpack_require__.r(__webpack_exports__);
         offset: 0,
         duration: 1000
       };
-    }
-  },
-  methods: {
-    targetedListItem: function targetedListItem(t) {
-      this.targetItem = t.title;
     },
-    getImageUrl: function getImageUrl(img) {
-      return __webpack_require__("./resources/assets/images sync recursive ^\\.\\/.*$")("./".concat(img));
+    checkScrollLevel: function checkScrollLevel() {
+      if (this.currentScroll >= this.currentPositions[0].top) {
+        for (var i = 0; i < this.currentPositions.length; i++) {
+          // if(this.currentScroll < this.currentPositions[i].top) {
+          //     this.model = 10
+          //   }
+          if (this.currentScroll >= this.currentPositions[i].top && this.currentScroll <= this.currentPositions[i].bottom) {
+            return this.model = i;
+          }
+        }
+      } else {
+        return this.model = null;
+      }
     }
   }
 });
@@ -7287,7 +7326,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".v-card__title[data-v-30b0c6c9] {\n  justify-content: center !important;\n}\n.v-icon[data-v-30b0c6c9] {\n  font-size: 80px !important;\n  margin-left: calc(50% - 40px) !important;\n}\n.v-card__title[data-v-30b0c6c9] {\n  text-transform: uppercase;\n}", ""]);
+exports.push([module.i, ".v-card__title[data-v-30b0c6c9] {\n  justify-content: center !important;\n  text-transform: uppercase;\n}\n.v-icon[data-v-30b0c6c9] {\n  font-size: 80px !important;\n  margin-left: calc(50% - 40px) !important;\n}", ""]);
 
 // exports
 
@@ -39713,7 +39752,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "blue-grey lighten-5 pt-4 pb-8" },
+    { staticClass: "blue-grey lighten-5 pt-4 pb-12" },
     [
       _c("heading-intro", { staticClass: "introSlot pt-8 mb-12" }, [
         _c("h2", [_vm._v("services")])
@@ -39733,33 +39772,58 @@ var render = function() {
                   attrs: { cols: "12" }
                 },
                 [
-                  _c(
-                    "v-card",
-                    {
-                      staticClass:
-                        "mx-auto rounded-0   justify-sm-space-around",
-                      attrs: { "max-width": "300" }
-                    },
-                    [
-                      _c(
-                        "v-card-text",
-                        { staticClass: "white--text accent " },
-                        [
-                          _c("v-icon", { attrs: { color: "white" } }, [
-                            _vm._v(_vm._s(item.icon))
-                          ]),
-                          _vm._v(" "),
-                          _c("v-card-title", [_vm._v(_vm._s(item.title))])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-card-text", { staticClass: "text--primary" }, [
-                        _c("div", [_vm._v(_vm._s(item.text))])
-                      ])
-                    ],
-                    1
-                  )
+                  _c("v-hover", {
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "default",
+                          fn: function(ref) {
+                            var hover = ref.hover
+                            return [
+                              _c(
+                                "v-card",
+                                {
+                                  staticClass:
+                                    "mx-auto rounded-0   justify-sm-space-around",
+                                  attrs: {
+                                    "max-width": "300",
+                                    elevation: hover ? 4 : 2
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "v-card-text",
+                                    { staticClass: "white--text accent " },
+                                    [
+                                      _c(
+                                        "v-icon",
+                                        { attrs: { color: "white" } },
+                                        [_vm._v(_vm._s(item.icon))]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("v-card-title", [
+                                        _vm._v(_vm._s(item.title))
+                                      ])
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-card-text",
+                                    { staticClass: "text--primary" },
+                                    [_c("div", [_vm._v(_vm._s(item.text))])]
+                                  )
+                                ],
+                                1
+                              )
+                            ]
+                          }
+                        }
+                      ],
+                      null,
+                      true
+                    )
+                  })
                 ],
                 1
               )
@@ -40196,7 +40260,12 @@ var render = function() {
                 id: "scroll-target-submit",
                 loadingIcon: _vm.submitting
               },
-              on: { submit: _vm.submitContactForm }
+              on: {
+                submit: _vm.submitContactForm,
+                scroll: function($event) {
+                  return _vm.$emit("checkScroll", _vm.submitComponent)
+                }
+              }
             }),
             _vm._v(" "),
             _c(
@@ -40370,14 +40439,15 @@ var render = function() {
       _c(
         "v-navigation-drawer",
         {
-          staticClass: "myDrawer",
           attrs: {
             app: "",
+            flat: false,
             floating: "",
             permanent: true,
             width: "170",
             "mini-variant": _vm.mini,
-            color: "#263238"
+            color: "#263238",
+            multiple: ""
           },
           on: {
             "update:miniVariant": function($event) {
@@ -40401,91 +40471,120 @@ var render = function() {
             { staticClass: "mt-6" },
             [
               _c(
-                "v-tooltip",
+                "v-list-item-group",
                 {
-                  attrs: { bottom: "" },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "activator",
-                      fn: function(ref) {
-                        var on = ref.on
-                        var attrs = ref.attrs
-                        return [
-                          _c(
-                            "v-img",
-                            _vm._g(
-                              _vm._b(
-                                {
-                                  staticClass: "logo",
-                                  attrs: {
-                                    src: _vm.getImageUrl(
-                                      "rrwd-logo-closed-white.svg"
-                                    )
-                                  }
-                                },
-                                "v-img",
-                                attrs,
-                                false
-                              ),
-                              on
-                            )
-                          )
-                        ]
-                      }
-                    }
-                  ])
+                  attrs: { color: "white" },
+                  model: {
+                    value: _vm.model,
+                    callback: function($$v) {
+                      _vm.model = $$v
+                    },
+                    expression: "model"
+                  }
                 },
                 [
+                  _c(
+                    "v-tooltip",
+                    {
+                      attrs: { bottom: "" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "activator",
+                          fn: function(ref) {
+                            var on = ref.on
+                            var attrs = ref.attrs
+                            return [
+                              _c(
+                                "v-img",
+                                _vm._g(
+                                  _vm._b(
+                                    {
+                                      staticClass: "logo",
+                                      attrs: {
+                                        src: _vm.getImageUrl(
+                                          "rrwd-logo-closed-white.svg"
+                                        )
+                                      }
+                                    },
+                                    "v-img",
+                                    attrs,
+                                    false
+                                  ),
+                                  on
+                                )
+                              )
+                            ]
+                          }
+                        }
+                      ])
+                    },
+                    [
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Robert Roksela - Web Development")])
+                    ]
+                  ),
                   _vm._v(" "),
-                  _c("span", [_vm._v("Robert Roksela - Web Development")])
-                ]
-              ),
-              _vm._v(" "),
-              _vm._l(_vm.items, function(item) {
-                return _c(
-                  "v-list-item",
-                  {
-                    key: item.title,
-                    attrs: { link: "" },
-                    on: {
-                      click: function($event) {
-                        return _vm.$vuetify.goTo(
-                          "#scroll-target-" + item.title,
-                          _vm.options
+                  _vm._l(_vm.items, function(item) {
+                    return _c(
+                      "v-list-item",
+                      {
+                        key: item.title,
+                        attrs: { link: "" },
+                        on: {
+                          click: function($event) {
+                            return _vm.$vuetify.goTo(
+                              "#scroll-target-" + item.title,
+                              _vm.options
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "v-list-item-icon",
+                          [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-item-content",
+                          [
+                            _c("v-list-item-title", [
+                              _vm._v(_vm._s(item.title))
+                            ])
+                          ],
+                          1
                         )
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "v-list-item-icon",
-                      [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-list-item-content",
-                      [_c("v-list-item-title", [_vm._v(_vm._s(item.title))])],
+                      ],
                       1
                     )
-                  ],
-                  1
-                )
-              })
+                  })
+                ],
+                2
+              )
             ],
-            2
+            1
           )
         ],
         1
       ),
       _vm._v(" "),
-      _c("main-content", { attrs: { target: _vm.targetItem } }),
+      _c("main-content", {
+        attrs: { target: _vm.targetItem },
+        on: { positionYOfElements: _vm.positionYReceived }
+      }),
       _vm._v(" "),
-      _c("v-footer", { attrs: { inset: _vm.footer.inset, app: "" } }, [
-        _c("span", { staticClass: "px-4" }, [
-          _vm._v("© " + _vm._s(new Date().getFullYear()))
-        ])
-      ])
+      _c(
+        "v-footer",
+        {
+          attrs: { inset: _vm.footer.inset, app: "", fixed: _vm.footer.fixed }
+        },
+        [
+          _c("span", { staticClass: "px-4" }, [
+            _vm._v("© " + _vm._s(new Date().getFullYear()))
+          ])
+        ]
+      )
     ],
     1
   )
@@ -102632,6 +102731,54 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history'
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
+
+/***/ }),
+
+/***/ "./resources/js/shared/utils/positionYOfComponentsMixin.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/shared/utils/positionYOfComponentsMixin.js ***!
+  \*****************************************************************/
+/*! exports provided: positionY */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "positionY", function() { return positionY; });
+var positionY = {
+  mounted: function mounted() {
+    var aboutComponentTop = document.querySelector('#scroll-target-about').offsetTop;
+    var aboutComponentHeight = document.getElementById('scroll-target-about').clientHeight;
+    var aboutComponentBottom = aboutComponentTop + aboutComponentHeight;
+    var aboutComponentObject = {
+      top: aboutComponentTop,
+      bottom: aboutComponentBottom
+    };
+    var submitComponentTop = document.querySelector('#scroll-target-submit').offsetTop;
+    var submitComponentHeight = document.querySelector('#scroll-target-submit').clientHeight;
+    var submitComponentBottom = submitComponentTop + aboutComponentHeight;
+    var submitComponentObject = {
+      top: submitComponentTop,
+      bottom: submitComponentBottom
+    };
+    var servicesComponentTop = document.querySelector('#scroll-target-services').offsetTop;
+    var servicesComponentHeight = document.querySelector('#scroll-target-services').clientHeight;
+    var servicesComponentBottom = servicesComponentTop + servicesComponentHeight;
+    var servicesComponentObject = {
+      top: servicesComponentTop,
+      bottom: servicesComponentBottom
+    };
+    var likesComponentTop = document.querySelector('#scroll-target-likes').offsetTop;
+    var likesComponentHeight = document.querySelector('#scroll-target-likes').clientHeight;
+    var likesComponentBottom = likesComponentTop + likesComponentHeight;
+    var likesComponentObject = {
+      top: likesComponentTop,
+      bottom: likesComponentBottom
+    };
+    var positionYOfComponents = [];
+    positionYOfComponents.push(aboutComponentObject, servicesComponentObject, submitComponentObject, likesComponentObject);
+    this.$emit('positionYOfElements', positionYOfComponents);
+  }
+};
 
 /***/ }),
 

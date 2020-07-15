@@ -33,11 +33,11 @@
             },
             text1: {
                 type: String,
-                required: true
+                required: false
             },
             text2: {
                 type: String,
-                required: true
+                required: false
             },
 
         },

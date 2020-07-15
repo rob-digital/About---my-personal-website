@@ -1,5 +1,5 @@
 <template>
-    <div class="blue-grey lighten-5 pt-4 pb-8">
+    <div class="blue-grey lighten-5 pt-4 pb-12">
 
         <heading-intro class="introSlot pt-8 mb-12">
             <h2>services</h2>
@@ -9,13 +9,19 @@
         <v-row>
             <v-col v-for="item in items"
                     :key="item.title" cols=12 class="col-md-4 d-flex">
+
+
+                <v-hover
+
+                v-slot:default="{ hover }">
                  <v-card
 
                     class="mx-auto rounded-0   justify-sm-space-around"
                     max-width="300"
-
+                    :elevation="hover ? 4 : 2"
 
                 >
+
                     <v-card-text  class="white--text accent " >
 
 
@@ -29,8 +35,10 @@
                         <div>{{ item.text }}</div>
                     </v-card-text>
 
-
                 </v-card>
+                </v-hover>
+
+
             </v-col>
         </v-row>
         </v-container>
@@ -68,13 +76,11 @@ import HeadingIntro from '../components/slots/Heading'
 <style lang="scss" scoped>
 .v-card__title{
   justify-content: center !important;
+  text-transform: uppercase;
 }
 .v-icon {
     font-size: 80px !important;
     margin-left: calc(50% - 40px) !important;
 }
-.v-card__title{
-    text-transform: uppercase;
 
-}
 </style>
