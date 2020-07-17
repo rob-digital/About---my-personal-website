@@ -51,9 +51,16 @@
 .lightDarkToggleContainer{
     position: absolute;
     z-index: 100;
+
 }
 
 .introSlot {
     text-transform: uppercase;
+}
+.v-divider {
+     border-color: red !important;
+}
+.v-application {
+    margin-right: 0px !important;
 }
 </style>

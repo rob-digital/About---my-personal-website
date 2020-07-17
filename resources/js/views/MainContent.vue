@@ -16,7 +16,7 @@
                 ></parallax>
 
 
-                <about id="scroll-target-about"></about>
+                <about class="about" id="scroll-target-about"></about>
 
 
                 <services id="scroll-target-services"></services>
@@ -26,8 +26,13 @@
                 image="comp.jpg"
                 :height="400"
                 text1="modern, clean and creative design solutions"
-
                 ></parallax>
+
+
+                <canvas-pictures></canvas-pictures>
+
+
+                <education-stepper :colors="['red', 'blue', 'orange']"></education-stepper>
 
 
                 <p>{{ target }}</p>
@@ -35,11 +40,11 @@
                  id="scroll-target-submit"
                  :loadingIcon="submitting"
                  v-on:submit="submitContactForm"
-                @scroll="$emit('checkScroll', submitComponent)"
+
                 ></submit-form>
 
 <!-- //! Rate the design -->
-                <v-container class="likesDiv" >
+                <!-- <v-container class="likesDiv" > -->
 
                 <v-fade-transition>
                     <website-like
@@ -49,7 +54,7 @@
                     v-show="displayWebsiteLikeCard"
                     ></website-like>
                 </v-fade-transition>
-                </v-container>
+                <!-- </v-container> -->
 
 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
 
@@ -110,6 +115,8 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 import Parallax from '../components/Parallax'
 import About from '../components/About'
 import Services from '../components/Services'
+import CanvasPictures from '../components/CanvasPictures'
+import EducationStepper from '../components/EducationStepper'
 import SubmitForm from '../components/SubmitForm'
 import FatalError from '../components/FatalError'
 import WebsiteLike from '../components/WebsiteLike'
@@ -128,7 +135,9 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
             WebsiteLike,
             Services,
             Parallax,
-            About
+            About,
+            EducationStepper,
+            CanvasPictures
         },
         data() {
             return {
@@ -224,4 +233,5 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
 .likesDiv{
     min-height: 220px;
 }
+
 </style>

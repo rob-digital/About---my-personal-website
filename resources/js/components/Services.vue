@@ -1,24 +1,23 @@
 <template>
-    <div class="blue-grey lighten-5 pt-4 pb-12">
+    <div class="blue-grey lightBg pt-4 pb-12 ">
 
         <heading-intro class="introSlot pt-8 mb-12">
             <h2>services</h2>
         </heading-intro>
 
         <v-container>
-        <v-row>
+        <v-row class="mx-lg-16">
             <v-col v-for="item in items"
                     :key="item.title" cols=12 class="col-md-4 d-flex">
 
 
                 <v-hover
-
                 v-slot:default="{ hover }">
-                 <v-card
 
-                    class="mx-auto rounded-0   justify-sm-space-around"
+                 <v-card
+                    class="mx-auto rounded  justify-sm-space-around"
                     max-width="300"
-                    :elevation="hover ? 4 : 2"
+                    :elevation="hover ? 6 : 2"
 
                 >
 

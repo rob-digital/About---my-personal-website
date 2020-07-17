@@ -9,13 +9,12 @@
       :permanent="true"
       width="170"
       :mini-variant.sync="mini"
-      color="#263238"
-        multiple
+      color="#37474F"
+
 
     >
 
-    <v-list class="mt-6">
-         <v-list-item-group v-model="model"  color="white">
+
         <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
                 <v-img
@@ -28,6 +27,9 @@
             <span>Robert Roksela - Web Development</span>
         </v-tooltip>
 
+
+  <v-list class="mt-6">
+    <v-list-item-group v-model="listPosition"  color="white">
        <v-list-item
             v-for="item in items"
             :key="item.title"
@@ -46,6 +48,7 @@
           </v-list-item>
          </v-list-item-group>
         </v-list>
+
 
     </v-navigation-drawer>
 
@@ -85,28 +88,36 @@ import MainContent from './MainContent'
         default: true
       }
     },
-    data: () => ({
-      drawer: null,
-      model: {
-        type: Number,
-        require: false
-      },
-      currentScroll: null,
-      currentPositions: null,
-      items: [
-          { title: 'about', icon: 'portrait' },
-          { title: 'services', icon: 'build' },
-          { title: 'submit', icon: 'image' },
-          { title: 'likes', icon: 'thumb_down' },
-        ],
+    data() {
+        return {
+        drawer: true,
+        listPosition: '',
+        currentScroll: null,
+        currentPositions:null,
+        items: [
+            { title: 'about', icon: 'portrait' },
+            { title: 'services', icon: 'build' },
+            { title: 'submit', icon: 'image' },
+            { title: 'likes', icon: 'thumb_down' },
+            ],
        footer: {
         inset: true,
         fixed: false
       },
       targetItem: null
-    }),
+    }
+    },
      mounted() {
         window.addEventListener('scroll', this.checkScroll)
+          if (this.currentScroll >= this.currentPositions[0].top && this.currentScroll <  this.currentPositions[0].bottom) {
+                this.listPosition = 0
+            } else if(this.currentScroll >= this.currentPositions[1].top && this.currentScroll <  this.currentPositions[1].bottom) {
+                this.listPosition = 1
+            } else if(this.currentScroll >= this.currentPositions[2].top && this.currentScroll <  this.currentPositions[2].bottom) {
+                this.listPosition = 2
+            } else if(this.currentScroll >= this.currentPositions[3].top && this.currentScroll <  this.currentPositions[3].bottom) {
+                this.listPosition = 3
+            }
     },
 
 
@@ -119,14 +130,26 @@ import MainContent from './MainContent'
         },
         positionYReceived(el) {
            this.currentPositions = el
-
         },
-        checkScroll(event) {
+        checkScroll() {
 
-                const wind = window.pageYOffset
+                // const wind = window.pageYOffset
+                // const wind = document.documentElement.offsetHeight
+                const wind = document.documentElement.scrollTop
                 this.currentScroll = wind
 
-        }
+                if (this.currentScroll >= this.currentPositions[0].top) {
+                    for(var i = 0; i < this.currentPositions.length; i++) {
+
+                        if (this.currentScroll >= this.currentPositions[i].top && this.currentScroll < this.currentPositions[i].bottom) {
+                            this.listPosition = i
+                        }
+                    }
+                } else {
+                    this.listPosition = ''
+                }
+
+        },
     },
      computed: {
         mini() {
@@ -138,25 +161,6 @@ import MainContent from './MainContent'
                 duration: 1000
         }
       },
-      checkScrollLevel() {
-
-        if (this.currentScroll >= this.currentPositions[0].top ) {
-               for(let i = 0; i < this.currentPositions.length; i++) {
-
-                // if(this.currentScroll < this.currentPositions[i].top) {
-                //     this.model = 10
-                //   }
-                if (this.currentScroll >= this.currentPositions[i].top && this.currentScroll <= this.currentPositions[i].bottom) {
-                  return   this.model = i
-                  }
-            }
-        } else {
-           return this.model = null
-        }
-
-
-
-    },
   }
   }
 </script>

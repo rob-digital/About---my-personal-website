@@ -4,7 +4,7 @@ export const positionY = {
 
 
     const aboutComponentTop = document.querySelector('#scroll-target-about').offsetTop
-    const aboutComponentHeight = document.getElementById('scroll-target-about').clientHeight;
+    const aboutComponentHeight = document.querySelector('#scroll-target-about').offsetHeight;
     const aboutComponentBottom = aboutComponentTop + aboutComponentHeight
     const aboutComponentObject = {
         top: aboutComponentTop,
@@ -12,15 +12,15 @@ export const positionY = {
     }
 
     const submitComponentTop = document.querySelector('#scroll-target-submit').offsetTop
-    const submitComponentHeight = document.querySelector('#scroll-target-submit').clientHeight
-    const submitComponentBottom = submitComponentTop + aboutComponentHeight
+    const submitComponentHeight = document.querySelector('#scroll-target-submit').offsetHeight
+    const submitComponentBottom = submitComponentTop + submitComponentHeight
     const submitComponentObject = {
         top: submitComponentTop,
         bottom: submitComponentBottom
     }
 
     const servicesComponentTop = document.querySelector('#scroll-target-services').offsetTop
-    const servicesComponentHeight = document.querySelector('#scroll-target-services').clientHeight
+    const servicesComponentHeight = document.querySelector('#scroll-target-services').offsetHeight
     const servicesComponentBottom = servicesComponentTop + servicesComponentHeight
     const servicesComponentObject = {
         top: servicesComponentTop,
@@ -29,7 +29,7 @@ export const positionY = {
 
 
     const likesComponentTop = document.querySelector('#scroll-target-likes').offsetTop
-    const likesComponentHeight = document.querySelector('#scroll-target-likes').clientHeight
+    const likesComponentHeight = document.querySelector('#scroll-target-likes').offsetHeight
     const likesComponentBottom = likesComponentTop + likesComponentHeight
     const likesComponentObject = {
         top: likesComponentTop,

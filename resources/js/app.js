@@ -39,12 +39,18 @@ const app = new Vue({
               light: {
                 primary: '#363636', // #E53935
                 secondary: colors.red.lighten4, // #FFCDD2
-                accent: colors.indigo.base, // #3F51B5
+                accent: colors.lightBlue.darken4, // #3F51B5
                 colorBrown: colors.brown.darken4,
-                colorBlueDarken: colors.blueGrey.darken4
+                colorBlueDarken: colors.blueGrey.darken4,
+                lightBg: colors.blueGrey.lighten5,
+                textAccent: colors.red.darken1
               },
               dark: {
                 primary: '#363636',
+                colorBlueDarken: colors.blueGrey.darken4,
+                lightBg: colors.blueGrey.darken4,
+                textAccent: colors.yellow.accent2
+
               }
             },
           },
