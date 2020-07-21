@@ -63,4 +63,7 @@
 .v-application {
     margin-right: 0px !important;
 }
+.v-progress-circular__underlay{
+    stroke: lightgrey !important;
+}
 </style>

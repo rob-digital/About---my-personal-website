@@ -11,6 +11,9 @@ export const positionY = {
         bottom: aboutComponentBottom
     }
 
+    const skillsComponentPositionTop = document.querySelector('#scroll-target-skills').offsetTop
+
+
     const submitComponentTop = document.querySelector('#scroll-target-submit').offsetTop
     const submitComponentHeight = document.querySelector('#scroll-target-submit').offsetHeight
     const submitComponentBottom = submitComponentTop + submitComponentHeight
@@ -41,6 +44,7 @@ export const positionY = {
 
 
     this.$emit('positionYOfElements', positionYOfComponents)
+    this.$emit('positionYOfSkillsCircles', skillsComponentPositionTop)
 
  }
 }

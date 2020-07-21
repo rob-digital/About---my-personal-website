@@ -12,9 +12,11 @@
     "devDependencies": {
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^7.0",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
+        "lite-server": "^2.5.4",
         "lodash": "^4.17.13",
         "material-design-icons-iconfont": "^5.0.1",
         "popper.js": "^1.12",
@@ -23,7 +25,8 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-cli-plugin-vuetify": "^2.0.6",
-        "vue-template-compiler": "^2.6.10"
+        "vue-template-compiler": "^2.6.10",
+        "webpack-livereload-plugin": "^1.2.0"
     },
     "dependencies": {
         "vue-router": "^3.3.4",

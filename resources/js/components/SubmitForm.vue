@@ -14,6 +14,7 @@
                         label="Name"
                         required
                         clearable
+                        solo
 
                         clear-icon="cancel"
                         @input="$v.dataFields.name.$touch()"
@@ -31,6 +32,8 @@
                             label="E-mail"
                             required
                             clearable
+                            solo
+                            filled
                             clear-icon="cancel"
                             @input="$v.dataFields.email.$touch()"
                             @blur="$v.dataFields.email.$touch()"

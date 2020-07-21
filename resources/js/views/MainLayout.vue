@@ -56,7 +56,12 @@
 
 
 
-         <main-content :target="targetItem" v-on:positionYOfElements="positionYReceived"></main-content>
+         <main-content
+           :target="targetItem"
+           :activateSkillsCircleAnimation="activateSkillsCircleAnimation"
+           v-on:positionYOfElements="positionYReceived"
+           v-on:positionYOfSkillsCircles="positionYOfSkillsCirclesReceived"
+         ></main-content>
 
 
 
@@ -94,6 +99,9 @@ import MainContent from './MainContent'
         listPosition: '',
         currentScroll: null,
         currentPositions:null,
+        positionYOfSkillsCircels: null,
+        activateSkillsCircleAnimation: false,
+
         items: [
             { title: 'about', icon: 'portrait' },
             { title: 'services', icon: 'build' },
@@ -131,14 +139,23 @@ import MainContent from './MainContent'
         positionYReceived(el) {
            this.currentPositions = el
         },
+        positionYOfSkillsCirclesReceived(el) {
+            this.positionYOfSkillsCircels = el
+        },
         checkScroll() {
 
                 // const wind = window.pageYOffset
                 // const wind = document.documentElement.offsetHeight
                 const wind = document.documentElement.scrollTop
+                const windowHeight = window.innerHeight
                 this.currentScroll = wind
 
+                 if (this.currentScroll + windowHeight >= this.positionYOfSkillsCircels ) {
+                        this.activateSkillsCircleAnimation = true
+                     }
+
                 if (this.currentScroll >= this.currentPositions[0].top) {
+
                     for(var i = 0; i < this.currentPositions.length; i++) {
 
                         if (this.currentScroll >= this.currentPositions[i].top && this.currentScroll < this.currentPositions[i].bottom) {

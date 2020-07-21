@@ -19,6 +19,9 @@
                 <about class="about" id="scroll-target-about"></about>
 
 
+                <skills :activateSkillsCircleAnimation="activateSkillsCircleAnimation"></skills>
+
+
                 <services id="scroll-target-services"></services>
 
 
@@ -35,7 +38,7 @@
                 <education-stepper :colors="['red', 'blue', 'orange']"></education-stepper>
 
 
-                <p>{{ target }}</p>
+
                  <submit-form
                  id="scroll-target-submit"
                  :loadingIcon="submitting"
@@ -114,6 +117,7 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 <script>
 import Parallax from '../components/Parallax'
 import About from '../components/About'
+import Skills from '../components/Skills'
 import Services from '../components/Services'
 import CanvasPictures from '../components/CanvasPictures'
 import EducationStepper from '../components/EducationStepper'
@@ -126,7 +130,8 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
     export default {
         mixins: [positionY],
         props: [
-            'target'
+            'target',
+            'activateSkillsCircleAnimation'
 
         ],
          components: {
@@ -136,6 +141,7 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
             Services,
             Parallax,
             About,
+            Skills,
             EducationStepper,
             CanvasPictures
         },
