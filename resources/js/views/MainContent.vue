@@ -32,7 +32,7 @@
                 ></parallax>
 
 
-                <canvas-pictures></canvas-pictures>
+                <canvas-pictures-prismic-c-m-s></canvas-pictures-prismic-c-m-s>
 
 
                 <education-stepper :colors="['red', 'blue', 'orange']"></education-stepper>
@@ -119,7 +119,7 @@ import Parallax from '../components/Parallax'
 import About from '../components/About'
 import Skills from '../components/Skills'
 import Services from '../components/Services'
-import CanvasPictures from '../components/CanvasPictures'
+import CanvasPicturesPrismicCMS from '../components/CanvasPicturesPrismicCMS'
 import EducationStepper from '../components/EducationStepper'
 import SubmitForm from '../components/SubmitForm'
 import FatalError from '../components/FatalError'
@@ -143,7 +143,7 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
             About,
             Skills,
             EducationStepper,
-            CanvasPictures
+            CanvasPicturesPrismicCMS
         },
         data() {
             return {

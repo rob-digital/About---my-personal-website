@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -1983,22 +1995,235 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPictures.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CanvasPictures.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      fields: {
+        uuid: null,
+        image: null,
+        images: []
+      },
+      loading: false,
+      dialog: false,
+      selectedImage: null,
+      currentItem: 0,
+      imagesArrayToBeReorder: [],
+      reorderedImagesArray: []
+    };
+  },
+  methods: {
+    getContent: function getContent() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _this.$prismic.client.getSingle('portfolioimage');
+
+              case 2:
+                data = _context.sent;
+                // api id
+                _this.fields.uuid = data.uid, _this.fields.image = data.data.image1;
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    getMultipleContent: function getMultipleContent() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var data, imgArray, key;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _this2.$prismic.client.getByUID('single-image', '2sfwe424');
+
+              case 2:
+                data = _context2.sent;
+                //prismic 'api id' and 'uid'
+                imgArray = [];
+
+                for (key in data.data) {
+                  if (Object.prototype.hasOwnProperty.call(data.data, key)) {
+                    imgArray.push(data.data[key]);
+                  }
+
+                  _this2.fields.images = imgArray;
+                  _this2.imagesArrayToBeReorder = imgArray;
+                }
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    zoom: function zoom(img) {
+      this.selectedImage = img;
+      var itemZ = this.fields.images.indexOf(img);
+      this.currentItem = itemZ; // continue with currewnt item
+
+      console.log('------------------------------------');
+      console.log(itemZ);
+      console.log('------------------------------------');
+      var leftSideArr = [];
+      var rightSideArr = [];
+      var newOrderArray = [];
+      leftSideArr = this.imagesArrayToBeReorder.slice(0, itemZ);
+      rightSideArr = this.imagesArrayToBeReorder.slice(itemZ, this.imagesArrayToBeReorder.length);
+      newOrderArray = rightSideArr.concat(leftSideArr);
+      this.reorderedImagesArray = newOrderArray;
+      console.log('------------------------------------');
+      console.log(newOrderArray);
+      console.log('------------------------------------');
+    }
+  },
+  computed: {
+    clearModal: function clearModal() {
+      if (this.dialog === false) {
+        this.reorderedImagesArray = []; // this.imagesArrayToBeReorder = []
+
+        this.currentItem = 0;
+      }
+    }
+  },
+  created: function created() {
+    this.getContent();
+    this.getMultipleContent();
+  }
+});
 
 /***/ }),
 
@@ -2719,7 +2944,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_About__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/About */ "./resources/js/components/About.vue");
 /* harmony import */ var _components_Skills__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Skills */ "./resources/js/components/Skills.vue");
 /* harmony import */ var _components_Services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Services */ "./resources/js/components/Services.vue");
-/* harmony import */ var _components_CanvasPictures__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/CanvasPictures */ "./resources/js/components/CanvasPictures.vue");
+/* harmony import */ var _components_CanvasPicturesPrismicCMS__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/CanvasPicturesPrismicCMS */ "./resources/js/components/CanvasPicturesPrismicCMS.vue");
 /* harmony import */ var _components_EducationStepper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/EducationStepper */ "./resources/js/components/EducationStepper.vue");
 /* harmony import */ var _components_SubmitForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/SubmitForm */ "./resources/js/components/SubmitForm.vue");
 /* harmony import */ var _components_FatalError__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/FatalError */ "./resources/js/components/FatalError.vue");
@@ -2863,7 +3088,7 @@ __webpack_require__.r(__webpack_exports__);
     About: _components_About__WEBPACK_IMPORTED_MODULE_1__["default"],
     Skills: _components_Skills__WEBPACK_IMPORTED_MODULE_2__["default"],
     EducationStepper: _components_EducationStepper__WEBPACK_IMPORTED_MODULE_5__["default"],
-    CanvasPictures: _components_CanvasPictures__WEBPACK_IMPORTED_MODULE_4__["default"]
+    CanvasPicturesPrismicCMS: _components_CanvasPicturesPrismicCMS__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
@@ -7558,6 +7783,562 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/cross-fetch/dist/browser-ponyfill.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/cross-fetch/dist/browser-ponyfill.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var __self__ = (function (root) {
+function F() {
+this.fetch = false;
+this.DOMException = root.DOMException
+}
+F.prototype = root;
+return new F();
+})(typeof self !== 'undefined' ? self : this);
+(function(self) {
+
+var irrelevant = (function (exports) {
+  var support = {
+    searchParams: 'URLSearchParams' in self,
+    iterable: 'Symbol' in self && 'iterator' in Symbol,
+    blob:
+      'FileReader' in self &&
+      'Blob' in self &&
+      (function() {
+        try {
+          new Blob();
+          return true
+        } catch (e) {
+          return false
+        }
+      })(),
+    formData: 'FormData' in self,
+    arrayBuffer: 'ArrayBuffer' in self
+  };
+
+  function isDataView(obj) {
+    return obj && DataView.prototype.isPrototypeOf(obj)
+  }
+
+  if (support.arrayBuffer) {
+    var viewClasses = [
+      '[object Int8Array]',
+      '[object Uint8Array]',
+      '[object Uint8ClampedArray]',
+      '[object Int16Array]',
+      '[object Uint16Array]',
+      '[object Int32Array]',
+      '[object Uint32Array]',
+      '[object Float32Array]',
+      '[object Float64Array]'
+    ];
+
+    var isArrayBufferView =
+      ArrayBuffer.isView ||
+      function(obj) {
+        return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1
+      };
+  }
+
+  function normalizeName(name) {
+    if (typeof name !== 'string') {
+      name = String(name);
+    }
+    if (/[^a-z0-9\-#$%&'*+.^_`|~]/i.test(name)) {
+      throw new TypeError('Invalid character in header field name')
+    }
+    return name.toLowerCase()
+  }
+
+  function normalizeValue(value) {
+    if (typeof value !== 'string') {
+      value = String(value);
+    }
+    return value
+  }
+
+  // Build a destructive iterator for the value list
+  function iteratorFor(items) {
+    var iterator = {
+      next: function() {
+        var value = items.shift();
+        return {done: value === undefined, value: value}
+      }
+    };
+
+    if (support.iterable) {
+      iterator[Symbol.iterator] = function() {
+        return iterator
+      };
+    }
+
+    return iterator
+  }
+
+  function Headers(headers) {
+    this.map = {};
+
+    if (headers instanceof Headers) {
+      headers.forEach(function(value, name) {
+        this.append(name, value);
+      }, this);
+    } else if (Array.isArray(headers)) {
+      headers.forEach(function(header) {
+        this.append(header[0], header[1]);
+      }, this);
+    } else if (headers) {
+      Object.getOwnPropertyNames(headers).forEach(function(name) {
+        this.append(name, headers[name]);
+      }, this);
+    }
+  }
+
+  Headers.prototype.append = function(name, value) {
+    name = normalizeName(name);
+    value = normalizeValue(value);
+    var oldValue = this.map[name];
+    this.map[name] = oldValue ? oldValue + ', ' + value : value;
+  };
+
+  Headers.prototype['delete'] = function(name) {
+    delete this.map[normalizeName(name)];
+  };
+
+  Headers.prototype.get = function(name) {
+    name = normalizeName(name);
+    return this.has(name) ? this.map[name] : null
+  };
+
+  Headers.prototype.has = function(name) {
+    return this.map.hasOwnProperty(normalizeName(name))
+  };
+
+  Headers.prototype.set = function(name, value) {
+    this.map[normalizeName(name)] = normalizeValue(value);
+  };
+
+  Headers.prototype.forEach = function(callback, thisArg) {
+    for (var name in this.map) {
+      if (this.map.hasOwnProperty(name)) {
+        callback.call(thisArg, this.map[name], name, this);
+      }
+    }
+  };
+
+  Headers.prototype.keys = function() {
+    var items = [];
+    this.forEach(function(value, name) {
+      items.push(name);
+    });
+    return iteratorFor(items)
+  };
+
+  Headers.prototype.values = function() {
+    var items = [];
+    this.forEach(function(value) {
+      items.push(value);
+    });
+    return iteratorFor(items)
+  };
+
+  Headers.prototype.entries = function() {
+    var items = [];
+    this.forEach(function(value, name) {
+      items.push([name, value]);
+    });
+    return iteratorFor(items)
+  };
+
+  if (support.iterable) {
+    Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
+  }
+
+  function consumed(body) {
+    if (body.bodyUsed) {
+      return Promise.reject(new TypeError('Already read'))
+    }
+    body.bodyUsed = true;
+  }
+
+  function fileReaderReady(reader) {
+    return new Promise(function(resolve, reject) {
+      reader.onload = function() {
+        resolve(reader.result);
+      };
+      reader.onerror = function() {
+        reject(reader.error);
+      };
+    })
+  }
+
+  function readBlobAsArrayBuffer(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsArrayBuffer(blob);
+    return promise
+  }
+
+  function readBlobAsText(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsText(blob);
+    return promise
+  }
+
+  function readArrayBufferAsText(buf) {
+    var view = new Uint8Array(buf);
+    var chars = new Array(view.length);
+
+    for (var i = 0; i < view.length; i++) {
+      chars[i] = String.fromCharCode(view[i]);
+    }
+    return chars.join('')
+  }
+
+  function bufferClone(buf) {
+    if (buf.slice) {
+      return buf.slice(0)
+    } else {
+      var view = new Uint8Array(buf.byteLength);
+      view.set(new Uint8Array(buf));
+      return view.buffer
+    }
+  }
+
+  function Body() {
+    this.bodyUsed = false;
+
+    this._initBody = function(body) {
+      this._bodyInit = body;
+      if (!body) {
+        this._bodyText = '';
+      } else if (typeof body === 'string') {
+        this._bodyText = body;
+      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+        this._bodyBlob = body;
+      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+        this._bodyFormData = body;
+      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+        this._bodyText = body.toString();
+      } else if (support.arrayBuffer && support.blob && isDataView(body)) {
+        this._bodyArrayBuffer = bufferClone(body.buffer);
+        // IE 10-11 can't handle a DataView body.
+        this._bodyInit = new Blob([this._bodyArrayBuffer]);
+      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
+        this._bodyArrayBuffer = bufferClone(body);
+      } else {
+        this._bodyText = body = Object.prototype.toString.call(body);
+      }
+
+      if (!this.headers.get('content-type')) {
+        if (typeof body === 'string') {
+          this.headers.set('content-type', 'text/plain;charset=UTF-8');
+        } else if (this._bodyBlob && this._bodyBlob.type) {
+          this.headers.set('content-type', this._bodyBlob.type);
+        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+          this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        }
+      }
+    };
+
+    if (support.blob) {
+      this.blob = function() {
+        var rejected = consumed(this);
+        if (rejected) {
+          return rejected
+        }
+
+        if (this._bodyBlob) {
+          return Promise.resolve(this._bodyBlob)
+        } else if (this._bodyArrayBuffer) {
+          return Promise.resolve(new Blob([this._bodyArrayBuffer]))
+        } else if (this._bodyFormData) {
+          throw new Error('could not read FormData body as blob')
+        } else {
+          return Promise.resolve(new Blob([this._bodyText]))
+        }
+      };
+
+      this.arrayBuffer = function() {
+        if (this._bodyArrayBuffer) {
+          return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
+        } else {
+          return this.blob().then(readBlobAsArrayBuffer)
+        }
+      };
+    }
+
+    this.text = function() {
+      var rejected = consumed(this);
+      if (rejected) {
+        return rejected
+      }
+
+      if (this._bodyBlob) {
+        return readBlobAsText(this._bodyBlob)
+      } else if (this._bodyArrayBuffer) {
+        return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer))
+      } else if (this._bodyFormData) {
+        throw new Error('could not read FormData body as text')
+      } else {
+        return Promise.resolve(this._bodyText)
+      }
+    };
+
+    if (support.formData) {
+      this.formData = function() {
+        return this.text().then(decode)
+      };
+    }
+
+    this.json = function() {
+      return this.text().then(JSON.parse)
+    };
+
+    return this
+  }
+
+  // HTTP methods whose capitalization should be normalized
+  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'];
+
+  function normalizeMethod(method) {
+    var upcased = method.toUpperCase();
+    return methods.indexOf(upcased) > -1 ? upcased : method
+  }
+
+  function Request(input, options) {
+    options = options || {};
+    var body = options.body;
+
+    if (input instanceof Request) {
+      if (input.bodyUsed) {
+        throw new TypeError('Already read')
+      }
+      this.url = input.url;
+      this.credentials = input.credentials;
+      if (!options.headers) {
+        this.headers = new Headers(input.headers);
+      }
+      this.method = input.method;
+      this.mode = input.mode;
+      this.signal = input.signal;
+      if (!body && input._bodyInit != null) {
+        body = input._bodyInit;
+        input.bodyUsed = true;
+      }
+    } else {
+      this.url = String(input);
+    }
+
+    this.credentials = options.credentials || this.credentials || 'same-origin';
+    if (options.headers || !this.headers) {
+      this.headers = new Headers(options.headers);
+    }
+    this.method = normalizeMethod(options.method || this.method || 'GET');
+    this.mode = options.mode || this.mode || null;
+    this.signal = options.signal || this.signal;
+    this.referrer = null;
+
+    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
+      throw new TypeError('Body not allowed for GET or HEAD requests')
+    }
+    this._initBody(body);
+  }
+
+  Request.prototype.clone = function() {
+    return new Request(this, {body: this._bodyInit})
+  };
+
+  function decode(body) {
+    var form = new FormData();
+    body
+      .trim()
+      .split('&')
+      .forEach(function(bytes) {
+        if (bytes) {
+          var split = bytes.split('=');
+          var name = split.shift().replace(/\+/g, ' ');
+          var value = split.join('=').replace(/\+/g, ' ');
+          form.append(decodeURIComponent(name), decodeURIComponent(value));
+        }
+      });
+    return form
+  }
+
+  function parseHeaders(rawHeaders) {
+    var headers = new Headers();
+    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
+    // https://tools.ietf.org/html/rfc7230#section-3.2
+    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
+    preProcessedHeaders.split(/\r?\n/).forEach(function(line) {
+      var parts = line.split(':');
+      var key = parts.shift().trim();
+      if (key) {
+        var value = parts.join(':').trim();
+        headers.append(key, value);
+      }
+    });
+    return headers
+  }
+
+  Body.call(Request.prototype);
+
+  function Response(bodyInit, options) {
+    if (!options) {
+      options = {};
+    }
+
+    this.type = 'default';
+    this.status = options.status === undefined ? 200 : options.status;
+    this.ok = this.status >= 200 && this.status < 300;
+    this.statusText = 'statusText' in options ? options.statusText : 'OK';
+    this.headers = new Headers(options.headers);
+    this.url = options.url || '';
+    this._initBody(bodyInit);
+  }
+
+  Body.call(Response.prototype);
+
+  Response.prototype.clone = function() {
+    return new Response(this._bodyInit, {
+      status: this.status,
+      statusText: this.statusText,
+      headers: new Headers(this.headers),
+      url: this.url
+    })
+  };
+
+  Response.error = function() {
+    var response = new Response(null, {status: 0, statusText: ''});
+    response.type = 'error';
+    return response
+  };
+
+  var redirectStatuses = [301, 302, 303, 307, 308];
+
+  Response.redirect = function(url, status) {
+    if (redirectStatuses.indexOf(status) === -1) {
+      throw new RangeError('Invalid status code')
+    }
+
+    return new Response(null, {status: status, headers: {location: url}})
+  };
+
+  exports.DOMException = self.DOMException;
+  try {
+    new exports.DOMException();
+  } catch (err) {
+    exports.DOMException = function(message, name) {
+      this.message = message;
+      this.name = name;
+      var error = Error(message);
+      this.stack = error.stack;
+    };
+    exports.DOMException.prototype = Object.create(Error.prototype);
+    exports.DOMException.prototype.constructor = exports.DOMException;
+  }
+
+  function fetch(input, init) {
+    return new Promise(function(resolve, reject) {
+      var request = new Request(input, init);
+
+      if (request.signal && request.signal.aborted) {
+        return reject(new exports.DOMException('Aborted', 'AbortError'))
+      }
+
+      var xhr = new XMLHttpRequest();
+
+      function abortXhr() {
+        xhr.abort();
+      }
+
+      xhr.onload = function() {
+        var options = {
+          status: xhr.status,
+          statusText: xhr.statusText,
+          headers: parseHeaders(xhr.getAllResponseHeaders() || '')
+        };
+        options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL');
+        var body = 'response' in xhr ? xhr.response : xhr.responseText;
+        resolve(new Response(body, options));
+      };
+
+      xhr.onerror = function() {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.ontimeout = function() {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.onabort = function() {
+        reject(new exports.DOMException('Aborted', 'AbortError'));
+      };
+
+      xhr.open(request.method, request.url, true);
+
+      if (request.credentials === 'include') {
+        xhr.withCredentials = true;
+      } else if (request.credentials === 'omit') {
+        xhr.withCredentials = false;
+      }
+
+      if ('responseType' in xhr && support.blob) {
+        xhr.responseType = 'blob';
+      }
+
+      request.headers.forEach(function(value, name) {
+        xhr.setRequestHeader(name, value);
+      });
+
+      if (request.signal) {
+        request.signal.addEventListener('abort', abortXhr);
+
+        xhr.onreadystatechange = function() {
+          // DONE (success or failure)
+          if (xhr.readyState === 4) {
+            request.signal.removeEventListener('abort', abortXhr);
+          }
+        };
+      }
+
+      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit);
+    })
+  }
+
+  fetch.polyfill = true;
+
+  if (!self.fetch) {
+    self.fetch = fetch;
+    self.Headers = Headers;
+    self.Request = Request;
+    self.Response = Response;
+  }
+
+  exports.Headers = Headers;
+  exports.Request = Request;
+  exports.Response = Response;
+  exports.fetch = fetch;
+
+  return exports;
+
+}({}));
+})(__self__);
+delete __self__.fetch.polyfill
+exports = __self__.fetch // To enable: import fetch from 'cross-fetch'
+exports.default = __self__.fetch // For TypeScript consumers without esModuleInterop.
+exports.fetch = __self__.fetch // To enable: import {fetch} from 'cross-fetch'
+exports.Headers = __self__.Headers
+exports.Request = __self__.Request
+exports.Response = __self__.Response
+module.exports = exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Index.vue?vue&type=style&index=0&lang=scss&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Index.vue?vue&type=style&index=0&lang=scss& ***!
@@ -7590,6 +8371,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "h4[data-v-fb05e49c] {\n  font-size: 1.5rem;\n}\n.aboutText[data-v-fb05e49c] {\n  max-width: 800px !important;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".singleImg[data-v-63eb04b4] {\n  padding: 1px !important;\n}", ""]);
 
 // exports
 
@@ -18806,7 +19606,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.15';
+  var VERSION = '4.17.19';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -22513,8 +23313,21 @@ return jQuery;
      * @returns {Array} Returns the new sorted array.
      */
     function baseOrderBy(collection, iteratees, orders) {
+      if (iteratees.length) {
+        iteratees = arrayMap(iteratees, function(iteratee) {
+          if (isArray(iteratee)) {
+            return function(value) {
+              return baseGet(value, iteratee.length === 1 ? iteratee[0] : iteratee);
+            }
+          }
+          return iteratee;
+        });
+      } else {
+        iteratees = [identity];
+      }
+
       var index = -1;
-      iteratees = arrayMap(iteratees.length ? iteratees : [identity], baseUnary(getIteratee()));
+      iteratees = arrayMap(iteratees, baseUnary(getIteratee()));
 
       var result = baseMap(collection, function(value, key, collection) {
         var criteria = arrayMap(iteratees, function(iteratee) {
@@ -22771,6 +23584,10 @@ return jQuery;
         var key = toKey(path[index]),
             newValue = value;
 
+        if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+          return object;
+        }
+
         if (index != lastIndex) {
           var objValue = nested[key];
           newValue = customizer ? customizer(objValue, key, nested) : undefined;
@@ -22923,11 +23740,14 @@ return jQuery;
      *  into `array`.
      */
     function baseSortedIndexBy(array, value, iteratee, retHighest) {
-      value = iteratee(value);
-
       var low = 0,
-          high = array == null ? 0 : array.length,
-          valIsNaN = value !== value,
+          high = array == null ? 0 : array.length;
+      if (high === 0) {
+        return 0;
+      }
+
+      value = iteratee(value);
+      var valIsNaN = value !== value,
           valIsNull = value === null,
           valIsSymbol = isSymbol(value),
           valIsUndefined = value === undefined;
@@ -24412,10 +25232,11 @@ return jQuery;
       if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
         return false;
       }
-      // Assume cyclic values are equal.
-      var stacked = stack.get(array);
-      if (stacked && stack.get(other)) {
-        return stacked == other;
+      // Check that cyclic values are equal.
+      var arrStacked = stack.get(array);
+      var othStacked = stack.get(other);
+      if (arrStacked && othStacked) {
+        return arrStacked == other && othStacked == array;
       }
       var index = -1,
           result = true,
@@ -24577,10 +25398,11 @@ return jQuery;
           return false;
         }
       }
-      // Assume cyclic values are equal.
-      var stacked = stack.get(object);
-      if (stacked && stack.get(other)) {
-        return stacked == other;
+      // Check that cyclic values are equal.
+      var objStacked = stack.get(object);
+      var othStacked = stack.get(other);
+      if (objStacked && othStacked) {
+        return objStacked == other && othStacked == object;
       }
       var result = true;
       stack.set(object, other);
@@ -27961,6 +28783,10 @@ return jQuery;
      * // The `_.property` iteratee shorthand.
      * _.filter(users, 'active');
      * // => objects for ['barney']
+     *
+     * // Combining several predicates using `_.overEvery` or `_.overSome`.
+     * _.filter(users, _.overSome([{ 'age': 36 }, ['age', 40]]));
+     * // => objects for ['fred', 'barney']
      */
     function filter(collection, predicate) {
       var func = isArray(collection) ? arrayFilter : baseFilter;
@@ -28710,15 +29536,15 @@ return jQuery;
      * var users = [
      *   { 'user': 'fred',   'age': 48 },
      *   { 'user': 'barney', 'age': 36 },
-     *   { 'user': 'fred',   'age': 40 },
+     *   { 'user': 'fred',   'age': 30 },
      *   { 'user': 'barney', 'age': 34 }
      * ];
      *
      * _.sortBy(users, [function(o) { return o.user; }]);
-     * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
+     * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 30]]
      *
      * _.sortBy(users, ['user', 'age']);
-     * // => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+     * // => objects for [['barney', 34], ['barney', 36], ['fred', 30], ['fred', 48]]
      */
     var sortBy = baseRest(function(collection, iteratees) {
       if (collection == null) {
@@ -33593,11 +34419,11 @@ return jQuery;
 
       // Use a sourceURL for easier debugging.
       // The sourceURL gets injected into the source that's eval-ed, so be careful
-      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
-      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
+      // to normalize all kinds of whitespace, so e.g. newlines (and unicode versions of it) can't sneak in
+      // and escape the comment, thus injecting code that gets evaled.
       var sourceURL = '//# sourceURL=' +
         (hasOwnProperty.call(options, 'sourceURL')
-          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
+          ? (options.sourceURL + '').replace(/\s/g, ' ')
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -33630,8 +34456,6 @@ return jQuery;
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      // Like with sourceURL, we take care to not check the option's prototype,
-      // as this configuration is a code injection vector.
       var variable = hasOwnProperty.call(options, 'variable') && options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
@@ -34338,6 +35162,9 @@ return jQuery;
      * values against any array or object value, respectively. See `_.isEqual`
      * for a list of supported value comparisons.
      *
+     * **Note:** Multiple values can be checked by combining several matchers
+     * using `_.overSome`
+     *
      * @static
      * @memberOf _
      * @since 3.0.0
@@ -34353,6 +35180,10 @@ return jQuery;
      *
      * _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
      * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
+     *
+     * // Checking for several possible values
+     * _.filter(users, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
+     * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
      */
     function matches(source) {
       return baseMatches(baseClone(source, CLONE_DEEP_FLAG));
@@ -34366,6 +35197,9 @@ return jQuery;
      * **Note:** Partial comparisons will match empty array and empty object
      * `srcValue` values against any array or object value, respectively. See
      * `_.isEqual` for a list of supported value comparisons.
+     *
+     * **Note:** Multiple values can be checked by combining several matchers
+     * using `_.overSome`
      *
      * @static
      * @memberOf _
@@ -34383,6 +35217,10 @@ return jQuery;
      *
      * _.find(objects, _.matchesProperty('a', 4));
      * // => { 'a': 4, 'b': 5, 'c': 6 }
+     *
+     * // Checking for several possible values
+     * _.filter(users, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
+     * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
      */
     function matchesProperty(path, srcValue) {
       return baseMatchesProperty(path, baseClone(srcValue, CLONE_DEEP_FLAG));
@@ -34606,6 +35444,10 @@ return jQuery;
      * Creates a function that checks if **all** of the `predicates` return
      * truthy when invoked with the arguments it receives.
      *
+     * Following shorthands are possible for providing predicates.
+     * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+     * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+     *
      * @static
      * @memberOf _
      * @since 4.0.0
@@ -34632,6 +35474,10 @@ return jQuery;
      * Creates a function that checks if **any** of the `predicates` return
      * truthy when invoked with the arguments it receives.
      *
+     * Following shorthands are possible for providing predicates.
+     * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+     * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+     *
      * @static
      * @memberOf _
      * @since 4.0.0
@@ -34651,6 +35497,9 @@ return jQuery;
      *
      * func(NaN);
      * // => false
+     *
+     * var matchesFunc = _.overSome([{ 'a': 1 }, { 'a': 2 }])
+     * var matchesPropertyFunc = _.overSome([['a', 1], ['a', 2]])
      */
     var overSome = createOver(arraySome);
 
@@ -38605,6 +39454,1659 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 
+/***/ "./node_modules/prismic-dom/dist/prismic-dom.min.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/prismic-dom/dist/prismic-dom.min.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():undefined}("undefined"!=typeof self?self:this,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=1)}([function(e,t,n){"undefined"!=typeof self&&self,e.exports=function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){var r=n(2),o=n(3);e.exports={Link:r,Date:o}},function(e,t,n){e.exports={url:function(e,t){if(e&&[e.link_type,e._linkType,e.linkType].some((function(e){return e&&["Document","Link.Document","Link.document"].includes(e)}))&&t&&"function"==typeof t){var n=t(e);if(n)return n}return e&&e.url?e.url:""}}},function(e,t){e.exports=function(e){if(!e)return null;var t=24==e.length?"".concat(e.substring(0,22),":").concat(e.substring(22,24)):e;return new Date(t)}}])},function(e,t,n){e.exports=n(2)},function(e,t,n){var r=n(0),o=n(3),i=r.Date,u=r.Link;e.exports={Date:i,Link:u,RichText:o}},function(e,t,n){var r=n(4),o=n(0).Link,i=n(5),u=r.Elements;function c(e,t,n,r,c){switch(t){case u.heading1:return l("h1",n,c);case u.heading2:return l("h2",n,c);case u.heading3:return l("h3",n,c);case u.heading4:return l("h4",n,c);case u.heading5:return l("h5",n,c);case u.heading6:return l("h6",n,c);case u.paragraph:return l("p",n,c);case u.preformatted:return function(e){return"<pre".concat(a(e),">").concat(i(e.text),"</pre>")}(n);case u.strong:return l("strong",n,c);case u.em:return l("em",n,c);case u.listItem:case u.oListItem:return l("li",n,c);case u.list:return l("ul",n,c);case u.oList:return l("ol",n,c);case u.image:return function(e,t){var n=t.linkTo?o.url(t.linkTo,e):null,r=t.linkTo&&t.linkTo.target?'target="'.concat(t.linkTo.target,'" rel="noopener"'):"",i=[t.label||"","block-img"],u='<img src="'.concat(t.url,'" alt="').concat(t.alt||"",'" copyright="').concat(t.copyright||"",'">');return'\n    <p class="'.concat(i.join(" "),'">\n      ').concat(n?"<a ".concat(r,' href="').concat(n,'">').concat(u,"</a>"):u,"\n    </p>\n  ")}(e,n);case u.embed:return function(e){return'\n    <div data-oembed="'.concat(e.oembed.embed_url,'"\n      data-oembed-type="').concat(e.oembed.type,'"\n      data-oembed-provider="').concat(e.oembed.provider_name,'"\n      ').concat(a(e),">\n          \n      ").concat(e.oembed.html,"\n    </div>\n  ")}(n);case u.hyperlink:return function(e,t,n){var r=t.data.target?'target="'.concat(t.data.target,'" rel="noopener"'):"";return"<a ".concat(r,' href="').concat(o.url(t.data,e),'">').concat(n.join(""),"</a>")}(e,n,c);case u.label:return function(e,t){return"<span ".concat(a(e.data),">").concat(t.join(""),"</span>")}(n,c);case u.span:return function(e){return e?i(e).replace(/\n/g,"<br />"):""}(r);default:return""}}function a(e){return e.label?' class="'.concat(e.label,'"'):""}function l(e,t,n){return"<".concat(e).concat(a(t),">").concat(n.join(""),"</").concat(e,">")}e.exports={asText:function(e,t){return r.asText(e,t)},asHtml:function(e,t,n){return r.serialize(e,c.bind(null,t),n).join("")},Elements:u}},function(e,t,n){"undefined"!=typeof self&&self,e.exports=function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=9)}([function(e,t,n){var r=n(3);e.exports=function(e){return function t(n){return 0===arguments.length||r(n)?t:e.apply(this,arguments)}}},function(e,t,n){var r=n(0),o=n(3);e.exports=function(e){return function t(n,i){switch(arguments.length){case 0:return t;case 1:return o(n)?t:r((function(t){return e(n,t)}));default:return o(n)&&o(i)?t:o(n)?r((function(t){return e(t,i)})):o(i)?r((function(t){return e(n,t)})):e(n,i)}}}},function(e,t,n){"use strict";var r;function o(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}Object.defineProperty(t,"__esModule",{value:!0}),t.PRIORITIES=t.NODE_TYPES=void 0;var i={heading1:"heading1",heading2:"heading2",heading3:"heading3",heading4:"heading4",heading5:"heading5",heading6:"heading6",paragraph:"paragraph",preformatted:"preformatted",strong:"strong",em:"em",listItem:"list-item",oListItem:"o-list-item",list:"group-list-item",oList:"group-o-list-item",image:"image",embed:"embed",hyperlink:"hyperlink",label:"label",span:"span"};t.NODE_TYPES=i;var u=(o(r={},i.heading1,4),o(r,i.heading2,4),o(r,i.heading3,4),o(r,i.heading4,4),o(r,i.heading5,4),o(r,i.heading6,4),o(r,i.paragraph,3),o(r,i.preformatted,5),o(r,i.strong,6),o(r,i.em,6),o(r,i.oList,1),o(r,i.list,1),o(r,i.listItem,1),o(r,i.oListItem,1),o(r,i.image,1),o(r,i.embed,1),o(r,i.hyperlink,3),o(r,i.label,4),o(r,i.span,7),r);t.PRIORITIES=u},function(e,t){e.exports=function(e){return null!=e&&"object"==typeof e&&!0===e["@@functional/placeholder"]}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var r=d(n(12)),o=d(n(15)),i=d(n(16)),u=d(n(17)),c=d(n(21)),a=d(n(7)),l=n(23),f=n(2),s=n(8);function d(e){return e&&e.__esModule?e:{default:e}}function p(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function h(e){return function(e,t){return t.reduce((function(e,t){var n=(0,c.default)(e);if(n){if(n.some((function(e){return e.isParentOf(t)})))return(0,u.default)(e).concat([n.concat(t)]);var r=(0,c.default)(n);return r&&function(e,t){return e.end>=t.start}(r,t)?(0,u.default)(e).concat([n.concat(t)]):e.concat([[t]])}return[[t]]}),[])}(0,(0,i.default)([function(e,t){return e.start-t.start},function(e,t){return e.end-t.end}],e))}function y(e){if(0===e.length)throw new Error("Unable to elect node on empty list");var t=function(e){return function(e){if(Array.isArray(e))return e}(e)||function(e){if(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e))return Array.from(e)}(e)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}()}(e.sort((function(e,t){if(e.isParentOf(t))return-1;if(t.isParentOf(e))return 1;var n=f.PRIORITIES[e.type]-f.PRIORITIES[t.type];return 0===n?e.text.length-t.text.length:n})));return{elected:t[0],others:t.slice(1)}}function v(e,t,n){if(t.length>0)return function(e,t,n){return t.reduce((function(r,o,i){var u=[],c=0===i&&o.start>n.lower,a=i===t.length-1&&n.upper>o.end;if(c){var l=new s.TextNode(n.lower,o.start,e.slice(n.lower,o.start));u=u.concat(l)}else{var f=t[i-1];if(f&&o.start>f.end){var d=e.slice(f.end,o.start),p=new s.TextNode(f.end,o.start,d);u=u.concat(p)}}if(u=u.concat(o),a){var h=new s.TextNode(o.end,n.upper,e.slice(o.end,n.upper));u=u.concat(h)}return r.concat(u)}),[])}(e,m(e,t),n);var r=e.slice(n.lower,n.upper);return[new s.TextNode(n.lower,n.upper,r)]}function m(e,t){var n=h((0,o.default)((function(e){return e.start}),t)).map(y),i=(0,r.default)(n.map((function(t){return function(e,t){var n=t.others.reduce((function(n,r){var o=n.inner,i=n.outer,u=function(e,t,n){return n.start<t.start?{inner:s.SpanNode.slice(n,t.start,n.end,e),outer:s.SpanNode.slice(n,n.start,t.start,e)}:n.end>t.end?{inner:s.SpanNode.slice(n,n.start,t.end,e),outer:s.SpanNode.slice(n,t.end,n.end,e)}:{inner:n}}(e,t.elected,r);return{inner:o.concat(u.inner),outer:u.outer?i.concat(u.outer):i}}),{inner:[],outer:[]}),r=n.inner,o=n.outer;return[t.elected.setChildren(v(e,r,t.elected.boundaries()))].concat(m(e,o))}(e,t)})));return(0,o.default)((function(e){return e.start}),i)}var b=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e)}var t,n;return t=e,(n=[{key:"fromRichText",value:function(e){return{key:(0,a.default)(),children:e.reduce((function(e,t,n){if(l.RichTextBlock.isEmbedBlock(t.type)||l.RichTextBlock.isImageBlock(t.type))return e.concat(new s.BlockNode(t.type,t));var r=function(e){var t=e.spans.map((function(t){var n=e.text.slice(t.start,t.end);return new s.SpanNode(t.start,t.end,t.type,n,[],t)})),n={lower:0,upper:e.text.length};return v(e.text,t,n)}(t),o=e[e.length-1];if(l.RichTextBlock.isListItem(t.type)&&o&&o instanceof s.ListBlockNode){var i=new s.ListItemBlockNode(t,r),c=o.addChild(i);return(0,u.default)(e).concat(c)}if(l.RichTextBlock.isOrderedListItem(t.type)&&o&&o instanceof s.OrderedListBlockNode){var a=new s.OrderedListItemBlockNode(t,r),f=o.addChild(a);return(0,u.default)(e).concat(f)}if(l.RichTextBlock.isListItem(t.type)){var d=new s.ListItemBlockNode(t,r),p=new s.ListBlockNode(l.RichTextBlock.emptyList(),[d]);return e.concat(p)}if(l.RichTextBlock.isOrderedListItem(t.type)){var h=new s.OrderedListItemBlockNode(t,r),y=new s.OrderedListBlockNode(l.RichTextBlock.emptyOrderedList(),[h]);return e.concat(y)}return e.concat(new s.BlockNode(t.type,t,r))}),[])}}}])&&p(t,n),e}();t.default=b},function(e,t){e.exports=Array.isArray||function(e){return null!=e&&e.length>=0&&"[object Array]"===Object.prototype.toString.call(e)}},function(e,t){e.exports=function(e){return"[object String]"===Object.prototype.toString.call(e)}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(){var e=(new Date).getTime();return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,(function(t){var n=(e+16*Math.random())%16|0;return e=Math.floor(e/16),("x"==t?n:3&n|8).toString(16)}))}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.ListBlockNode=t.OrderedListBlockNode=t.OrderedListItemBlockNode=t.ListItemBlockNode=t.BlockNode=t.TextNode=t.SpanNode=t.Node=void 0;var r,o=(r=n(7))&&r.__esModule?r:{default:r},i=n(2);function u(e){return(u="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function c(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function a(e,t,n){return t&&c(e.prototype,t),n&&c(e,n),e}function l(e,t){return!t||"object"!==u(t)&&"function"!=typeof t?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):t}function f(e){return(f=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function s(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&function(e,t){(Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}(e,t)}function d(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var p=function e(t,n,r){d(this,e),this.key=(0,o.default)(),this.type=t,this.element=n,this.children=r};t.Node=p;var h=function(e){function t(e,n,r,o,i,u){var c;return d(this,t),(c=l(this,f(t).call(this,r,u,i))).start=e,c.end=n,c.text=o,c.children=i,c}return s(t,p),a(t,[{key:"boundaries",value:function(){return{lower:this.start,upper:this.end}}},{key:"isParentOf",value:function(e){return this.start<=e.start&&this.end>=e.end}},{key:"setChildren",value:function(e){return new t(this.start,this.end,this.type,this.text,e,this.element)}}],[{key:"slice",value:function(e,n,r,o){return new t(n,r,e.type,o.slice(n,r),e.children,e.element)}}]),t}();t.SpanNode=h;var y=function(e){function t(e,n,r){d(this,t);var o={type:i.NODE_TYPES.span,start:e,end:n,text:r};return l(this,f(t).call(this,e,n,i.NODE_TYPES.span,r,[],o))}return s(t,h),t}();t.TextNode=y;var v=function(e){function t(e,n){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[];return d(this,t),l(this,f(t).call(this,e,n,r))}return s(t,p),t}();t.BlockNode=v;var m=function(e){function t(e,n){return d(this,t),l(this,f(t).call(this,i.NODE_TYPES.listItem,e,n))}return s(t,v),t}();t.ListItemBlockNode=m;var b=function(e){function t(e,n){return d(this,t),l(this,f(t).call(this,i.NODE_TYPES.oListItem,e,n))}return s(t,v),t}();t.OrderedListItemBlockNode=b;var g=function(e){function t(e,n){return d(this,t),l(this,f(t).call(this,i.NODE_TYPES.oList,e,n))}return s(t,v),a(t,[{key:"addChild",value:function(e){var n=this.children.concat(e);return new t(this.element,n)}}]),t}();t.OrderedListBlockNode=g;var x=function(e){function t(e,n){return d(this,t),l(this,f(t).call(this,i.NODE_TYPES.list,e,n))}return s(t,v),a(t,[{key:"addChild",value:function(e){var n=this.children.concat(e);return new t(this.element,n)}}]),t}();t.ListBlockNode=x},function(e,t,n){e.exports=n(10)},function(e,t,n){"use strict";var r=c(n(11)),o=c(n(4)),i=c(n(24)),u=n(2);function c(e){return e&&e.__esModule?e:{default:e}}e.exports={asText:r.default,asTree:o.default.fromRichText,serialize:i.default,Elements:u.NODE_TYPES}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0,t.default=function(e,t){var n="string"==typeof t?t:" ";return e.map((function(e){return e.text})).join(n)}},function(e,t,n){var r=n(0)(n(13)(!0));e.exports=r},function(e,t,n){var r=n(14);e.exports=function(e){return function t(n){for(var o,i,u,c=[],a=0,l=n.length;a<l;){if(r(n[a]))for(u=0,i=(o=e?t(n[a]):n[a]).length;u<i;)c[c.length]=o[u],u+=1;else c[c.length]=n[a];a+=1}return c}}},function(e,t,n){var r=n(0),o=n(5),i=n(6),u=r((function(e){return!!o(e)||!!e&&"object"==typeof e&&!i(e)&&(1===e.nodeType?!!e.length:0===e.length||e.length>0&&e.hasOwnProperty(0)&&e.hasOwnProperty(e.length-1))}));e.exports=u},function(e,t,n){var r=n(1)((function(e,t){return Array.prototype.slice.call(t,0).sort((function(t,n){var r=e(t),o=e(n);return r<o?-1:r>o?1:0}))}));e.exports=r},function(e,t,n){var r=n(1)((function(e,t){return Array.prototype.slice.call(t,0).sort((function(t,n){for(var r=0,o=0;0===r&&o<e.length;)r=e[o](t,n),o+=1;return r}))}));e.exports=r},function(e,t,n){var r=n(18)(0,-1);e.exports=r},function(e,t,n){var r=n(19),o=n(20)(r("slice",(function(e,t,n){return Array.prototype.slice.call(n,e,t)})));e.exports=o},function(e,t,n){var r=n(5);e.exports=function(e,t){return function(){var n=arguments.length;if(0===n)return t();var o=arguments[n-1];return r(o)||"function"!=typeof o[e]?t.apply(this,arguments):o[e].apply(o,Array.prototype.slice.call(arguments,0,n-1))}}},function(e,t,n){var r=n(0),o=n(1),i=n(3);e.exports=function(e){return function t(n,u,c){switch(arguments.length){case 0:return t;case 1:return i(n)?t:o((function(t,r){return e(n,t,r)}));case 2:return i(n)&&i(u)?t:i(n)?o((function(t,n){return e(t,u,n)})):i(u)?o((function(t,r){return e(n,t,r)})):r((function(t){return e(n,u,t)}));default:return i(n)&&i(u)&&i(c)?t:i(n)&&i(u)?o((function(t,n){return e(t,n,c)})):i(n)&&i(c)?o((function(t,n){return e(t,u,n)})):i(u)&&i(c)?o((function(t,r){return e(n,t,r)})):i(n)?r((function(t){return e(t,u,c)})):i(u)?r((function(t){return e(n,t,c)})):i(c)?r((function(t){return e(n,u,t)})):e(n,u,c)}}}},function(e,t,n){var r=n(22)(-1);e.exports=r},function(e,t,n){var r=n(1),o=n(6),i=r((function(e,t){var n=e<0?t.length+e:e;return o(t)?t.charAt(n):t[n]}));e.exports=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.RichTextBlock=void 0;var r=n(2);function o(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}var i=function(){function e(t,n,r){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.type=t,this.text=n,this.spans=r}var t,n;return t=e,(n=[{key:"isEmbedBlock",value:function(e){return e===r.NODE_TYPES.embed}},{key:"isImageBlock",value:function(e){return e===r.NODE_TYPES.image}},{key:"isList",value:function(e){return e===r.NODE_TYPES.list}},{key:"isOrderedList",value:function(e){return e===r.NODE_TYPES.oList}},{key:"isListItem",value:function(e){return e===r.NODE_TYPES.listItem}},{key:"isOrderedListItem",value:function(e){return e===r.NODE_TYPES.oListItem}},{key:"emptyList",value:function(){return{type:r.NODE_TYPES.list,spans:[],text:""}}},{key:"emptyOrderedList",value:function(){return{type:r.NODE_TYPES.oList,spans:[],text:""}}}])&&o(t,n),e}();t.RichTextBlock=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var r,o=(r=n(4))&&r.__esModule?r:{default:r},i=n(8);t.default=function(e,t,n){return o.default.fromRichText(e).children.map((function(e,r){return function(e,t,n,r){return function e(n,o){var u=n instanceof i.SpanNode?n.text:null,c=n.children.reduce((function(t,n,r){return t.concat([e(n,r)])}),[]);return r&&r(n.type,n.element,u,c,o)||t(n.type,n.element,u,c,o)}(e,n)}(e,t,r,n)}))}}])},function(e,t,n){"use strict";
+/*!
+ * escape-html
+ * Copyright(c) 2012-2013 TJ Holowaychuk
+ * Copyright(c) 2015 Andreas Lubbe
+ * Copyright(c) 2015 Tiancheng "Timothy" Gu
+ * MIT Licensed
+ */var r=/["'&<>]/;e.exports=function(e){var t,n=""+e,o=r.exec(n);if(!o)return n;var i="",u=0,c=0;for(u=o.index;u<n.length;u++){switch(n.charCodeAt(u)){case 34:t="&quot;";break;case 38:t="&amp;";break;case 39:t="&#39;";break;case 60:t="&lt;";break;case 62:t="&gt;";break;default:continue}c!==u&&(i+=n.substring(c,u)),c=u+1,i+=t}return c!==u?i+n.substring(c,u):i}}])}));
+
+/***/ }),
+
+/***/ "./node_modules/prismic-javascript/esm/prismic-javascript.mjs":
+/*!********************************************************************!*\
+  !*** ./node_modules/prismic-javascript/esm/prismic-javascript.mjs ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js");
+
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+var Variation = /** @class */ (function () {
+    function Variation(data) {
+        this.data = {};
+        this.data = data;
+    }
+    Variation.prototype.id = function () {
+        return this.data.id;
+    };
+    Variation.prototype.ref = function () {
+        return this.data.ref;
+    };
+    Variation.prototype.label = function () {
+        return this.data.label;
+    };
+    return Variation;
+}());
+var Experiment = /** @class */ (function () {
+    function Experiment(data) {
+        this.data = {};
+        this.data = data;
+        this.variations = (data.variations || []).map(function (v) {
+            return new Variation(v);
+        });
+    }
+    Experiment.prototype.id = function () {
+        return this.data.id;
+    };
+    Experiment.prototype.googleId = function () {
+        return this.data.googleId;
+    };
+    Experiment.prototype.name = function () {
+        return this.data.name;
+    };
+    return Experiment;
+}());
+var Experiments = /** @class */ (function () {
+    function Experiments(data) {
+        if (data) {
+            this.drafts = (data.drafts || []).map(function (exp) {
+                return new Experiment(exp);
+            });
+            this.running = (data.running || []).map(function (exp) {
+                return new Experiment(exp);
+            });
+        }
+    }
+    Experiments.prototype.current = function () {
+        if (this.running.length > 0) {
+            return this.running[0];
+        }
+        else {
+            return null;
+        }
+    };
+    Experiments.prototype.refFromCookie = function (cookie) {
+        if (!cookie || cookie.trim() === '')
+            return null;
+        var splitted = cookie.trim().split(' ');
+        if (splitted.length < 2)
+            return null;
+        var expId = splitted[0];
+        var varIndex = parseInt(splitted[1], 10);
+        var exp = this.running.filter(function (exp) {
+            return exp.googleId() === expId && exp.variations.length > varIndex;
+        })[0];
+        return exp ? exp.variations[varIndex].ref() : null;
+    };
+    return Experiments;
+}());
+
+var LazySearchForm = /** @class */ (function () {
+    function LazySearchForm(id, api) {
+        this.id = id;
+        this.api = api;
+        this.fields = {};
+    }
+    LazySearchForm.prototype.set = function (key, value) {
+        this.fields[key] = value;
+        return this;
+    };
+    LazySearchForm.prototype.ref = function (ref) {
+        return this.set('ref', ref);
+    };
+    LazySearchForm.prototype.query = function (query) {
+        return this.set('q', query);
+    };
+    LazySearchForm.prototype.pageSize = function (size) {
+        return this.set('pageSize', size);
+    };
+    LazySearchForm.prototype.fetch = function (fields) {
+        console.warn('Warning: Using Fetch is deprecated. Use the property `graphQuery` instead.');
+        return this.set('fetch', fields);
+    };
+    LazySearchForm.prototype.fetchLinks = function (fields) {
+        console.warn('Warning: Using FetchLinks is deprecated. Use the property `graphQuery` instead.');
+        return this.set('fetchLinks', fields);
+    };
+    LazySearchForm.prototype.graphQuery = function (query) {
+        return this.set('graphQuery', query);
+    };
+    LazySearchForm.prototype.lang = function (langCode) {
+        return this.set('lang', langCode);
+    };
+    LazySearchForm.prototype.page = function (p) {
+        return this.set('page', p);
+    };
+    LazySearchForm.prototype.after = function (documentId) {
+        return this.set('after', documentId);
+    };
+    LazySearchForm.prototype.orderings = function (orderings) {
+        return this.set('orderings', orderings);
+    };
+    LazySearchForm.prototype.url = function () {
+        var _this = this;
+        return this.api.get().then(function (api) {
+            return LazySearchForm.toSearchForm(_this, api).url();
+        });
+    };
+    LazySearchForm.prototype.submit = function (cb) {
+        var _this = this;
+        return this.api.get().then(function (api) {
+            return LazySearchForm.toSearchForm(_this, api).submit(cb);
+        });
+    };
+    LazySearchForm.toSearchForm = function (lazyForm, api) {
+        var form = api.form(lazyForm.id);
+        if (form) {
+            return Object.keys(lazyForm.fields).reduce(function (form, fieldKey) {
+                var fieldValue = lazyForm.fields[fieldKey];
+                if (fieldKey === 'q') {
+                    return form.query(fieldValue);
+                }
+                else if (fieldKey === 'pageSize') {
+                    return form.pageSize(fieldValue);
+                }
+                else if (fieldKey === 'fetch') {
+                    return form.fetch(fieldValue);
+                }
+                else if (fieldKey === 'fetchLinks') {
+                    return form.fetchLinks(fieldValue);
+                }
+                else if (fieldKey === 'graphQuery') {
+                    return form.graphQuery(fieldValue);
+                }
+                else if (fieldKey === 'lang') {
+                    return form.lang(fieldValue);
+                }
+                else if (fieldKey === 'page') {
+                    return form.page(fieldValue);
+                }
+                else if (fieldKey === 'after') {
+                    return form.after(fieldValue);
+                }
+                else if (fieldKey === 'orderings') {
+                    return form.orderings(fieldValue);
+                }
+                else {
+                    return form.set(fieldKey, fieldValue);
+                }
+            }, form);
+        }
+        else {
+            throw new Error("Unable to access to form " + lazyForm.id);
+        }
+    };
+    return LazySearchForm;
+}());
+var SearchForm = /** @class */ (function () {
+    function SearchForm(form, httpClient) {
+        this.httpClient = httpClient;
+        this.form = form;
+        this.data = {};
+        for (var field in form.fields) {
+            if (form.fields[field]['default']) {
+                this.data[field] = [form.fields[field]['default']];
+            }
+        }
+    }
+    SearchForm.prototype.set = function (field, value) {
+        var fieldDesc = this.form.fields[field];
+        if (!fieldDesc)
+            throw new Error('Unknown field ' + field);
+        var checkedValue = value === '' || value === undefined ? null : value;
+        var values = this.data[field] || [];
+        if (fieldDesc.multiple) {
+            values = checkedValue ? values.concat([checkedValue]) : values;
+        }
+        else {
+            values = checkedValue ? [checkedValue] : values;
+        }
+        this.data[field] = values;
+        return this;
+    };
+    /**
+     * Sets a ref to query on for this SearchForm. This is a mandatory
+     * method to call before calling submit(), and api.form('everything').submit()
+     * will not work.
+     */
+    SearchForm.prototype.ref = function (ref) {
+        return this.set('ref', ref);
+    };
+    /**
+     * Sets a predicate-based query for this SearchForm. This is where you
+     * paste what you compose in your prismic.io API browser.
+     */
+    SearchForm.prototype.query = function (query) {
+        if (typeof query === 'string') {
+            return this.query([query]);
+        }
+        else if (Array.isArray(query)) {
+            return this.set('q', "[" + query.join('') + "]");
+        }
+        else {
+            throw new Error("Invalid query : " + query);
+        }
+    };
+    /**
+     * Sets a page size to query for this SearchForm. This is an optional method.
+     *
+     * @param {number} size - The page size
+     * @returns {SearchForm} - The SearchForm itself
+     */
+    SearchForm.prototype.pageSize = function (size) {
+        return this.set('pageSize', size);
+    };
+    /**
+     * Restrict the results document to the specified fields
+     */
+    SearchForm.prototype.fetch = function (fields) {
+        console.warn('Warning: Using Fetch is deprecated. Use the property `graphQuery` instead.');
+        var strFields = Array.isArray(fields) ? fields.join(',') : fields;
+        return this.set('fetch', strFields);
+    };
+    /**
+     * Include the requested fields in the DocumentLink instances in the result
+     */
+    SearchForm.prototype.fetchLinks = function (fields) {
+        console.warn('Warning: Using FetchLinks is deprecated. Use the property `graphQuery` instead.');
+        var strFields = Array.isArray(fields) ? fields.join(',') : fields;
+        return this.set('fetchLinks', strFields);
+    };
+    /**
+     * Sets the graphquery to query for this SearchForm. This is an optional method.
+     */
+    SearchForm.prototype.graphQuery = function (query) {
+        return this.set('graphQuery', query);
+    };
+    /**
+     * Sets the language to query for this SearchForm. This is an optional method.
+     */
+    SearchForm.prototype.lang = function (langCode) {
+        return this.set('lang', langCode);
+    };
+    /**
+     * Sets the page number to query for this SearchForm. This is an optional method.
+     */
+    SearchForm.prototype.page = function (p) {
+        return this.set('page', p);
+    };
+    /**
+     * Remove all the documents except for those after the specified document in the list. This is an optional method.
+     */
+    SearchForm.prototype.after = function (documentId) {
+        return this.set('after', documentId);
+    };
+    /**
+     * Sets the orderings to query for this SearchForm. This is an optional method.
+     */
+    SearchForm.prototype.orderings = function (orderings) {
+        if (!orderings) {
+            return this;
+        }
+        else {
+            return this.set('orderings', "[" + orderings.join(',') + "]");
+        }
+    };
+    /**
+     * Build the URL to query
+     */
+    SearchForm.prototype.url = function () {
+        var url = this.form.action;
+        if (this.data) {
+            var sep = (url.indexOf('?') > -1 ? '&' : '?');
+            for (var key in this.data) {
+                if (Object.prototype.hasOwnProperty.call(this.data, key)) {
+                    var values = this.data[key];
+                    if (values) {
+                        for (var i = 0; i < values.length; i++) {
+                            url += sep + key + '=' + encodeURIComponent(values[i]);
+                            sep = '&';
+                        }
+                    }
+                }
+            }
+        }
+        return url;
+    };
+    /**
+     * Submits the query, and calls the callback function.
+     */
+    SearchForm.prototype.submit = function (cb) {
+        return this.httpClient.cachedRequest(this.url()).then(function (response) {
+            cb && cb(null, response);
+            return response;
+        }).catch(function (error) {
+            cb && cb(error);
+            throw error;
+        });
+    };
+    return SearchForm;
+}());
+
+var OPERATOR = {
+    at: 'at',
+    not: 'not',
+    missing: 'missing',
+    has: 'has',
+    any: 'any',
+    in: 'in',
+    fulltext: 'fulltext',
+    similar: 'similar',
+    numberGt: 'number.gt',
+    numberLt: 'number.lt',
+    numberInRange: 'number.inRange',
+    dateBefore: 'date.before',
+    dateAfter: 'date.after',
+    dateBetween: 'date.between',
+    dateDayOfMonth: 'date.day-of-month',
+    dateDayOfMonthAfter: 'date.day-of-month-after',
+    dateDayOfMonthBefore: 'date.day-of-month-before',
+    dateDayOfWeek: 'date.day-of-week',
+    dateDayOfWeekAfter: 'date.day-of-week-after',
+    dateDayOfWeekBefore: 'date.day-of-week-before',
+    dateMonth: 'date.month',
+    dateMonthBefore: 'date.month-before',
+    dateMonthAfter: 'date.month-after',
+    dateYear: 'date.year',
+    dateHour: 'date.hour',
+    dateHourBefore: 'date.hour-before',
+    dateHourAfter: 'date.hour-after',
+    GeopointNear: 'geopoint.near',
+};
+function encode(value) {
+    if (typeof value === 'string') {
+        return "\"" + value + "\"";
+    }
+    else if (typeof value === 'number') {
+        return value.toString();
+    }
+    else if (value instanceof Date) {
+        return value.getTime().toString();
+    }
+    else if (Array.isArray(value)) {
+        return "[" + value.map(function (v) { return encode(v); }).join(',') + "]";
+    }
+    else if (typeof value === "boolean") {
+        return value.toString();
+    }
+    else {
+        throw new Error("Unable to encode " + value + " of type " + typeof value);
+    }
+}
+var geopoint = {
+    near: function (fragment, latitude, longitude, radius) {
+        return "[" + OPERATOR.GeopointNear + "(" + fragment + ", " + latitude + ", " + longitude + ", " + radius + ")]";
+    },
+};
+var date = {
+    before: function (fragment, before) {
+        return "[" + OPERATOR.dateBefore + "(" + fragment + ", " + encode(before) + ")]";
+    },
+    after: function (fragment, after) {
+        return "[" + OPERATOR.dateAfter + "(" + fragment + ", " + encode(after) + ")]";
+    },
+    between: function (fragment, before, after) {
+        return "[" + OPERATOR.dateBetween + "(" + fragment + ", " + encode(before) + ", " + encode(after) + ")]";
+    },
+    dayOfMonth: function (fragment, day) {
+        return "[" + OPERATOR.dateDayOfMonth + "(" + fragment + ", " + day + ")]";
+    },
+    dayOfMonthAfter: function (fragment, day) {
+        return "[" + OPERATOR.dateDayOfMonthAfter + "(" + fragment + ", " + day + ")]";
+    },
+    dayOfMonthBefore: function (fragment, day) {
+        return "[" + OPERATOR.dateDayOfMonthBefore + "(" + fragment + ", " + day + ")]";
+    },
+    dayOfWeek: function (fragment, day) {
+        return "[" + OPERATOR.dateDayOfWeek + "(" + fragment + ", " + encode(day) + ")]";
+    },
+    dayOfWeekAfter: function (fragment, day) {
+        return "[" + OPERATOR.dateDayOfWeekAfter + "(" + fragment + ", " + encode(day) + ")]";
+    },
+    dayOfWeekBefore: function (fragment, day) {
+        return "[" + OPERATOR.dateDayOfWeekBefore + "(" + fragment + ", " + encode(day) + ")]";
+    },
+    month: function (fragment, month) {
+        return "[" + OPERATOR.dateMonth + "(" + fragment + ", " + encode(month) + ")]";
+    },
+    monthBefore: function (fragment, month) {
+        return "[" + OPERATOR.dateMonthBefore + "(" + fragment + ", " + encode(month) + ")]";
+    },
+    monthAfter: function (fragment, month) {
+        return "[" + OPERATOR.dateMonthAfter + "(" + fragment + ", " + encode(month) + ")]";
+    },
+    year: function (fragment, year) {
+        return "[" + OPERATOR.dateYear + "(" + fragment + ", " + year + ")]";
+    },
+    hour: function (fragment, hour) {
+        return "[" + OPERATOR.dateHour + "(" + fragment + ", " + hour + ")]";
+    },
+    hourBefore: function (fragment, hour) {
+        return "[" + OPERATOR.dateHourBefore + "(" + fragment + ", " + hour + ")]";
+    },
+    hourAfter: function (fragment, hour) {
+        return "[" + OPERATOR.dateHourAfter + "(" + fragment + ", " + hour + ")]";
+    },
+};
+var number = {
+    gt: function (fragment, value) {
+        return "[" + OPERATOR.numberGt + "(" + fragment + ", " + value + ")]";
+    },
+    lt: function (fragment, value) {
+        return "[" + OPERATOR.numberLt + "(" + fragment + ", " + value + ")]";
+    },
+    inRange: function (fragment, before, after) {
+        return "[" + OPERATOR.numberInRange + "(" + fragment + ", " + before + ", " + after + ")]";
+    },
+};
+var Predicates = {
+    at: function (fragment, value) {
+        return "[" + OPERATOR.at + "(" + fragment + ", " + encode(value) + ")]";
+    },
+    not: function (fragment, value) {
+        return "[" + OPERATOR.not + "(" + fragment + ", " + encode(value) + ")]";
+    },
+    missing: function (fragment) {
+        return "[" + OPERATOR.missing + "(" + fragment + ")]";
+    },
+    has: function (fragment) {
+        return "[" + OPERATOR.has + "(" + fragment + ")]";
+    },
+    any: function (fragment, values) {
+        return "[" + OPERATOR.any + "(" + fragment + ", " + encode(values) + ")]";
+    },
+    in: function (fragment, values) {
+        return "[" + OPERATOR.in + "(" + fragment + ", " + encode(values) + ")]";
+    },
+    fulltext: function (fragment, value) {
+        return "[" + OPERATOR.fulltext + "(" + fragment + ", " + encode(value) + ")]";
+    },
+    similar: function (documentId, maxResults) {
+        return "[" + OPERATOR.similar + "(\"" + documentId + "\", " + maxResults + ")]";
+    },
+    date: date,
+    dateBefore: date.before,
+    dateAfter: date.after,
+    dateBetween: date.between,
+    dayOfMonth: date.dayOfMonth,
+    dayOfMonthAfter: date.dayOfMonthAfter,
+    dayOfMonthBefore: date.dayOfMonthBefore,
+    dayOfWeek: date.dayOfWeek,
+    dayOfWeekAfter: date.dayOfWeekAfter,
+    dayOfWeekBefore: date.dayOfWeekBefore,
+    month: date.month,
+    monthBefore: date.monthBefore,
+    monthAfter: date.monthAfter,
+    year: date.year,
+    hour: date.hour,
+    hourBefore: date.hourBefore,
+    hourAfter: date.hourAfter,
+    number: number,
+    gt: number.gt,
+    lt: number.lt,
+    inRange: number.inRange,
+    near: geopoint.near,
+    geopoint: geopoint,
+};
+
+/* eslint-disable */
+// Some portions of code from https://github.com/jshttp/cookie
+var decode = decodeURIComponent;
+function tryDecode(str, decode) {
+    try {
+        return decode(str);
+    }
+    catch (e) {
+        return str;
+    }
+}
+function parse(str, options) {
+    if (typeof str !== 'string') {
+        throw new TypeError('argument str must be a string');
+    }
+    var obj = {};
+    var opt = options || {};
+    var pairs = str.split(/; */);
+    var dec = opt.decode || decode;
+    pairs.forEach(function (pair) {
+        var eq_idx = pair.indexOf('=');
+        // skip things that don't look like key=value
+        if (eq_idx < 0) {
+            return;
+        }
+        var key = pair.substr(0, eq_idx).trim();
+        var val = pair.substr(++eq_idx, pair.length).trim();
+        // quoted values
+        if ('"' == val[0]) {
+            val = val.slice(1, -1);
+        }
+        // only assign once
+        if (undefined == obj[key]) {
+            obj[key] = tryDecode(val, dec);
+        }
+    });
+    return obj;
+}
+var Cookies = { parse: parse };
+
+function createPreviewResolver(token, documentId, getDocByID) {
+    var resolve = function (linkResolver, defaultUrl, cb) {
+        if (documentId && getDocByID) {
+            return getDocByID(documentId, { ref: token }).then(function (document) {
+                if (!document) {
+                    cb && cb(null, defaultUrl);
+                    return defaultUrl;
+                }
+                else {
+                    var url = (linkResolver && linkResolver(document)) || document.url || defaultUrl;
+                    cb && cb(null, url);
+                    return url;
+                }
+            });
+        }
+        else {
+            return Promise.resolve(defaultUrl);
+        }
+    };
+    return { token: token, documentId: documentId, resolve: resolve };
+}
+
+var PREVIEW_COOKIE = 'io.prismic.preview';
+var EXPERIMENT_COOKIE = 'io.prismic.experiment';
+var ResolvedApi = /** @class */ (function () {
+    function ResolvedApi(data, httpClient, options) {
+        this.data = data;
+        this.masterRef = data.refs.filter(function (ref) { return ref.isMasterRef; })[0];
+        this.experiments = new Experiments(data.experiments);
+        this.bookmarks = data.bookmarks;
+        this.httpClient = httpClient;
+        this.options = options;
+        this.refs = data.refs;
+        this.tags = data.tags;
+        this.types = data.types;
+        this.languages = data.languages;
+    }
+    /**
+     * Returns a useable form from its id, as described in the RESTful description of the API.
+     * For instance: api.form("everything") works on every repository (as "everything" exists by default)
+     * You can then chain the calls: api.form("everything").query('[[:d = at(document.id, "UkL0gMuvzYUANCpf")]]').ref(ref).submit()
+     */
+    ResolvedApi.prototype.form = function (formId) {
+        var form = this.data.forms[formId];
+        if (form) {
+            return new SearchForm(form, this.httpClient);
+        }
+        return null;
+    };
+    ResolvedApi.prototype.everything = function () {
+        var f = this.form('everything');
+        if (!f)
+            throw new Error('Missing everything form');
+        return f;
+    };
+    /**
+     * The ID of the master ref on this prismic.io API.
+     * Do not use like this: searchForm.ref(api.master()).
+     * Instead, set your ref once in a variable, and call it when you need it; this will allow to change the ref you're viewing easily for your entire page.
+     */
+    ResolvedApi.prototype.master = function () {
+        return this.masterRef.ref;
+    };
+    /**
+     * Returns the ref ID for a given ref's label.
+     * Do not use like this: searchForm.ref(api.ref("Future release label")).
+     * Instead, set your ref once in a variable, and call it when you need it; this will allow to change the ref you're viewing easily for your entire page.
+     */
+    ResolvedApi.prototype.ref = function (label) {
+        var ref = this.data.refs.filter(function (ref) { return ref.label === label; })[0];
+        return ref ? ref.ref : null;
+    };
+    ResolvedApi.prototype.currentExperiment = function () {
+        return this.experiments.current();
+    };
+    /**
+     * Query the repository
+     */
+    ResolvedApi.prototype.query = function (q, optionsOrCallback, cb) {
+        if (cb === void 0) { cb = function () { }; }
+        var _a = typeof optionsOrCallback === 'function'
+            ? { options: {}, callback: optionsOrCallback }
+            : { options: optionsOrCallback || {}, callback: cb }, options = _a.options, callback = _a.callback;
+        var form = this.everything();
+        for (var key in options) {
+            form = form.set(key, options[key]);
+        }
+        if (!options.ref) {
+            // Look in cookies if we have a ref (preview or experiment)
+            var cookieString = '';
+            if (this.options.req) { // NodeJS
+                cookieString = this.options.req.headers['cookie'] || '';
+            }
+            else if (typeof window !== 'undefined' && window.document) { // Browser
+                cookieString = window.document.cookie || '';
+            }
+            var cookies = Cookies.parse(cookieString);
+            var previewRef = cookies[PREVIEW_COOKIE];
+            var experimentRef = this.experiments.refFromCookie(cookies[EXPERIMENT_COOKIE]);
+            form = form.ref(previewRef || experimentRef || this.masterRef.ref);
+        }
+        if (q) {
+            form.query(q);
+        }
+        return form.submit(callback);
+    };
+    /**
+     * Retrieve the document returned by the given query
+     * @param {string|array|Predicate} the query
+     * @param {object} additional parameters. In NodeJS, pass the request as 'req'.
+     * @param {function} callback(err, doc)
+     */
+    ResolvedApi.prototype.queryFirst = function (q, optionsOrCallback, cb) {
+        var _a = typeof optionsOrCallback === 'function'
+            ? { options: {}, callback: optionsOrCallback }
+            : { options: optionsOrCallback || {}, callback: cb || (function () { }) }, options = _a.options, callback = _a.callback;
+        options.page = 1;
+        options.pageSize = 1;
+        return this.query(q, options).then(function (response) {
+            var document = response && response.results && response.results[0];
+            callback(null, document);
+            return document;
+        }).catch(function (error) {
+            callback(error);
+            throw error;
+        });
+    };
+    /**
+     * Retrieve the document with the given id
+     */
+    ResolvedApi.prototype.getByID = function (id, maybeOptions, cb) {
+        var options = maybeOptions ? __assign({}, maybeOptions) : {};
+        if (!options.lang)
+            options.lang = '*';
+        return this.queryFirst(Predicates.at('document.id', id), options, cb);
+    };
+    /**
+     * Retrieve multiple documents from an array of id
+     */
+    ResolvedApi.prototype.getByIDs = function (ids, maybeOptions, cb) {
+        var options = maybeOptions ? __assign({}, maybeOptions) : {};
+        if (!options.lang)
+            options.lang = '*';
+        return this.query(Predicates.in('document.id', ids), options, cb);
+    };
+    /**
+     * Retrieve the document with the given uid
+     */
+    ResolvedApi.prototype.getByUID = function (type, uid, maybeOptions, cb) {
+        var options = maybeOptions ? __assign({}, maybeOptions) : {};
+        if (options.lang === '*')
+            throw new Error("FORBIDDEN. You can't use getByUID with *, use the predicates instead.");
+        if (!options.page)
+            options.page = 1;
+        return this.queryFirst(Predicates.at("my." + type + ".uid", uid), options, cb);
+    };
+    /**
+     * Retrieve the singleton document with the given type
+     */
+    ResolvedApi.prototype.getSingle = function (type, maybeOptions, cb) {
+        var options = maybeOptions ? __assign({}, maybeOptions) : {};
+        return this.queryFirst(Predicates.at('document.type', type), options, cb);
+    };
+    /**
+     * Retrieve the document with the given bookmark
+     */
+    ResolvedApi.prototype.getBookmark = function (bookmark, maybeOptions, cb) {
+        var id = this.data.bookmarks[bookmark];
+        if (id) {
+            return this.getByID(id, maybeOptions, cb);
+        }
+        else {
+            return Promise.reject('Error retrieving bookmarked id');
+        }
+    };
+    ResolvedApi.prototype.getPreviewResolver = function (token, documentId) {
+        return createPreviewResolver(token, documentId, this.getByID.bind(this));
+    };
+    ResolvedApi.prototype.previewSession = function (token, linkResolver, defaultUrl, cb) {
+        var _this = this;
+        console.warn('previewSession function is deprecated in favor of getPreviewResolver function.');
+        return new Promise(function (resolve, reject) {
+            _this.httpClient.request(token, function (e, result) {
+                if (e) {
+                    cb && cb(e);
+                    reject(e);
+                }
+                else if (result) {
+                    if (!result.mainDocument) {
+                        cb && cb(null, defaultUrl);
+                        resolve(defaultUrl);
+                    }
+                    else {
+                        return _this.getByID(result.mainDocument, { ref: token }).then(function (document) {
+                            if (!document) {
+                                cb && cb(null, defaultUrl);
+                                resolve(defaultUrl);
+                            }
+                            else {
+                                var url = (linkResolver && linkResolver(document)) || document.url || defaultUrl;
+                                cb && cb(null, url);
+                                resolve(url);
+                            }
+                        }).catch(reject);
+                    }
+                }
+            });
+        });
+    };
+    return ResolvedApi;
+}());
+
+/* eslint-disable */
+/**
+* A doubly linked list-based Least Recently Used (LRU) cache. Will keep most
+* recently used items while discarding least recently used items when its limit
+* is reached.
+*
+* Licensed under MIT. Copyright (c) 2010 Rasmus Andersson <http://hunch.se/>
+* Typescript-ified by Oleksandr Nikitin <https://tvori.info>
+*
+* Illustration of the design:
+*
+*       entry             entry             entry             entry
+*       ______            ______            ______            ______
+*      | head |.newer => |      |.newer => |      |.newer => | tail |
+*      |  A   |          |  B   |          |  C   |          |  D   |
+*      |______| <= older.|______| <= older.|______| <= older.|______|
+*
+*  removed  <--  <--  <--  <--  <--  <--  <--  <--  <--  <--  <--  added
+*/
+function MakeLRUCache(limit) {
+    return new LRUCache(limit);
+}
+function LRUCache(limit) {
+    // Current size of the cache. (Read-only).
+    this.size = 0;
+    // Maximum number of items this cache can hold.
+    this.limit = limit;
+    this._keymap = {};
+}
+/**
+ * Put <value> into the cache associated with <key>. Returns the entry which was
+ * removed to make room for the new entry. Otherwise undefined is returned
+ * (i.e. if there was enough room already).
+ */
+LRUCache.prototype.put = function (key, value) {
+    var entry = { key: key, value: value };
+    // Note: No protection agains replacing, and thus orphan entries. By design.
+    this._keymap[key] = entry;
+    if (this.tail) {
+        // link previous tail to the new tail (entry)
+        this.tail.newer = entry;
+        entry.older = this.tail;
+    }
+    else {
+        // we're first in -- yay
+        this.head = entry;
+    }
+    // add new entry to the end of the linked list -- it's now the freshest entry.
+    this.tail = entry;
+    if (this.size === this.limit) {
+        // we hit the limit -- remove the head
+        return this.shift();
+    }
+    else {
+        // increase the size counter
+        this.size++;
+    }
+};
+/**
+ * Purge the least recently used (oldest) entry from the cache. Returns the
+ * removed entry or undefined if the cache was empty.
+ *
+ * If you need to perform any form of finalization of purged items, this is a
+ * good place to do it. Simply override/replace this function:
+ *
+ *   var c = new LRUCache(123);
+ *   c.shift = function() {
+ *     var entry = LRUCache.prototype.shift.call(this);
+ *     doSomethingWith(entry);
+ *     return entry;
+ *   }
+ */
+LRUCache.prototype.shift = function () {
+    // todo: handle special case when limit == 1
+    var entry = this.head;
+    if (entry) {
+        if (this.head.newer) {
+            this.head = this.head.newer;
+            this.head.older = undefined;
+        }
+        else {
+            this.head = undefined;
+        }
+        // Remove last strong reference to <entry> and remove links from the purged
+        // entry being returned:
+        entry.newer = entry.older = undefined;
+        // delete is slow, but we need to do this to avoid uncontrollable growth:
+        delete this._keymap[entry.key];
+    }
+    console.log('purging ', entry.key);
+    return entry;
+};
+/**
+ * Get and register recent use of <key>. Returns the value associated with <key>
+ * or undefined if not in cache.
+ */
+LRUCache.prototype.get = function (key, returnEntry) {
+    // First, find our cache entry
+    var entry = this._keymap[key];
+    if (entry === undefined)
+        return; // Not cached. Sorry.
+    // As <key> was found in the cache, register it as being requested recently
+    if (entry === this.tail) {
+        // Already the most recently used entry, so no need to update the list
+        return returnEntry ? entry : entry.value;
+    }
+    // HEAD--------------TAIL
+    //   <.older   .newer>
+    //  <--- add direction --
+    //   A  B  C  <D>  E
+    if (entry.newer) {
+        if (entry === this.head)
+            this.head = entry.newer;
+        entry.newer.older = entry.older; // C <-- E.
+    }
+    if (entry.older)
+        entry.older.newer = entry.newer; // C. --> E
+    entry.newer = undefined; // D --x
+    entry.older = this.tail; // D. --> E
+    if (this.tail)
+        this.tail.newer = entry; // E. <-- D
+    this.tail = entry;
+    return returnEntry ? entry : entry.value;
+};
+// ----------------------------------------------------------------------------
+// Following code is optional and can be removed without breaking the core
+// functionality.
+/**
+ * Check if <key> is in the cache without registering recent use. Feasible if
+ * you do not want to chage the state of the cache, but only "peek" at it.
+ * Returns the entry associated with <key> if found, or undefined if not found.
+ */
+LRUCache.prototype.find = function (key) {
+    return this._keymap[key];
+};
+/**
+ * Update the value of entry with <key>. Returns the old value, or undefined if
+ * entry was not in the cache.
+ */
+LRUCache.prototype.set = function (key, value) {
+    var oldvalue;
+    var entry = this.get(key, true);
+    if (entry) {
+        oldvalue = entry.value;
+        entry.value = value;
+    }
+    else {
+        oldvalue = this.put(key, value);
+        if (oldvalue)
+            oldvalue = oldvalue.value;
+    }
+    return oldvalue;
+};
+/**
+ * Remove entry <key> from cache and return its value. Returns undefined if not
+ * found.
+ */
+LRUCache.prototype.remove = function (key) {
+    var entry = this._keymap[key];
+    if (!entry)
+        return;
+    delete this._keymap[entry.key]; // need to do delete unfortunately
+    if (entry.newer && entry.older) {
+        // relink the older entry with the newer entry
+        entry.older.newer = entry.newer;
+        entry.newer.older = entry.older;
+    }
+    else if (entry.newer) {
+        // remove the link to us
+        entry.newer.older = undefined;
+        // link the newer entry to head
+        this.head = entry.newer;
+    }
+    else if (entry.older) {
+        // remove the link to us
+        entry.older.newer = undefined;
+        // link the newer entry to head
+        this.tail = entry.older;
+    }
+    else { // if(entry.older === undefined && entry.newer === undefined) {
+        this.head = this.tail = undefined;
+    }
+    this.size--;
+    return entry.value;
+};
+/** Removes all entries */
+LRUCache.prototype.removeAll = function () {
+    // This should be safe, as we never expose strong refrences to the outside
+    this.head = this.tail = undefined;
+    this.size = 0;
+    this._keymap = {};
+};
+/**
+ * Return an array containing all keys of entries stored in the cache object, in
+ * arbitrary order.
+ */
+if (typeof Object.keys === 'function') {
+    LRUCache.prototype.keys = function () { return Object.keys(this._keymap); };
+}
+else {
+    LRUCache.prototype.keys = function () {
+        var keys = [];
+        for (var k in this._keymap)
+            keys.push(k);
+        return keys;
+    };
+}
+/**
+ * Call `fun` for each entry. Starting with the newest entry if `desc` is a true
+ * value, otherwise starts with the oldest (head) enrty and moves towards the
+ * tail.
+ *
+ * `fun` is called with 3 arguments in the context `context`:
+ *   `fun.call(context, Object key, Object value, LRUCache self)`
+ */
+LRUCache.prototype.forEach = function (fun, context, desc) {
+    var entry;
+    if (context === true) {
+        desc = true;
+        context = undefined;
+    }
+    else if (typeof context !== 'object')
+        context = this;
+    if (desc) {
+        entry = this.tail;
+        while (entry) {
+            fun.call(context, entry.key, entry.value, this);
+            entry = entry.older;
+        }
+    }
+    else {
+        entry = this.head;
+        while (entry) {
+            fun.call(context, entry.key, entry.value, this);
+            entry = entry.newer;
+        }
+    }
+};
+/** Returns a JSON (array) representation */
+//LRUCache.prototype.toJSON = function () {
+//    var s: IEntry[] = [], entry = this.head;
+//    while (entry) {
+//        s.push({ key: entry.key.toJSON(), value: entry.value.toJSON() });
+//        entry = entry.newer;
+//    }
+//    return s;
+//};
+/** Returns a String representation */
+LRUCache.prototype.toString = function () {
+    var s = '', entry = this.head;
+    while (entry) {
+        s += String(entry.key) + ':' + entry.value;
+        entry = entry.newer;
+        if (entry)
+            s += ' < ';
+    }
+    return s;
+};
+// Export ourselves
+//if (typeof this === 'object') this.LRUCache = LRUCache;
+
+var DefaultApiCache = /** @class */ (function () {
+    function DefaultApiCache(limit) {
+        if (limit === void 0) { limit = 1000; }
+        this.lru = MakeLRUCache(limit);
+    }
+    DefaultApiCache.prototype.isExpired = function (key) {
+        var value = this.lru.get(key, false);
+        if (value) {
+            return value.expiredIn !== 0 && value.expiredIn < Date.now();
+        }
+        else {
+            return false;
+        }
+    };
+    DefaultApiCache.prototype.get = function (key, cb) {
+        var value = this.lru.get(key, false);
+        if (value && !this.isExpired(key)) {
+            cb(null, value.data);
+        }
+        else {
+            cb && cb(null);
+        }
+    };
+    DefaultApiCache.prototype.set = function (key, value, ttl, cb) {
+        this.lru.remove(key);
+        this.lru.put(key, {
+            data: value,
+            expiredIn: ttl ? (Date.now() + (ttl * 1000)) : 0,
+        });
+        cb && cb(null);
+    };
+    DefaultApiCache.prototype.remove = function (key, cb) {
+        this.lru.remove(key);
+        cb && cb(null);
+    };
+    DefaultApiCache.prototype.clear = function (cb) {
+        this.lru.removeAll();
+        cb && cb(null);
+    };
+    return DefaultApiCache;
+}());
+
+function fetchRequest(url, options, callback) {
+    var fetchOptions = {
+        headers: {
+            Accept: 'application/json',
+        },
+    };
+    if (options && options.proxyAgent) {
+        fetchOptions.agent = options.proxyAgent;
+    }
+    // can't use number because of NodeJS globals included
+    var timeoutId;
+    var fetchPromise = cross_fetch__WEBPACK_IMPORTED_MODULE_0__(url, fetchOptions);
+    var promise = options.timeoutInMs ? Promise.race([
+        fetchPromise,
+        new Promise(function (_, reject) {
+            timeoutId = setTimeout(function () { return reject(new Error(url + " response timeout")); }, options.timeoutInMs);
+        })
+    ]) : fetchPromise;
+    promise.then(function (resp) {
+        clearTimeout(timeoutId);
+        if (~~(resp.status / 100 !== 2)) {
+            /**
+             * @description
+             * drain the resp before throwing an error to prevent memory leaks
+             * @link https://github.com/bitinn/node-fetch/issues/83
+             */
+            return resp.text().then(function () {
+                var e = new Error("Unexpected status code [" + resp.status + "] on URL " + url);
+                e.status = resp.status;
+                throw e;
+            });
+        }
+        return resp.json().then(function (result) {
+            var cacheControl = resp.headers.get('cache-control');
+            var parsedCacheControl = cacheControl ? /max-age=(\d+)/.exec(cacheControl) : null;
+            var ttl = parsedCacheControl ? parseInt(parsedCacheControl[1], 10) : undefined;
+            callback(null, result, resp, ttl);
+        });
+    }).catch(function (err) {
+        clearTimeout(timeoutId);
+        callback(err);
+    });
+}
+var DefaultRequestHandler = /** @class */ (function () {
+    function DefaultRequestHandler(options) {
+        this.options = options || {};
+    }
+    DefaultRequestHandler.prototype.request = function (url, callback) {
+        fetchRequest(url, this.options, callback);
+    };
+    return DefaultRequestHandler;
+}());
+
+var HttpClient = /** @class */ (function () {
+    function HttpClient(requestHandler, cache, proxyAgent, timeoutInMs) {
+        this.requestHandler = requestHandler || new DefaultRequestHandler({ proxyAgent: proxyAgent, timeoutInMs: timeoutInMs });
+        this.cache = cache || new DefaultApiCache();
+    }
+    HttpClient.prototype.request = function (url, callback) {
+        this.requestHandler.request(url, function (err, result, xhr, ttl) {
+            if (err) {
+                callback && callback(err, null, xhr, ttl);
+            }
+            else if (result) {
+                callback && callback(null, result, xhr, ttl);
+            }
+        });
+    };
+    /**
+     * Fetch a URL corresponding to a query, and parse the response as a Response object
+     */
+    HttpClient.prototype.cachedRequest = function (url, maybeOptions) {
+        var _this = this;
+        var options = maybeOptions || {};
+        var run = function (cb) {
+            var cacheKey = options.cacheKey || url;
+            _this.cache.get(cacheKey, function (cacheGetError, cacheGetValue) {
+                if (cacheGetError || cacheGetValue) {
+                    cb(cacheGetError, cacheGetValue);
+                }
+                else {
+                    _this.request(url, function (fetchError, fetchValue, _, ttlReq) {
+                        if (fetchError) {
+                            cb(fetchError, null);
+                        }
+                        else {
+                            var ttl = ttlReq || options.ttl;
+                            if (ttl) {
+                                _this.cache.set(cacheKey, fetchValue, ttl, cb);
+                            }
+                            cb(null, fetchValue);
+                        }
+                    });
+                }
+            });
+        };
+        return new Promise(function (resolve, reject) {
+            run(function (err, value) {
+                if (err)
+                    reject(err);
+                if (value)
+                    resolve(value);
+            });
+        });
+    };
+    return HttpClient;
+}());
+
+function separator(url) {
+    return url.indexOf('?') > -1 ? '&' : '?';
+}
+var Api = /** @class */ (function () {
+    function Api(url, options) {
+        this.options = options || {};
+        this.url = url;
+        if (this.options.accessToken) {
+            var accessTokenParam = "access_token=" + this.options.accessToken;
+            this.url += separator(url) + accessTokenParam;
+        }
+        if (this.options.routes) {
+            this.url += separator(url) + ("routes=" + encodeURIComponent(JSON.stringify(this.options.routes)));
+        }
+        this.apiDataTTL = this.options.apiDataTTL || 5;
+        this.httpClient = new HttpClient(this.options.requestHandler, this.options.apiCache, this.options.proxyAgent, this.options.timeoutInMs);
+    }
+    /**
+     * Fetches data used to construct the api client, from cache if it's
+     * present, otherwise from calling the prismic api endpoint (which is
+     * then cached).
+     */
+    Api.prototype.get = function (cb) {
+        var _this = this;
+        return this.httpClient.cachedRequest(this.url, { ttl: this.apiDataTTL }).then(function (data) {
+            var resolvedApi = new ResolvedApi(data, _this.httpClient, _this.options);
+            cb && cb(null, resolvedApi);
+            return resolvedApi;
+        }).catch(function (error) {
+            cb && cb(error);
+            throw error;
+        });
+    };
+    return Api;
+}());
+
+var DefaultClient = /** @class */ (function () {
+    function DefaultClient(url, options) {
+        this.api = new Api(url, options);
+    }
+    DefaultClient.prototype.getApi = function () {
+        return this.api.get();
+    };
+    DefaultClient.prototype.everything = function () {
+        return this.form('everything');
+    };
+    DefaultClient.prototype.form = function (formId) {
+        return new LazySearchForm(formId, this.api);
+    };
+    DefaultClient.prototype.query = function (q, optionsOrCallback, cb) {
+        return this.getApi().then(function (api) { return api.query(q, optionsOrCallback, cb); });
+    };
+    DefaultClient.prototype.queryFirst = function (q, optionsOrCallback, cb) {
+        return this.getApi().then(function (api) { return api.queryFirst(q, optionsOrCallback, cb); });
+    };
+    DefaultClient.prototype.getByID = function (id, options, cb) {
+        return this.getApi().then(function (api) { return api.getByID(id, options, cb); });
+    };
+    DefaultClient.prototype.getByIDs = function (ids, options, cb) {
+        return this.getApi().then(function (api) { return api.getByIDs(ids, options, cb); });
+    };
+    DefaultClient.prototype.getByUID = function (type, uid, options, cb) {
+        return this.getApi().then(function (api) { return api.getByUID(type, uid, options, cb); });
+    };
+    DefaultClient.prototype.getSingle = function (type, options, cb) {
+        return this.getApi().then(function (api) { return api.getSingle(type, options, cb); });
+    };
+    DefaultClient.prototype.getBookmark = function (bookmark, options, cb) {
+        return this.getApi().then(function (api) { return api.getBookmark(bookmark, options, cb); });
+    };
+    DefaultClient.prototype.previewSession = function (token, linkResolver, defaultUrl, cb) {
+        return this.getApi().then(function (api) { return api.previewSession(token, linkResolver, defaultUrl, cb); });
+    };
+    DefaultClient.prototype.getPreviewResolver = function (token, documentId) {
+        var _this = this;
+        var getDocById = function (documentId, maybeOptions) { return _this.getApi().then(function (api) {
+            return api.getByID(documentId, maybeOptions);
+        }); };
+        return createPreviewResolver(token, documentId, getDocById);
+    };
+    DefaultClient.getApi = function (url, options) {
+        var api = new Api(url, options);
+        return api.get();
+    };
+    return DefaultClient;
+}());
+
+/// <reference path="../types/cross-fetch.d.ts" />
+var index = {
+    experimentCookie: EXPERIMENT_COOKIE,
+    previewCookie: PREVIEW_COOKIE,
+    Predicates: Predicates,
+    Experiments: Experiments,
+    Api: Api,
+    client: client,
+    getApi: getApi,
+    api: api,
+};
+function client(url, options) {
+    return new DefaultClient(url, options);
+}
+function getApi(url, options) {
+    return DefaultClient.getApi(url, options);
+}
+function api(url, options) {
+    return getApi(url, options);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (index);
+//# sourceMappingURL=prismic-javascript.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/prismic-vue/dist/prismic-vue.esm.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/prismic-vue/dist/prismic-vue.esm.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var prismic_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prismic-dom */ "./node_modules/prismic-dom/dist/prismic-dom.min.js");
+/* harmony import */ var prismic_dom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismic_dom__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prismic_javascript__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prismic-javascript */ "./node_modules/prismic-javascript/esm/prismic-javascript.mjs");
+
+
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+var Embed = {
+  name: 'PrismicEmbed',
+  functional: true,
+  props: {
+    field: {
+      type: Object,
+      required: true
+    },
+    wrapper: {
+      type: String,
+      required: false,
+      "default": 'div'
+    }
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data;
+    var field = props.field,
+        wrapper = props.wrapper;
+
+    if (!field || !field.html) {
+      return null;
+    }
+
+    var embedUrl = field.embed_url,
+        type = field.type,
+        providerName = field.provider_name;
+
+    var attrs = _objectSpread2({}, data.attrs, {}, embedUrl && {
+      'data-oembed': embedUrl
+    }, {}, type && {
+      'data-oembed-type': type
+    }, {}, providerName && {
+      'data-oembed-provider': providerName
+    });
+
+    return h(wrapper, _objectSpread2({}, Object.assign(data, {
+      attrs: attrs
+    }), {
+      domProps: {
+        innerHTML: field.html
+      }
+    }));
+  }
+};
+
+var Image = {
+  name: 'PrismicImage',
+  functional: true,
+  props: {
+    field: {
+      type: Object,
+      required: true
+    }
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data;
+    var _props$field = props.field,
+        url = _props$field.url,
+        alt = _props$field.alt,
+        copyright = _props$field.copyright;
+    return h('img', Object.assign(data, {
+      attrs: _objectSpread2({}, data.attrs, {
+        src: url,
+        alt: alt,
+        copyright: copyright
+      })
+    }));
+  }
+};
+
+var Link = (function () {
+  var linkComponent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'router-link';
+  return {
+    name: 'PrismicLink',
+    functional: true,
+    props: {
+      field: {
+        type: Object,
+        required: true
+      }
+    },
+    render: function render(h, _ref) {
+      var props = _ref.props,
+          data = _ref.data,
+          children = _ref.children,
+          parent = _ref.parent;
+      var field = props.field;
+
+      if (!field) {
+        return null;
+      } // Is this check enough to make Link work with Vue-router and Nuxt?
+
+
+      var url = linkComponent === 'nuxt-link' ? parent.$prismic.asLink(field) : prismic_dom__WEBPACK_IMPORTED_MODULE_0___default.a.Link.url(field, parent.$prismic.linkResolver); // Internal link
+
+      if (['Link.Document', 'Document'].includes(field.link_type)) {
+        data.props = data.props || {};
+        data.props.to = url;
+        return h(linkComponent, data, children);
+      }
+
+      data.attrs = _objectSpread2({}, data.attrs, {
+        href: url
+      }, field.target && {
+        target: field.target,
+        rel: 'noopener'
+      });
+      return h('a', data, children);
+    }
+  };
+});
+
+var RichText$1 = {
+  name: 'PrismicRichText',
+  functional: true,
+  props: {
+    field: {
+      type: Array,
+      required: true
+    },
+    htmlSerializer: {
+      type: Function,
+      required: false
+    },
+    wrapper: {
+      type: String,
+      required: false,
+      "default": 'div'
+    }
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data,
+        children = _ref.children,
+        parent = _ref.parent;
+    var field = props.field,
+        htmlSerializer = props.htmlSerializer,
+        wrapper = props.wrapper;
+    var innerHTML = prismic_dom__WEBPACK_IMPORTED_MODULE_0__["RichText"].asHtml(field, parent.$prismic.linkResolver, htmlSerializer || parent.$prismic.htmlSerializer);
+    return h(wrapper, _objectSpread2({}, data, {
+      domProps: {
+        innerHTML: innerHTML
+      }
+    }));
+  }
+};
+
+var NuxtLink = Link('nuxt-link', 'PrismicNuxtLink');
+var VueRouterLink = Link();
+var exp = {
+  common: {
+    Embed: Embed,
+    Image: Image,
+    RichText: RichText$1
+  },
+  nuxt: {
+    Link: NuxtLink
+  },
+  vueRouter: {
+    Link: VueRouterLink
+  }
+};
+
+function asHtml(richText, linkResolver, htmlSerializer) {
+  if (richText) {
+    return prismic_dom__WEBPACK_IMPORTED_MODULE_0___default.a.RichText.asHtml(richText, linkResolver, htmlSerializer);
+  }
+}
+function asText(richText, joinString) {
+  if (richText) {
+    return prismic_dom__WEBPACK_IMPORTED_MODULE_0___default.a.RichText.asText(richText, joinString);
+  }
+
+  return '';
+}
+function asLink(link, linkResolver) {
+  if (link) {
+    return prismic_dom__WEBPACK_IMPORTED_MODULE_0___default.a.Link.url(link, linkResolver);
+  }
+}
+function asDate(date) {
+  if (date) {
+    return prismic_dom__WEBPACK_IMPORTED_MODULE_0___default.a.Date(date);
+  }
+}
+
+function attachMethods(Vue, options) {
+  Vue.prototype.$prismic.asHtml = function (richText, linkResolver, htmlSerializer) {
+    return asHtml(richText, linkResolver || options.linkResolver, htmlSerializer || options.htmlSerializer);
+  };
+
+  Vue.prototype.$prismic.asText = asText;
+  Vue.prototype.$prismic.richTextAsPlain = asText;
+  Vue.prototype.$prismic.asDate = asDate;
+
+  Vue.prototype.$prismic.asLink = function (link, linkResolver) {
+    return asLink(link, linkResolver || options.linkResolver);
+  };
+}
+
+var PrismicVue = {
+  install: function install(Vue, options) {
+    console.log(options);
+    var _options$linkType = options.linkType,
+        linkType = _options$linkType === void 0 ? 'vueRouter' : _options$linkType;
+    Vue.prototype.$prismic = prismic_javascript__WEBPACK_IMPORTED_MODULE_1__["default"];
+    Vue.prototype.$prismic.endpoint = options.endpoint;
+    Vue.prototype.$prismic.linkResolver = options.linkResolver;
+    Vue.prototype.$prismic.htmlSerializer = options.htmlSerializer;
+    Vue.prototype.$prismic.client = prismic_javascript__WEBPACK_IMPORTED_MODULE_1__["default"].client(options.endpoint, options.apiOptions);
+    attachMethods(Vue, options);
+
+    var components = _objectSpread2({}, exp.common, {}, exp[linkType]);
+    /**
+     * Global registration of common components + stack specific components.
+     * Currently, only Nuxt links differ though. Use `linkType: 'nuxt'` in that case.
+     */
+
+
+    Object.entries(components).forEach(function (_ref) {
+      var _ref2 = _slicedToArray(_ref, 2),
+          _ = _ref2[0],
+          c = _ref2[1];
+
+      Vue.component(c.name, c);
+    });
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PrismicVue);
+
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -38796,6 +41298,746 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : undefined
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
 
 
 /***/ }),
@@ -39037,6 +42279,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./About.vue?vue&type=style&index=0&id=fb05e49c&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/About.vue?vue&type=style&index=0&id=fb05e49c&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -39988,10 +43260,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPictures.vue?vue&type=template&id=adc4dd50&scoped=true&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CanvasPictures.vue?vue&type=template&id=adc4dd50&scoped=true& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=template&id=63eb04b4&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=template&id=63eb04b4&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -40003,7 +43275,206 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\npictures\n    ")])
+  return _c("div", [
+    _vm.fields.images
+      ? _c(
+          "div",
+          [
+            _c(
+              "v-row",
+              [
+                _c(
+                  "v-col",
+                  {
+                    staticClass: "pa-1",
+                    attrs: {
+                      cols: "12",
+                      md: "8",
+                      lg: "6",
+                      "offset-md": "2",
+                      "offset-lg": "3"
+                    }
+                  },
+                  [
+                    _c(
+                      "v-card",
+                      [
+                        _c(
+                          "v-container",
+                          { attrs: { fluid: "" } },
+                          [
+                            _c(
+                              "v-row",
+                              { staticClass: "mx-0 px-2" },
+                              _vm._l(_vm.fields.images, function(image, i) {
+                                return _c(
+                                  "v-col",
+                                  {
+                                    key: i,
+                                    staticClass: "d-flex child-flex singleImg",
+                                    attrs: { cols: "3" }
+                                  },
+                                  [
+                                    _c("prismic-image", {
+                                      attrs: {
+                                        field: image,
+                                        "lazy-src": image
+                                      },
+                                      on: {
+                                        click: [
+                                          function($event) {
+                                            return _vm.zoom(image)
+                                          },
+                                          function($event) {
+                                            $event.stopPropagation()
+                                            _vm.dialog = true
+                                          }
+                                        ]
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              }),
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-row",
+                              { attrs: { justify: "center" } },
+                              [
+                                _c(
+                                  "v-dialog",
+                                  {
+                                    attrs: { "max-width": "1024" },
+                                    model: {
+                                      value: _vm.dialog,
+                                      callback: function($$v) {
+                                        _vm.dialog = $$v
+                                      },
+                                      expression: "dialog"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "v-card",
+                                      [
+                                        _c(
+                                          "v-card-title",
+                                          { staticClass: "headline" },
+                                          [
+                                            _vm._v(
+                                              "Use Google's location service?"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(
+                                          '\n\n//v-model="cirrentItem"\n//:value="currentItem"\n\n\n        '
+                                        ),
+                                        _vm.selectedImage
+                                          ? _c(
+                                              "v-carousel",
+                                              {
+                                                attrs: {
+                                                  value: _vm.currentItem,
+                                                  "hide-delimiters": ""
+                                                }
+                                              },
+                                              _vm._l(
+                                                _vm.reorderedImagesArray,
+                                                function(item, i) {
+                                                  return _c(
+                                                    "v-carousel-item",
+                                                    { key: i },
+                                                    [
+                                                      _c("prismic-image", {
+                                                        attrs: {
+                                                          width: "100%",
+                                                          field: item
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  )
+                                                }
+                                              ),
+                                              1
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-card-actions",
+                                          [
+                                            _c("v-spacer"),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-btn",
+                                              {
+                                                attrs: {
+                                                  color: "green darken-1",
+                                                  text: ""
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    _vm.dialog = false
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n            Disagree\n          "
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-btn",
+                                              {
+                                                attrs: {
+                                                  color: "green darken-1",
+                                                  text: ""
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    _vm.dialog = false
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n            Agree\n          "
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40973,7 +44444,7 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("canvas-pictures"),
+            _c("canvas-pictures-prismic-c-m-s"),
             _vm._v(" "),
             _c("education-stepper", {
               attrs: { colors: ["red", "blue", "orange"] }
@@ -102692,12 +106163,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vuetify__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
 /* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var prismic_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prismic-vue */ "./node_modules/prismic-vue/dist/prismic-vue.esm.js");
+/* harmony import */ var _prismic_link_resolver__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./prismic/link-resolver */ "./resources/js/prismic/link-resolver.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
  // import Vuetify from 'vuetify'
 // import 'material-design-icons-iconfont/dist/material-design-icons.css'
 // import 'vuetify/dist/vuetify.min.css'
+
+
 
 
 
@@ -102712,6 +106187,10 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_5___default.a);
 Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_6___default.a);
+Vue.use(prismic_vue__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  endpoint: window.prismic.endpoint,
+  linkResolver: _prismic_link_resolver__WEBPACK_IMPORTED_MODULE_8__["default"]
+});
 var app = new Vue({
   el: '#app',
   router: _routes__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -102879,18 +106358,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/CanvasPictures.vue":
-/*!****************************************************!*\
-  !*** ./resources/js/components/CanvasPictures.vue ***!
-  \****************************************************/
+/***/ "./resources/js/components/CanvasPicturesPrismicCMS.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/CanvasPicturesPrismicCMS.vue ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CanvasPictures_vue_vue_type_template_id_adc4dd50_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CanvasPictures.vue?vue&type=template&id=adc4dd50&scoped=true& */ "./resources/js/components/CanvasPictures.vue?vue&type=template&id=adc4dd50&scoped=true&");
-/* harmony import */ var _CanvasPictures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CanvasPictures.vue?vue&type=script&lang=js& */ "./resources/js/components/CanvasPictures.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _CanvasPicturesPrismicCMS_vue_vue_type_template_id_63eb04b4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CanvasPicturesPrismicCMS.vue?vue&type=template&id=63eb04b4&scoped=true& */ "./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=template&id=63eb04b4&scoped=true&");
+/* harmony import */ var _CanvasPicturesPrismicCMS_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CanvasPicturesPrismicCMS.vue?vue&type=script&lang=js& */ "./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _CanvasPicturesPrismicCMS_vue_vue_type_style_index_0_id_63eb04b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true& */ "./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -102898,51 +106379,67 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _CanvasPictures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CanvasPictures_vue_vue_type_template_id_adc4dd50_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _CanvasPictures_vue_vue_type_template_id_adc4dd50_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _CanvasPicturesPrismicCMS_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CanvasPicturesPrismicCMS_vue_vue_type_template_id_63eb04b4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CanvasPicturesPrismicCMS_vue_vue_type_template_id_63eb04b4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "adc4dd50",
+  "63eb04b4",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/CanvasPictures.vue"
+component.options.__file = "resources/js/components/CanvasPicturesPrismicCMS.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/CanvasPictures.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/CanvasPictures.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************/
+/***/ "./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPictures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CanvasPictures.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPictures.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPictures_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CanvasPicturesPrismicCMS.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/CanvasPictures.vue?vue&type=template&id=adc4dd50&scoped=true&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/components/CanvasPictures.vue?vue&type=template&id=adc4dd50&scoped=true& ***!
-  \***********************************************************************************************/
+/***/ "./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true&":
+/*!************************************************************************************************************************!*\
+  !*** ./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true& ***!
+  \************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_style_index_0_id_63eb04b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=style&index=0&id=63eb04b4&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_style_index_0_id_63eb04b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_style_index_0_id_63eb04b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_style_index_0_id_63eb04b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_style_index_0_id_63eb04b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_style_index_0_id_63eb04b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=template&id=63eb04b4&scoped=true&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=template&id=63eb04b4&scoped=true& ***!
+  \*********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPictures_vue_vue_type_template_id_adc4dd50_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CanvasPictures.vue?vue&type=template&id=adc4dd50&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPictures.vue?vue&type=template&id=adc4dd50&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPictures_vue_vue_type_template_id_adc4dd50_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_template_id_63eb04b4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CanvasPicturesPrismicCMS.vue?vue&type=template&id=63eb04b4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CanvasPicturesPrismicCMS.vue?vue&type=template&id=63eb04b4&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_template_id_63eb04b4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPictures_vue_vue_type_template_id_adc4dd50_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CanvasPicturesPrismicCMS_vue_vue_type_template_id_63eb04b4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -103658,6 +107155,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Heading_vue_vue_type_template_id_7fff8866_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/prismic/link-resolver.js":
+/*!***********************************************!*\
+  !*** ./resources/js/prismic/link-resolver.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (function (doc) {
+  // Return the path depending on Prismic Document's type
+  // If it is a Single Custom Type with the API ID of "home"
+  if (doc.type === 'portfolio') {
+    return '/';
+  } // If it is a Repeatable Custom Type with the API ID of "page" (must contain a UID field)
+
+
+  if (doc.type === 'group') {
+    // prismic type
+    return '/group/' + doc.uid;
+  } // Default to the root
+
+
+  return '/';
+});
+;
 
 /***/ }),
 

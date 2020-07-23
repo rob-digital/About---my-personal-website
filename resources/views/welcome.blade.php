@@ -12,11 +12,18 @@
         <!-- Styles -->
         {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
+        <script>
+            window.prismic = {
+            endpoint: 'https://mywebsite-about.cdn.prismic.io/api/v2'
+            };
+        </script>
+        <script src="https://static.cdn.prismic.io/prismic.min.js"></script>
+
     </head>
     <body>
         <div id="app">
             <index></index>
-          
+
         </div>
     </body>
 </html>

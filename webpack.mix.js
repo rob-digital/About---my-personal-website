@@ -16,9 +16,9 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     // .mix.copyDirectory('resources/assets/fonts/Lato', 'public/fonts')
     .webpackConfig({ resolve: { alias: { '@': path.resolve('resources/sass') } } })
-    .browserSync('127.0.0.1:8000')
+    // .browserSync('127.0.0.1:8000')
     ;
 
-// mix.browserSync('127.0.0.1:8000');
+
 
 

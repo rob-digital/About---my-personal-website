@@ -13,6 +13,8 @@ import 'vuetify/dist/vuetify.min.css'
 import colors from 'vuetify/lib/util/colors'
 import Vuetify from 'vuetify'
 import Vuelidate from 'vuelidate'
+import PrismicVue from 'prismic-vue';
+import linkResolver from './prismic/link-resolver';
 
 window.Vue = require('vue');
 
@@ -25,6 +27,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.use(VueRouter)
 Vue.use(Vuetify)
 Vue.use(Vuelidate)
+
+Vue.use(PrismicVue, {
+    endpoint: window.prismic.endpoint,
+    linkResolver
+  });
 
 
 const app = new Vue({
