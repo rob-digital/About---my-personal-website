@@ -2,6 +2,7 @@
     <div>
         <v-container >
 
+ <form >
            <v-row>
                     <v-col
                     cols="12"
@@ -41,9 +42,9 @@
                     </v-col>
 
 
-                </v-row>
 
-        <form>
+
+
 
 
             <v-col cols="12" >
@@ -72,7 +73,7 @@
             submit</v-btn>
 
             <v-btn @click="clear" class="rounded-sm">clear</v-btn>
-
+</v-row>
         </form>
 
   </v-container>

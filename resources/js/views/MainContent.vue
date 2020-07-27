@@ -42,8 +42,7 @@
                  <submit-form
                  id="scroll-target-submit"
                  :loadingIcon="submitting"
-                 v-on:submit="submitContactForm"
-
+                 v-on:submit.prevent="submitContactForm"
                 ></submit-form>
 
 <!-- //! Rate the design -->

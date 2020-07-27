@@ -4,10 +4,7 @@
 
 <div v-else> -->
     <div v-if="fields.images">
-        <!-- <prismic-image v-if="fields.image" :field="fields.image " ></prismic-image>
-        <div v-for="(image, i) in fields.images" :key="i">
-            <prismic-image  :field="image" ></prismic-image>
-        </div> -->
+
 
 
     <v-row>
@@ -22,21 +19,8 @@
               cols="3"
             >
 
-
               <prismic-image :field="image" :lazy-src="image" @click="zoom(image)" @click.stop="dialog = true">
-                  <!-- <template v-slot:placeholder>
-                    <v-row
-                      class="fill-height ma-0"
-                      align="center"
-                      justify="center"
-                      :lazy-src="image"
-                    >
-                      <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                    </v-row>
-                  </template> -->
-                </prismic-image>
-
-
+              </prismic-image>
 
             </v-col>
           </v-row>
@@ -48,20 +32,19 @@
       v-model="dialog"
       max-width="1024"
     >
+
       <v-card >
         <v-card-title   class="headline">Use Google's location service?</v-card-title>
 
-//v-model="cirrentItem"
-//:value="currentItem"
 
 
-        <v-carousel v-if="selectedImage" :value="currentItem"   hide-delimiters>
+        <v-carousel v-if="dialog" hide-delimiters height="auto">
             <v-carousel-item
             v-for="(item,i) in reorderedImagesArray"
             :key="i"
             >
 
-            <prismic-image width="100%"  :field="item"/>
+            <prismic-image class="prismicImageInCarousel" :field="item"/>
 
             </v-carousel-item>
         </v-carousel>
@@ -105,8 +88,6 @@
          data () {
             return {
             fields: {
-                uuid: null,
-                image: null,
                 images: [],
             },
             loading: false,
@@ -114,19 +95,13 @@
             selectedImage: null,
             currentItem: 0,
             imagesArrayToBeReorder: [],
-            reorderedImagesArray: []
+            reorderedImagesArray: [],
+
             };
         },
 
         methods: {
-            async getContent () {
 
-                const data = await this.$prismic.client.getSingle('portfolioimage')  // api id
-
-                this.fields.uuid = data.uid,
-                this.fields.image = data.data.image1
-
-            },
            async getMultipleContent() {
 
                const data = await this.$prismic.client.getByUID('single-image', '2sfwe424')     //prismic 'api id' and 'uid'
@@ -147,11 +122,10 @@
 
                 this.selectedImage = img;
                 let itemZ = this.fields.images.indexOf(img)
-                this.currentItem = itemZ                                        // continue with currewnt item
                 console.log('------------------------------------');
                 console.log(itemZ);
                 console.log('------------------------------------');
-
+                this.currentItem = itemZ
 
                 let leftSideArr = []
                 let rightSideArr = []
@@ -166,20 +140,26 @@
                 console.log('------------------------------------');
                 console.log(newOrderArray);
                 console.log('------------------------------------');
+
+
             },
 
-        },
-        computed: {
-            clearModal() {
+             clearModal() {
                 if (this.dialog === false) {
-                    this.reorderedImagesArray = []
+                  return  this.reorderedImagesArray = []
+                }
+            },
+            resetCarousel() {
+                 if (this.dialog === false) {
+
                     // this.imagesArrayToBeReorder = []
-                    this.currentItem = 0
+                  return  this.selectedImage = null
                 }
             }
         },
+
+
         created() {
-            this.getContent()
             this.getMultipleContent()
         }
     }
@@ -188,5 +168,14 @@
 <style lang="scss" scoped>
 .singleImg{
     padding: 1px !important;
+}
+.prismicImageInCarousel {
+    width: 100%
+}
+ .v-window-item  .v-image{
+    height: auto !important;
+}
+ .v-carousel{
+    max-height: 681px;
 }
 </style>

@@ -2097,29 +2097,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       fields: {
-        uuid: null,
-        image: null,
         images: []
       },
       loading: false,
@@ -2131,45 +2112,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    getContent: function getContent() {
+    getMultipleContent: function getMultipleContent() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var data;
+        var data, imgArray, key;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this.$prismic.client.getSingle('portfolioimage');
+                return _this.$prismic.client.getByUID('single-image', '2sfwe424');
 
               case 2:
                 data = _context.sent;
-                // api id
-                _this.fields.uuid = data.uid, _this.fields.image = data.data.image1;
-
-              case 4:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    getMultipleContent: function getMultipleContent() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var data, imgArray, key;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return _this2.$prismic.client.getByUID('single-image', '2sfwe424');
-
-              case 2:
-                data = _context2.sent;
                 //prismic 'api id' and 'uid'
                 imgArray = [];
 
@@ -2178,26 +2134,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     imgArray.push(data.data[key]);
                   }
 
-                  _this2.fields.images = imgArray;
-                  _this2.imagesArrayToBeReorder = imgArray;
+                  _this.fields.images = imgArray;
+                  _this.imagesArrayToBeReorder = imgArray;
                 }
 
               case 5:
               case "end":
-                return _context2.stop();
+                return _context.stop();
             }
           }
-        }, _callee2);
+        }, _callee);
       }))();
     },
     zoom: function zoom(img) {
       this.selectedImage = img;
       var itemZ = this.fields.images.indexOf(img);
-      this.currentItem = itemZ; // continue with currewnt item
-
       console.log('------------------------------------');
       console.log(itemZ);
       console.log('------------------------------------');
+      this.currentItem = itemZ;
       var leftSideArr = [];
       var rightSideArr = [];
       var newOrderArray = [];
@@ -2208,19 +2163,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log('------------------------------------');
       console.log(newOrderArray);
       console.log('------------------------------------');
-    }
-  },
-  computed: {
+    },
     clearModal: function clearModal() {
       if (this.dialog === false) {
-        this.reorderedImagesArray = []; // this.imagesArrayToBeReorder = []
-
-        this.currentItem = 0;
+        return this.reorderedImagesArray = [];
+      }
+    },
+    resetCarousel: function resetCarousel() {
+      if (this.dialog === false) {
+        // this.imagesArrayToBeReorder = []
+        return this.selectedImage = null;
       }
     }
   },
   created: function created() {
-    this.getContent();
     this.getMultipleContent();
   }
 });
@@ -2714,6 +2670,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2950,7 +2907,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_FatalError__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/FatalError */ "./resources/js/components/FatalError.vue");
 /* harmony import */ var _components_WebsiteLike__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/WebsiteLike */ "./resources/js/components/WebsiteLike.vue");
 /* harmony import */ var _shared_utils_positionYOfComponentsMixin__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../shared/utils/positionYOfComponentsMixin */ "./resources/js/shared/utils/positionYOfComponentsMixin.js");
-//
 //
 //
 //
@@ -8389,7 +8345,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".singleImg[data-v-63eb04b4] {\n  padding: 1px !important;\n}", ""]);
+exports.push([module.i, ".singleImg[data-v-63eb04b4] {\n  padding: 1px !important;\n}\n.prismicImageInCarousel[data-v-63eb04b4] {\n  width: 100%;\n}\n.v-window-item .v-image[data-v-63eb04b4] {\n  height: auto !important;\n}\n.v-carousel[data-v-63eb04b4] {\n  max-height: 681px;\n}", ""]);
 
 // exports
 
@@ -43368,16 +43324,14 @@ var render = function() {
                                             )
                                           ]
                                         ),
-                                        _vm._v(
-                                          '\n\n//v-model="cirrentItem"\n//:value="currentItem"\n\n\n        '
-                                        ),
-                                        _vm.selectedImage
+                                        _vm._v(" "),
+                                        _vm.dialog
                                           ? _c(
                                               "v-carousel",
                                               {
                                                 attrs: {
-                                                  value: _vm.currentItem,
-                                                  "hide-delimiters": ""
+                                                  "hide-delimiters": "",
+                                                  height: "auto"
                                                 }
                                               },
                                               _vm._l(
@@ -43388,10 +43342,9 @@ var render = function() {
                                                     { key: i },
                                                     [
                                                       _c("prismic-image", {
-                                                        attrs: {
-                                                          width: "100%",
-                                                          field: item
-                                                        }
+                                                        staticClass:
+                                                          "prismicImageInCarousel",
+                                                        attrs: { field: item }
                                                       })
                                                     ],
                                                     1
@@ -44041,143 +43994,139 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "v-container",
-        [
-          _c(
-            "v-row",
-            [
-              _c(
-                "v-col",
-                { attrs: { cols: "12", md: "6" } },
-                [
-                  _c("v-text-field", {
-                    attrs: {
-                      "error-messages": _vm.nameErrors,
-                      counter: 20,
-                      label: "Name",
-                      required: "",
-                      clearable: "",
-                      solo: "",
-                      "clear-icon": "cancel"
-                    },
-                    on: {
-                      input: function($event) {
-                        return _vm.$v.dataFields.name.$touch()
+      _c("v-container", [
+        _c(
+          "form",
+          [
+            _c(
+              "v-row",
+              [
+                _c(
+                  "v-col",
+                  { attrs: { cols: "12", md: "6" } },
+                  [
+                    _c("v-text-field", {
+                      attrs: {
+                        "error-messages": _vm.nameErrors,
+                        counter: 20,
+                        label: "Name",
+                        required: "",
+                        clearable: "",
+                        solo: "",
+                        "clear-icon": "cancel"
                       },
-                      blur: function($event) {
-                        return _vm.$v.dataFields.name.$touch()
+                      on: {
+                        input: function($event) {
+                          return _vm.$v.dataFields.name.$touch()
+                        },
+                        blur: function($event) {
+                          return _vm.$v.dataFields.name.$touch()
+                        }
+                      },
+                      model: {
+                        value: _vm.dataFields.name,
+                        callback: function($$v) {
+                          _vm.$set(_vm.dataFields, "name", $$v)
+                        },
+                        expression: "dataFields.name"
                       }
-                    },
-                    model: {
-                      value: _vm.dataFields.name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.dataFields, "name", $$v)
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  { attrs: { cols: "12", md: "6" } },
+                  [
+                    _c("v-text-field", {
+                      attrs: {
+                        "error-messages": _vm.emailErrors,
+                        label: "E-mail",
+                        required: "",
+                        clearable: "",
+                        solo: "",
+                        filled: "",
+                        "clear-icon": "cancel"
                       },
-                      expression: "dataFields.name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-col",
-                { attrs: { cols: "12", md: "6" } },
-                [
-                  _c("v-text-field", {
-                    attrs: {
-                      "error-messages": _vm.emailErrors,
-                      label: "E-mail",
-                      required: "",
-                      clearable: "",
-                      solo: "",
-                      filled: "",
-                      "clear-icon": "cancel"
-                    },
-                    on: {
-                      input: function($event) {
-                        return _vm.$v.dataFields.email.$touch()
+                      on: {
+                        input: function($event) {
+                          return _vm.$v.dataFields.email.$touch()
+                        },
+                        blur: function($event) {
+                          return _vm.$v.dataFields.email.$touch()
+                        }
                       },
-                      blur: function($event) {
-                        return _vm.$v.dataFields.email.$touch()
+                      model: {
+                        value: _vm.dataFields.email,
+                        callback: function($$v) {
+                          _vm.$set(_vm.dataFields, "email", $$v)
+                        },
+                        expression: "dataFields.email"
                       }
-                    },
-                    model: {
-                      value: _vm.dataFields.email,
-                      callback: function($$v) {
-                        _vm.$set(_vm.dataFields, "email", $$v)
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  { attrs: { cols: "12" } },
+                  [
+                    _c("v-textarea", {
+                      attrs: {
+                        solo: "",
+                        clearable: "",
+                        "clear-icon": "cancel",
+                        name: "input-7-4",
+                        label: "Solo message",
+                        "error-messages": _vm.messageErrors
                       },
-                      expression: "dataFields.email"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "form",
-            [
-              _c(
-                "v-col",
-                { attrs: { cols: "12" } },
-                [
-                  _c("v-textarea", {
-                    attrs: {
-                      solo: "",
-                      clearable: "",
-                      "clear-icon": "cancel",
-                      name: "input-7-4",
-                      label: "Solo message",
-                      "error-messages": _vm.messageErrors
-                    },
-                    on: {
-                      input: function($event) {
-                        return _vm.$v.dataFields.message.$touch()
+                      on: {
+                        input: function($event) {
+                          return _vm.$v.dataFields.message.$touch()
+                        }
+                      },
+                      model: {
+                        value: _vm.dataFields.message,
+                        callback: function($$v) {
+                          _vm.$set(_vm.dataFields, "message", $$v)
+                        },
+                        expression: "dataFields.message"
                       }
-                    },
-                    model: {
-                      value: _vm.dataFields.message,
-                      callback: function($$v) {
-                        _vm.$set(_vm.dataFields, "message", $$v)
-                      },
-                      expression: "dataFields.message"
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-btn",
+                  {
+                    staticClass: "mr-4 rounded-sm",
+                    attrs: { loading: _vm.loadingIcon },
+                    on: {
+                      click: function($event) {
+                        _vm.$v.$touch(),
+                          _vm.clear,
+                          _vm.$emit("submit", _vm.dataFields)
+                      }
                     }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  staticClass: "mr-4 rounded-sm",
-                  attrs: { loading: _vm.loadingIcon },
-                  on: {
-                    click: function($event) {
-                      _vm.$v.$touch(),
-                        _vm.clear,
-                        _vm.$emit("submit", _vm.dataFields)
-                    }
-                  }
-                },
-                [_vm._v("\n          submit")]
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                { staticClass: "rounded-sm", on: { click: _vm.clear } },
-                [_vm._v("clear")]
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
+                  },
+                  [_vm._v("\n            submit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-btn",
+                  { staticClass: "rounded-sm", on: { click: _vm.clear } },
+                  [_vm._v("clear")]
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ])
     ],
     1
   )
@@ -44455,7 +44404,12 @@ var render = function() {
                 id: "scroll-target-submit",
                 loadingIcon: _vm.submitting
               },
-              on: { submit: _vm.submitContactForm }
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submitContactForm($event)
+                }
+              }
             }),
             _vm._v(" "),
             _c(

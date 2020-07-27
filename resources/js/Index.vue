@@ -66,4 +66,5 @@
 .v-progress-circular__underlay{
     stroke: lightgrey !important;
 }
+
 </style>
