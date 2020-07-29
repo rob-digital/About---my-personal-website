@@ -1,14 +1,16 @@
 <template>
-<div>
+<div class="pt-4 pb-16" >
 <!-- <div v-if="loading" >Loading....</div>
 
 <div v-else> -->
     <div v-if="fields.images">
 
-
+        <heading-intro class="introSlot pt-8 mb-12">
+            <h2>Hobby</h2>
+        </heading-intro>
 
     <v-row>
-    <v-col cols="12" md="8" lg="6" offset-md="2" offset-lg="3" class="pa-1">
+    <v-col cols="12" md="8" lg="8" offset-md="2" offset-lg="2" class="pa-1">
       <v-card>
         <v-container fluid >
           <v-row class="mx-0 px-2">
@@ -16,10 +18,10 @@
               v-for="(image, i) in fields.images"
               :key="i"
               class="d-flex child-flex singleImg"
-              cols="3"
+              :cols="canvasFrameSize"
             >
 
-              <prismic-image :field="image" :lazy-src="image" @click="zoom(image)" @click.stop="dialog = true">
+              <prismic-image class="thumbnails" :field="image" :lazy-src="image" @click="zoom(image)" @click.stop="dialog = true">
               </prismic-image>
 
             </v-col>
@@ -31,10 +33,11 @@
     <v-dialog
       v-model="dialog"
       max-width="1024"
+      
     >
 
       <v-card >
-        <v-card-title   class="headline">Use Google's location service?</v-card-title>
+        <v-card-title   class="headline">...</v-card-title>
 
 
 
@@ -52,20 +55,14 @@
         <v-card-actions>
           <v-spacer></v-spacer>
 
-          <v-btn
-            color="green darken-1"
-            text
-            @click="dialog = false"
-          >
-            Disagree
-          </v-btn>
+
 
           <v-btn
-            color="green darken-1"
+            color="grey darken-4"
             text
             @click="dialog = false"
           >
-            Agree
+            close
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -84,6 +81,8 @@
 </template>
 
 <script>
+import HeadingIntro from '../components/slots/Heading'
+
     export default {
          data () {
             return {
@@ -98,6 +97,9 @@
             reorderedImagesArray: [],
 
             };
+        },
+        components: {
+            HeadingIntro
         },
 
         methods: {
@@ -122,9 +124,7 @@
 
                 this.selectedImage = img;
                 let itemZ = this.fields.images.indexOf(img)
-                console.log('------------------------------------');
-                console.log(itemZ);
-                console.log('------------------------------------');
+
                 this.currentItem = itemZ
 
                 let leftSideArr = []
@@ -135,12 +135,6 @@
                 rightSideArr = this.imagesArrayToBeReorder.slice(itemZ, this.imagesArrayToBeReorder.length)
                 newOrderArray = rightSideArr.concat(leftSideArr)
                 this.reorderedImagesArray = newOrderArray
-
-
-                console.log('------------------------------------');
-                console.log(newOrderArray);
-                console.log('------------------------------------');
-
 
             },
 
@@ -158,7 +152,18 @@
             }
         },
 
+            computed: {
+            canvasFrameSize() {
+                switch (this.$vuetify.breakpoint.name) {
+                case 'xs': return '4'
+                case 'sm': return '4'
+                case 'md': return '4'
+                case 'lg': return '3'
+                case 'xl': return '3'
 
+                }
+            },
+        },
         created() {
             this.getMultipleContent()
         }
@@ -178,4 +183,12 @@
  .v-carousel{
     max-height: 681px;
 }
+.thumbnails{
+ cursor: pointer;
+}
+.v-card {
+    background-color: #e0e0e0 !important;
+}
+
+
 </style>

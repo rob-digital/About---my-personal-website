@@ -2,7 +2,7 @@
     <div>
         <v-container >
 
- <form >
+        <form >
            <v-row>
                     <v-col
                     cols="12"
@@ -60,7 +60,7 @@
                 ></v-textarea>
 
 
-            </v-col>
+
 
 
 
@@ -72,8 +72,11 @@
             <!-- <v-icon left>done</v-icon> -->
             submit</v-btn>
 
+
+
             <v-btn @click="clear" class="rounded-sm">clear</v-btn>
-</v-row>
+            </v-col>
+        </v-row>
         </form>
 
   </v-container>
@@ -83,13 +86,14 @@
 <script>
   import { validationMixin } from 'vuelidate'
   import { required, maxLength, email } from 'vuelidate/lib/validators'
+   import VueRecaptcha from 'vue-recaptcha';
 
   export default {
     mixins: [validationMixin],
     props: {
         'loadingIcon': Boolean
     },
-
+    components: {VueRecaptcha},
     validations: {
 
         dataFields: {

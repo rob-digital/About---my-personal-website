@@ -66,5 +66,8 @@
 .v-progress-circular__underlay{
     stroke: lightgrey !important;
 }
-
+.v-dialog--active{
+    height: auto !important;
+    max-height: initial !important;
+}
 </style>

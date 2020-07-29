@@ -32,18 +32,31 @@
                 ></parallax>
 
 
-                <canvas-pictures-prismic-c-m-s></canvas-pictures-prismic-c-m-s>
+                <live-projects>fghfhfgh</live-projects>
+               
+
+                <canvas-pictures-prismic-c-m-s id="scroll-target-hobby"></canvas-pictures-prismic-c-m-s>
 
 
-                <education-stepper :colors="['red', 'blue', 'orange']"></education-stepper>
+                <education-stepper id="scroll-target-education" :colors="['red', 'blue', 'orange']"></education-stepper>
 
 
 
                  <submit-form
-                 id="scroll-target-submit"
+                 
                  :loadingIcon="submitting"
-                 v-on:submit.prevent="submitContactForm"
+
+                 v-on:submit="submitContactForm"
                 ></submit-form>
+
+                 <vue-recaptcha
+                    :sitekey="siteKey"
+                    :loadRecaptchaScript="true"
+                    @verify="onVerify"
+                    @expired="onCaptchaExpired"
+                    ref="recaptcha"
+                ></vue-recaptcha>
+
 
 <!-- //! Rate the design -->
                 <!-- <v-container class="likesDiv" > -->
@@ -54,8 +67,21 @@
                     :sendingFeedback="ratingApplied ? true : false"
                     v-on:rating="ratingRecived"
                     v-show="displayWebsiteLikeCard"
-                    ></website-like>
+
+                    >
+                    <vue-recaptcha
+                    ref="invisibleRecaptcha"
+                    @verify="onVerify"
+                    @expired="onCaptchaExpired"
+                    size="invisible"
+                    :sitekey="siteKey2">
+                    </vue-recaptcha>
+
+                    </website-like>
+
                 </v-fade-transition>
+
+
                 <!-- </v-container> -->
 
 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -107,6 +133,24 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
                 </template>
                 </v-snackbar>
 
+                 <v-snackbar
+                v-model="snackbar3"
+                >
+                {{ snackbarText3 }}
+
+                <template v-slot:action="{ attrs }">
+                    <v-btn
+                    color="yellow"
+                    text
+                    class="rounded-0"
+                    v-bind="attrs"
+                    @click="snackbar3 = false"
+                    >
+                    Close
+                    </v-btn>
+                </template>
+                </v-snackbar>
+
 
             </div>
 
@@ -118,12 +162,14 @@ import Parallax from '../components/Parallax'
 import About from '../components/About'
 import Skills from '../components/Skills'
 import Services from '../components/Services'
+import LiveProjects from '../components/LiveProjects'
 import CanvasPicturesPrismicCMS from '../components/CanvasPicturesPrismicCMS'
 import EducationStepper from '../components/EducationStepper'
 import SubmitForm from '../components/SubmitForm'
 import FatalError from '../components/FatalError'
 import WebsiteLike from '../components/WebsiteLike'
 import { positionY } from '../shared/utils/positionYOfComponentsMixin'
+ import VueRecaptcha from 'vue-recaptcha';
 
 
     export default {
@@ -142,7 +188,9 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
             About,
             Skills,
             EducationStepper,
-            CanvasPicturesPrismicCMS
+            CanvasPicturesPrismicCMS,
+            LiveProjects,
+            VueRecaptcha,
         },
         data() {
             return {
@@ -158,11 +206,36 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
                 snackbar2: false,
                 snackbarText2: 'Thank you for your feedback',
 
+                snackbar3: false,
+                snackbarText3: 'Please verify you\'re a human ',
+
+                siteKey: '6LdRrLYZAAAAADGs1EGJgcHWAGizzYvvXwzDU4VM',
+                siteKey2: '6LdTxrYZAAAAAIQ0vvUbhvXIv2UX4fbO3oAaanE-',
+                recaptchaConfirmed: false
+
             }
         },
 
         methods: {
+            onVerify(response) {
+               if(response) {
+                   this.recaptchaConfirmed = true
+               }
+               setTimeout(() => {
+                   this.$refs.recaptcha.reset()
+                   this.recaptchaConfirmed = false
+                   }, 8000)
+            },
+            onCaptchaExpired: function () {
+               setTimeout(() => {
+                   this.$refs.recaptcha.reset()
+                   this.recaptchaConfirmed = false
+                   }, 100)
+                },
+
+
              submitContactForm(data) {
+                 if (this.recaptchaConfirmed) {
 
                  let sendEmail = {
                      name    : data.name,
@@ -190,7 +263,13 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
                    }
                    this.status = err.response.status
                })
+            }
 
+            if ((this.recaptchaConfirmed === false && data.name && data.email && data.message) )
+
+                {
+                this.snackbar3 = true
+            }
             },
             ratingRecived(rating) {
 
@@ -203,6 +282,7 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
                 return axios.post('/api/likes', number)
                 .then(response => {
                     this.ratingApplied = true
+                    this.$refs.invisibleRecaptcha.execute()
                     setTimeout(() => {
                         this.ratingApplied = false
                         this.snackbar2 = true
@@ -223,6 +303,7 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
                     return 500 === this.status
                 },
          },
+   
 
     }
 </script>

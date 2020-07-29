@@ -86,13 +86,13 @@ import HeadingIntro from '../components/slots/Heading'
  }
 
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 959px) {
     .v-timeline::before, .v-timeline-item   {
         margin-left: -40px;
     }
     .v-card {
         margin-left: -20px;
-        max-width: 108%;
+        max-width: 100%;
     }
 }
 </style>
