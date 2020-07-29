@@ -1,26 +1,28 @@
 <template>
     <div>
         <v-row>
-            <v-col cols="10" offset="1" class="pa-1">
-                 <v-card color="#37474F" elevation="10">
-                    <v-container fluid >
+
                      <v-row class="mx-0 px-2" >
-                        <v-col cols="6">
-                            <a target="_blank" :href="url1" @click.stop>Me</a>
+                        <v-col cols="12">
+                            <a target="_blank" :href="url1" @click.stop>Me RR</a>
+                            <long-card image="cogito.jpg"></long-card>
                         </v-col>
-                        <v-col cols="6">
+                        <v-col cols="12">
                             <a target="_blank" :href="url2" @click.stop>Cogito</a>
+                            <long-card image="intro.jpg"></long-card>
                         </v-col>
                     </v-row>
-                    </v-container>
-                 </v-card>
-            </v-col>
+
         </v-row>
     </div>
 </template>
 
 <script>
+import LongCard from '../components/slots/LongCard'
     export default {
+        components: {
+            LongCard
+        },
         data() {
             return {
                 url1: null,
