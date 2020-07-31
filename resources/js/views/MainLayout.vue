@@ -82,6 +82,7 @@
 
 
          <main-content
+           class="blue-grey darken-4"
            :target="targetItem"
            :activateSkillsCircleAnimation="activateSkillsCircleAnimation"
            v-on:positionYOfElements="positionYReceived"
@@ -95,9 +96,12 @@
     <v-footer
       :inset="footer.inset"
       app
-      :fixed="footer.fixed"
+      class="blue-grey darken-4"
     >
-      <span class="px-4">&copy; {{ new Date().getFullYear() }}</span>
+
+    <footer-items></footer-items>
+
+
     </v-footer>
 
     </div>
@@ -105,11 +109,13 @@
 
 <script>
 import MainContent from './MainContent'
+import FooterItems from '../components/FooterItems'
 
 
   export default {
       components:{
-          MainContent
+          MainContent,
+          FooterItems
       },
     props: {
       source: String,

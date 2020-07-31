@@ -32,8 +32,8 @@
                 ></parallax>
 
 
-                <live-projects>fghfhfgh</live-projects>
-               
+                <live-projects></live-projects>
+
 
                 <canvas-pictures-prismic-c-m-s id="scroll-target-hobby"></canvas-pictures-prismic-c-m-s>
 
@@ -41,27 +41,39 @@
                 <education-stepper id="scroll-target-education" :colors="['red', 'blue', 'orange']"></education-stepper>
 
 
+                <parallax
+                image="mac.jpg"
+                :height="400"
+                text1="modern, clean and creative design solutions"
+                ></parallax>
+
 
                  <submit-form
-                 
+
                  :loadingIcon="submitting"
 
                  v-on:submit="submitContactForm"
                 ></submit-form>
 
-                 <vue-recaptcha
-                    :sitekey="siteKey"
-                    :loadRecaptchaScript="true"
-                    @verify="onVerify"
-                    @expired="onCaptchaExpired"
-                    ref="recaptcha"
-                ></vue-recaptcha>
-
+<v-container fluid class="lightBg pb-10">
+                <v-row >
+                    <v-col cols="10" sm="10" md="10" lg="8" offset="1" offset-sm="1" offset-md="1"  offset-lg="2" class="pa-1 ">
+                    <vue-recaptcha
+                        :sitekey="siteKey"
+                        :loadRecaptchaScript="true"
+                        @verify="onVerify"
+                        @expired="onCaptchaExpired"
+                        ref="recaptcha"
+                    ></vue-recaptcha>
+                    </v-col>
+                </v-row>
+</v-container>
 
 <!-- //! Rate the design -->
                 <!-- <v-container class="likesDiv" > -->
 
                 <v-fade-transition>
+                    <form @submit.prevent="onSubmit">
                     <website-like
                     id="scroll-target-likes"
                     :sendingFeedback="ratingApplied ? true : false"
@@ -69,33 +81,24 @@
                     v-show="displayWebsiteLikeCard"
 
                     >
-                    <vue-recaptcha
+                       <vue-recaptcha
                     ref="invisibleRecaptcha"
                     @verify="onVerify"
                     @expired="onCaptchaExpired"
+                    :loadRecaptchaScript="true"
                     size="invisible"
                     :sitekey="siteKey2">
                     </vue-recaptcha>
-
                     </website-like>
+                    </form>
+
+
 
                 </v-fade-transition>
 
 
                 <!-- </v-container> -->
 
-<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-
-Second
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
 
               <v-snackbar
                 v-model="snackbar1"
@@ -282,7 +285,7 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
                 return axios.post('/api/likes', number)
                 .then(response => {
                     this.ratingApplied = true
-                    this.$refs.invisibleRecaptcha.execute()
+
                     setTimeout(() => {
                         this.ratingApplied = false
                         this.snackbar2 = true
@@ -295,15 +298,18 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
                    }
                    this.status = err.response.status
                 })
-            }
-        },
+            },
+             onSubmit: function () {
+                this.$refs.invisibleRecaptcha.execute()
+            },
+            },
 
             computed: {
                 isError500() {
                     return 500 === this.status
                 },
          },
-   
+
 
     }
 </script>

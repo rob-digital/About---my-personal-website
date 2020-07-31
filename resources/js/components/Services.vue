@@ -1,5 +1,5 @@
 <template>
-    <div class="blue-grey lightBg pt-4 pb-12 ">
+    <div class=" lightBg pt-4 pb-12 ">
 
         <heading-intro class="introSlot pt-8 mb-12">
             <h2>services</h2>
@@ -15,9 +15,10 @@
                 v-slot:default="{ hover }">
 
                  <v-card
-                    class="mx-auto rounded  justify-sm-space-around"
+                    class="mx-auto rounded-sm  justify-sm-space-around"
                     max-width="300"
                     :elevation="hover ? 6 : 2"
+
 
                 >
 

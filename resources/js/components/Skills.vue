@@ -1,5 +1,5 @@
 <template>
-    <div  class="pb-12">
+    <div  class="pb-12 main">
 
         <!-- <heading-intro class="introSlot pt-8 mb-12">
                     <h2>Coding Skills</h2>

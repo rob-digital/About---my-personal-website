@@ -1,5 +1,5 @@
 <template>
-    <div class="pt-8 pb-15">
+    <div class="pt-8 pb-15 main">
         <heading-intro class="introSlot pt-6 mb-12">
             <h2>about</h2>
         </heading-intro>

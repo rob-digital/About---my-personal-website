@@ -1,8 +1,15 @@
 <template>
-    <div>
-        <v-container >
+    <div class="lightBg">
 
-        <form >
+        <heading-intro class="introSlot pt-8 mb-12">
+            <h2>contact</h2>
+        </heading-intro>
+
+        <v-container fluid >
+
+        <v-row>
+        <v-col cols="10" sm="10" md="10" lg="8" offset="1" offset-sm="1" offset-md="1"  offset-lg="2" class="pa-1 ">
+        <form>
            <v-row>
                     <v-col
                     cols="12"
@@ -11,13 +18,11 @@
                     <v-text-field
                         v-model="dataFields.name"
                         :error-messages="nameErrors"
-                        :counter="20"
+                        background-color="grey lighten-4"
+                        class="rounded-sm"
                         label="Name"
                         required
-                        clearable
                         solo
-
-                        clear-icon="cancel"
                         @input="$v.dataFields.name.$touch()"
                         @blur="$v.dataFields.name.$touch()"
                         ></v-text-field>
@@ -32,10 +37,9 @@
                             :error-messages="emailErrors"
                             label="E-mail"
                             required
-                            clearable
+                            background-color="grey lighten-4"
                             solo
-                            filled
-                            clear-icon="cancel"
+                            class="rounded-sm"
                             @input="$v.dataFields.email.$touch()"
                             @blur="$v.dataFields.email.$touch()"
                             ></v-text-field>
@@ -50,10 +54,11 @@
             <v-col cols="12" >
                 <v-textarea
                 solo
-                clearable
-                clear-icon="cancel"
+                class="rounded-sm"
+                background-color="grey lighten-4"
+                color="blue-grey darken-4"
                 name="input-7-4"
-                label="Solo message"
+                label="Your message"
                 :error-messages="messageErrors"
                 v-model="dataFields.message"
                 @input="$v.dataFields.message.$touch()"
@@ -65,7 +70,9 @@
 
 
             <v-btn
-              class="mr-4 rounded-sm"
+              class="mr-4 rounded-sm black--text"
+              color="grey lighten-5"
+
               :loading="loadingIcon"
               @click=" $v.$touch(), clear, $emit('submit', dataFields)"
             >
@@ -74,10 +81,16 @@
 
 
 
-            <v-btn @click="clear" class="rounded-sm">clear</v-btn>
+            <v-btn
+              @click="clear"
+              class="rounded-sm black--text"
+              color="grey lighten-5"
+            >clear</v-btn>
             </v-col>
         </v-row>
         </form>
+        </v-col>
+        </v-row>
 
   </v-container>
     </div>
@@ -86,18 +99,19 @@
 <script>
   import { validationMixin } from 'vuelidate'
   import { required, maxLength, email } from 'vuelidate/lib/validators'
-   import VueRecaptcha from 'vue-recaptcha';
+  import VueRecaptcha from 'vue-recaptcha';
+  import HeadingIntro from '../components/slots/Heading'
 
   export default {
     mixins: [validationMixin],
     props: {
         'loadingIcon': Boolean
     },
-    components: {VueRecaptcha},
+    components: {VueRecaptcha, HeadingIntro},
     validations: {
 
         dataFields: {
-            name: { required, maxLength: maxLength(20) },
+            name: { required },
             email: { required, email },
             message: {required}
     }
@@ -119,7 +133,7 @@
       nameErrors () {
         const errors = []
         if (!this.$v.dataFields.name.$dirty) return errors
-        !this.$v.dataFields.name.maxLength && errors.push('Name must be at most 10 characters long')
+
         !this.$v.dataFields.name.required && errors.push('Name is required.')
         return errors
       },

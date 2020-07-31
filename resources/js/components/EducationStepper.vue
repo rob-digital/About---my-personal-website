@@ -18,7 +18,7 @@
                 small
             >
 
-                <v-card class="elevation-4">
+                <v-card class="elevation-4 rounded-sm">
 
                     <v-card-title class="title accent mainTitle headline" >{{ item.school }}</v-card-title>
                     <v-card-title class="">{{ item.course1 }}</v-card-title>
@@ -94,5 +94,8 @@ import HeadingIntro from '../components/slots/Heading'
         margin-left: -20px;
         max-width: 100%;
     }
+}
+.v-card{
+    margin-right: 5%;
 }
 </style>

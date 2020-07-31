@@ -1,5 +1,5 @@
 <template>
-<div class="pt-4 pb-16" >
+<div class="pt-4 pb-16 main" >
 <!-- <div v-if="loading" >Loading....</div>
 
 <div v-else> -->
@@ -11,7 +11,7 @@
 
     <v-row>
     <v-col cols="12" md="8" lg="8" offset-md="2" offset-lg="2" class="pa-1">
-      <v-card>
+      <v-card class="rounded-sm">
         <v-container fluid >
           <v-row class="mx-0 px-2">
             <v-col
@@ -33,7 +33,7 @@
     <v-dialog
       v-model="dialog"
       max-width="1024"
-      
+
     >
 
       <v-card >

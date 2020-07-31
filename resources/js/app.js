@@ -44,19 +44,25 @@ const app = new Vue({
           theme: {
             themes: {
               light: {
+                main: '#fff',
                 primary: '#363636', // #E53935
                 secondary: colors.red.lighten4, // #FFCDD2
                 accent: colors.lightBlue.darken4, // #3F51B5
                 colorBrown: colors.brown.darken4,
                 colorBlueDarken: colors.blueGrey.darken4,
                 lightBg: colors.blueGrey.lighten5,
-                textAccent: colors.red.darken1
+                textAccent: colors.red.darken1,
+                contactColor: colors.grey.lighten3
+                // footerColor: colors.grey.lighten1
               },
               dark: {
+                  main: colors.grey.darken4,
                 primary: '#363636',
                 colorBlueDarken: colors.blueGrey.darken4,
                 lightBg: colors.blueGrey.darken4,
-                textAccent: colors.yellow.accent2
+                textAccent: colors.yellow.accent2,
+                contactColor: colors.grey.darken4
+                // footerColor: colors.grey.darken3
 
               }
             },
