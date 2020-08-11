@@ -1,13 +1,13 @@
 <template>
-    <div class="lightBg">
+    <div class="contactColor pt-4 pb-0">
 
-        <heading-intro class="introSlot pt-8 mb-12">
-            <h2>contact</h2>
+        <heading-intro class="introSlot pt-8 pb-12">
+            <h2 >contact</h2>
         </heading-intro>
 
         <v-container fluid >
 
-        <v-row>
+        <v-row class="contactRow">
         <v-col cols="10" sm="10" md="10" lg="8" offset="1" offset-sm="1" offset-md="1"  offset-lg="2" class="pa-1 ">
         <form>
            <v-row>
@@ -22,6 +22,7 @@
                         class="rounded-sm"
                         label="Name"
                         required
+
                         solo
                         @input="$v.dataFields.name.$touch()"
                         @blur="$v.dataFields.name.$touch()"
@@ -166,5 +167,10 @@
 </script>
 
 <style lang="scss" scoped>
-
+@media only screen and (max-width: 600px) {
+  .contactRow {
+      margin-left: -11% !important;
+      margin-right: -11% !important;
+  }
+}
 </style>

@@ -15,6 +15,7 @@ import Vuetify from 'vuetify'
 import Vuelidate from 'vuelidate'
 import PrismicVue from 'prismic-vue';
 import linkResolver from './prismic/link-resolver';
+import v from '../assets/icons/vuetify.svg'
 
 window.Vue = require('vue');
 
@@ -40,7 +41,7 @@ const app = new Vue({
     vuetify: new Vuetify({
         icons: {
             iconfont: 'mdiSvg', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
-          },
+        },
           theme: {
             themes: {
               light: {
@@ -52,14 +53,14 @@ const app = new Vue({
                 colorBlueDarken: colors.blueGrey.darken4,
                 lightBg: colors.blueGrey.lighten5,
                 textAccent: colors.red.darken1,
-                contactColor: colors.grey.lighten3
+                contactColor: colors.blueGrey.lighten2,
                 // footerColor: colors.grey.lighten1
               },
               dark: {
-                  main: colors.grey.darken4,
+                main: colors.grey.darken4,
                 primary: '#363636',
                 colorBlueDarken: colors.blueGrey.darken4,
-                lightBg: colors.blueGrey.darken4,
+                lightBg: colors.blueGrey.darken3,
                 textAccent: colors.yellow.accent2,
                 contactColor: colors.grey.darken4
                 // footerColor: colors.grey.darken3

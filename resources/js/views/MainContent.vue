@@ -32,7 +32,7 @@
                 ></parallax>
 
 
-                <live-projects></live-projects>
+                <live-projects id="scroll-target-live"></live-projects>
 
 
                 <canvas-pictures-prismic-c-m-s id="scroll-target-hobby"></canvas-pictures-prismic-c-m-s>
@@ -49,14 +49,14 @@
 
 
                  <submit-form
-
+                id="scroll-target-contact"
                  :loadingIcon="submitting"
 
                  v-on:submit="submitContactForm"
                 ></submit-form>
 
-<v-container fluid class="lightBg pb-10">
-                <v-row >
+            <v-container fluid class="contactColor pb-10">
+                <v-row class="recaptchaRow">
                     <v-col cols="10" sm="10" md="10" lg="8" offset="1" offset-sm="1" offset-md="1"  offset-lg="2" class="pa-1 ">
                     <vue-recaptcha
                         :sitekey="siteKey"
@@ -67,7 +67,7 @@
                     ></vue-recaptcha>
                     </v-col>
                 </v-row>
-</v-container>
+            </v-container>
 
 <!-- //! Rate the design -->
                 <!-- <v-container class="likesDiv" > -->
@@ -95,65 +95,6 @@
 
 
                 </v-fade-transition>
-
-
-                <!-- </v-container> -->
-
-
-              <v-snackbar
-                v-model="snackbar1"
-                >
-                {{ snackbarText1 }}
-
-                <template v-slot:action="{ attrs }">
-                    <v-btn
-                    color="yellow"
-                    text
-                    class="rounded-0"
-                    v-bind="attrs"
-                    @click="snackbar1 = false"
-                    >
-                    Close
-                    </v-btn>
-                </template>
-                </v-snackbar>
-
-                <v-snackbar
-                v-model="snackbar2"
-                >
-                {{ snackbarText2 }}
-
-                <template v-slot:action="{ attrs }">
-                    <v-btn
-                    color="yellow"
-                    text
-                    class="rounded-0"
-                    v-bind="attrs"
-                    @click="snackbar2 = false"
-                    >
-                    Close
-                    </v-btn>
-                </template>
-                </v-snackbar>
-
-                 <v-snackbar
-                v-model="snackbar3"
-                >
-                {{ snackbarText3 }}
-
-                <template v-slot:action="{ attrs }">
-                    <v-btn
-                    color="yellow"
-                    text
-                    class="rounded-0"
-                    v-bind="attrs"
-                    @click="snackbar3 = false"
-                    >
-                    Close
-                    </v-btn>
-                </template>
-                </v-snackbar>
-
 
             </div>
 
@@ -203,18 +144,9 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
                 ratingApplied: false,
                 displayWebsiteLikeCard: true,
 
-                snackbar1: false,
-                snackbarText1: 'Message sent succesfully',
-
-                snackbar2: false,
-                snackbarText2: 'Thank you for your feedback',
-
-                snackbar3: false,
-                snackbarText3: 'Please verify you\'re a human ',
-
                 siteKey: '6LdRrLYZAAAAADGs1EGJgcHWAGizzYvvXwzDU4VM',
                 siteKey2: '6LdTxrYZAAAAAIQ0vvUbhvXIv2UX4fbO3oAaanE-',
-                recaptchaConfirmed: false
+                recaptchaConfirmed: false,
 
             }
         },
@@ -257,7 +189,8 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
 
                    setTimeout(() => (
                        this.submitting = false,
-                       this.snackbar1 = true
+                    //    this.snackbar1 = true
+                        this.$emit('activateSnackbar1', true)
                        ), 3000)
                })
                .catch(err => {
@@ -271,7 +204,8 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
             if ((this.recaptchaConfirmed === false && data.name && data.email && data.message) )
 
                 {
-                this.snackbar3 = true
+
+                this.$emit('activateSnackbar3', true)
             }
             },
             ratingRecived(rating) {
@@ -288,7 +222,7 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
 
                     setTimeout(() => {
                         this.ratingApplied = false
-                        this.snackbar2 = true
+                        this.$emit('activateSnackbar2', true)
                         this.displayWebsiteLikeCard = false
                     }, 2000)
                 } )
@@ -325,5 +259,10 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
 .likesDiv{
     min-height: 220px;
 }
-
+@media only screen and (max-width: 600px) {
+  .recaptchaRow {
+      margin-left: -11% !important;
+      margin-right: -11% !important;
+  }
+}
 </style>

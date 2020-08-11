@@ -1,10 +1,11 @@
 <template>
-    <v-container>
+    <v-container fluid class=" main pt-12 pb-12 ">
     <v-card
       class=" align-center justify-center pa-4 mx-auto"
       max-width="550"
       min-height="76"
       :loading="sendingFeedback"
+      :elevation="12"
     >
       <div :class="`text-h5 text-sm-h4 text-center mb-6 mt-6`">
         {{ ratingQuestion }}
@@ -16,7 +17,7 @@
         fab
         dark
         small
-        color="indigo"
+        color="blue"
         @click.prevent="$emit('rating', 1)"
       >
         <v-icon>thumb_up</v-icon>

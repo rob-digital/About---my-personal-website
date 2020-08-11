@@ -88,7 +88,7 @@ import HeadingIntro from '../components/slots/Heading'
             return {
             fields: {
                 images: [],
-            },
+                },
             loading: false,
             dialog: false,
             selectedImage: null,

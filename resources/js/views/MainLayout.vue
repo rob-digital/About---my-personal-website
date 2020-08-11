@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
 
     <v-navigation-drawer
       v-model="drawer"
@@ -9,9 +9,7 @@
       :permanent="true"
       width="170"
       :mini-variant.sync="mini"
-      color="#37474F"
-
-
+      color="#263238"
     >
 
 
@@ -28,81 +26,140 @@
         </v-tooltip>
 
 
-  <v-list class="mt-6">
-    <v-list-item-group v-model="listPosition"  color="white">
-       <v-list-item
-            v-for="item in items"
-            :key="item.title"
-            link
+        <v-list class="mt-6">
+            <v-list-item-group v-model="listPosition"  color="white">
+            <v-list-item
+                    v-for="item in items"
+                    :key="item.title"
+                    link
 
-            @click="$vuetify.goTo(`#scroll-target-${item.title}`, options)"
+                    @click="$vuetify.goTo(`#scroll-target-${item.title}`, options)"
 
-          >
-            <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
+                >
+                    <v-list-item-icon>
+                    <v-icon>{{ item.icon }}</v-icon>
+                    </v-list-item-icon>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-         </v-list-item-group>
-        </v-list>
+                    <v-list-item-content>
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+                </v-list-item-group>
+            </v-list>
 
 
-    <v-row>
-    <v-col cols="10" offset="1" class="pa-1">
+            <v-row>
+            <v-col cols="10" offset="1" class="pa-1">
 
-        <v-container fluid >
-          <v-row class="mx-0 pr-2" >
-            <v-col
+                <v-container fluid >
+                <v-row class="mx-0 pr-2" >
+                    <v-col
 
-              v-for="(item, i) in socialIcons"
-              :key="i"
-              class="d-flex px-1 iconsColumn"
-              :cols="canvasFrameSize"
+                    v-for="(item, i) in socialIcons"
+                    :key="i"
+                    class="d-flex px-1 iconsColumn"
+                    :cols="canvasFrameSize"
 
-            >
-              <a target="_blank" v-html="item" :href="urls[i]" @click.stop>
-                  <div >
-                  {{ item }}
-                  </div>
-                  </a>
-            </v-col>
-          </v-row>
-          </v-container>
+                    >
+                    <a target="_blank" v-html="item" :href="urls[i]" @click.stop>
+                        <div >
+                        {{ item }}
+                        </div>
+                        </a>
+                    </v-col>
+                </v-row>
+                </v-container>
 
-  </v-col>
-          </v-row>
+             </v-col>
+             </v-row>
 
     </v-navigation-drawer>
 
 
-
-
-
          <main-content
-           class="blue-grey darken-4"
+           class="blue-grey darken-3"
            :target="targetItem"
            :activateSkillsCircleAnimation="activateSkillsCircleAnimation"
            v-on:positionYOfElements="positionYReceived"
            v-on:positionYOfSkillsCircles="positionYOfSkillsCirclesReceived"
+           v-on:activateSnackbar1="activateSnackbar1"
+           v-on:activateSnackbar2="activateSnackbar2"
+           v-on:activateSnackbar3="activateSnackbar3"
          ></main-content>
 
 
+        <v-footer
+            :inset="footer.inset"
+            app
+            class="blue-grey darken-3"
+            >
+
+             <footer-items></footer-items>
+
+        </v-footer>
+
+<!-- //!------- Snackbars -->
+
+            <v-snackbar
+                bottom
+                v-model="snackbar1"
+
+                >
+                {{ snackbarText1 }}
+
+                <template v-slot:action="{ attrs }">
+                    <v-btn
+                    color="yellow"
+                    text
+                    class="rounded-0"
+                    v-bind="attrs"
+                    @click="snackbar1 = false"
+                    >
+                    Close
+                    </v-btn>
+                </template>
+            </v-snackbar>
 
 
+           <v-snackbar
+                bottom
+                v-model="snackbar2"
+                >
+                {{ snackbarText2 }}
+                    <template v-slot:action="{ attrs }">
+                        <v-btn
+                        color="yellow"
+                        text
+                        class="rounded-0"
+                        v-bind="attrs"
+                        @click="snackbar2 = false"
+                        >
+                        Close
+                        </v-btn>
+                    </template>
+            </v-snackbar>
 
-    <v-footer
-      :inset="footer.inset"
-      app
-      class="blue-grey darken-4"
-    >
 
-    <footer-items></footer-items>
+            <v-snackbar
+                bottom
+                v-model="snackbar3"
+                >
+                {{ snackbarText3 }}
+
+                <template v-slot:action="{ attrs }">
+                    <v-btn
+                    color="yellow"
+                    text
+                    class="rounded-0"
+                    v-bind="attrs"
+                    @click="snackbar3 = false"
+                    >
+                    Close
+                    </v-btn>
+                </template>
+            </v-snackbar>
 
 
-    </v-footer>
 
     </div>
 </template>
@@ -133,6 +190,14 @@ import FooterItems from '../components/FooterItems'
         positionYOfSkillsCircels: null,
         activateSkillsCircleAnimation: false,
         urls: [],
+
+        snackbar1: false,
+        snackbarText1: 'Message sent succesfully',
+        snackbar2: false,
+        snackbarText2: 'Thank you for your feedback',
+        snackbar3: false,
+        snackbarText3: 'Please verify you\'re a human ',
+
         socialIcons: [
         `<svg width='32' height='19' data-name='twitter' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 77 64'>
             <title>twitter icon</title>
@@ -152,9 +217,11 @@ import FooterItems from '../components/FooterItems'
         items: [
             { title: 'about', icon: 'portrait' },
             { title: 'services', icon: 'build' },
+             { title: 'live', icon: 'thumb_up' },
             { title: 'hobby', icon: 'image' },
             { title: 'education', icon: 'image' },
-            // { title: 'contact', icon: 'thumb_down' },
+            { title: 'contact', icon: 'thumb_up' },
+
             ],
        footer: {
         inset: true,
@@ -171,7 +238,7 @@ import FooterItems from '../components/FooterItems'
         urls.push(url1, url2, url3)
         this.urls = urls
 
-    //    setTimeout(() => {                              // activate this to remove error in the console
+       setTimeout(() => {                              // activate this to remove error in the console
 
 
 
@@ -185,14 +252,14 @@ import FooterItems from '../components/FooterItems'
             } else if(this.currentScroll >= this.currentPositions[3].top && this.currentScroll <  this.currentPositions[3].bottom) {
                 this.listPosition = 3
             }
-            // else if(this.currentScroll >= this.currentPositions[4].top && this.currentScroll <  this.currentPositions[4].bottom) {
-            //     this.listPosition = 4
-            // }
-            //else if(this.currentScroll >= this.currentPositions[5].top && this.currentScroll <  this.currentPositions[5].bottom) {
-            //     this.listPosition = 5
-            // }
+            else if(this.currentScroll >= this.currentPositions[4].top && this.currentScroll <  this.currentPositions[4].bottom) {
+                this.listPosition = 4
+            }
+            else if(this.currentScroll >= this.currentPositions[5].top && this.currentScroll <  this.currentPositions[5].bottom) {
+                this.listPosition = 5
+            }
 
-            // }, 1000)
+            }, 1000)
     },
 
 
@@ -234,8 +301,18 @@ import FooterItems from '../components/FooterItems'
                 }
 
         },
+         activateSnackbar1() {
+            this.snackbar1 = true
+        },
+        activateSnackbar2() {
+            this.snackbar2 = true
+        },
+        activateSnackbar3() {
+            this.snackbar3 = true
+        },
     },
      computed: {
+
         mini() {
             return this.$vuetify.breakpoint.xsOnly;
         },

@@ -6,15 +6,18 @@
     <v-container class="lightDarkToggleContainer">
 
         <v-layout justify-end>
-        <v-icon
-        class="material-icons absolute"
+        <v-switch v-model="switch1" @change="toggleTheme" inset >
+
+        <!-- <v-icon
+        class="material-icons absolute modeToggle"
         :left="true"
         align-end
-        color="orange"
+        color="yellow"
         @click="toggleTheme"
         >
         wb_sunny
-        </v-icon>
+        </v-icon> -->
+        </v-switch>
         </v-layout>
 
     </v-container>
@@ -31,14 +34,18 @@
 
     export default {
         name: 'Index',
-
+        data() {
+            return {
+                switch1: false
+            }
+        },
         methods: {
 
             toggleTheme() {
                 this.$vuetify.theme.themes.dark.anchor = '#41b883'
                 this.$vuetify.theme.dark = !this.$vuetify.theme.dark
             }
-        }
+        },
     }
 </script>
 
@@ -79,11 +86,8 @@ a {
     z-index: 0;
     margin-left: 170px;
 }
-@media only screen and (max-width: 600px) {
-.v-footer{
-
-    margin-left: 56px;
-}
+.v-main{
+    padding-bottom: 40px !important;
 }
 .v-main__wrap {
     z-index: 10;
@@ -97,5 +101,24 @@ z-index: 100;
 }
 .theme--dark.v-label {
     color: #263238 !important;
+}
+.v-snack {
+    padding-bottom: 30px !important;
+    margin-left: 85px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .v-footer{
+        margin-left: 56px;
+    }
+    .v-snack{
+        margin-left: 28px;
+    }
+}
+.modeToggle {
+    background-color: grey;
+    border-radius: 50%;
+    padding: 5px;
 }
 </style>

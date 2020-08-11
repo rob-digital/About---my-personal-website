@@ -82,5 +82,9 @@ import HeadingIntro from '../components/slots/Heading'
     font-size: 80px !important;
     margin-left: calc(50% - 40px) !important;
 }
-
+@media only screen and (min-width: 960px) and (max-width: 1073px) {
+    .v-card__title {
+        font-size: medium;
+    }
+}
 </style>

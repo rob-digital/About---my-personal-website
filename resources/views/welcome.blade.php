@@ -7,7 +7,7 @@
         <title>Robert Roksela - Web Development</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css">
+        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
         {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> --}}
         <script src="{{ asset('js/app.js')}}" defer></script>
         <!-- Styles -->
