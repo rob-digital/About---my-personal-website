@@ -2,7 +2,7 @@ require('./bootstrap');
 
 import router from './routes'
 import VueRouter from 'vue-router'
-// import Vuetify from 'vuetify'
+import Vuex from 'vuex'
 
 // import 'material-design-icons-iconfont/dist/material-design-icons.css'
 // import 'vuetify/dist/vuetify.min.css'
@@ -15,7 +15,7 @@ import Vuetify from 'vuetify'
 import Vuelidate from 'vuelidate'
 import PrismicVue from 'prismic-vue';
 import linkResolver from './prismic/link-resolver';
-import v from '../assets/icons/vuetify.svg'
+import storeDefinition from './store'
 
 window.Vue = require('vue');
 
@@ -24,7 +24,7 @@ window.Vue = require('vue');
 Vue.component('Index', require('./Index.vue').default)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-
+Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(Vuetify)
 Vue.use(Vuelidate)
@@ -34,10 +34,12 @@ Vue.use(PrismicVue, {
     linkResolver
   });
 
+const store = new Vuex.Store(storeDefinition)
 
 const app = new Vue({
     el: '#app',
     router,
+    store,
     vuetify: new Vuetify({
         icons: {
             iconfont: 'mdiSvg', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'

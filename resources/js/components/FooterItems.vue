@@ -1,6 +1,6 @@
 <template>
    <v-container>
-
+       
         <p class="text-center white--text mb-12">Used Technologies:</p>
         <v-row class="justify-center techIconsContainer">
 

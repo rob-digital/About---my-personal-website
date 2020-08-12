@@ -23,21 +23,12 @@
         <span>Scroll to Top</span>
         </v-tooltip>
 
+
     <v-container class="lightDarkToggleContainer">
 
         <v-layout justify-end>
-        <v-switch v-model="switch1" @change="toggleTheme" inset >
-
-        <!-- <v-icon
-        class="material-icons absolute modeToggle"
-        :left="true"
-        align-end
-        color="yellow"
-        @click="toggleTheme"
-        >
-        wb_sunny
-        </v-icon> -->
-        </v-switch>
+            <v-switch v-model="switch1" @change="toggleTheme" inset >
+            </v-switch>
         </v-layout>
 
     </v-container>
@@ -70,11 +61,14 @@
             if (typeof window === 'undefined') return
             const top = window.pageYOffset ||   e.target.scrollTop || 0
             this.fab = top > 20
+            },
+            toTop () {
+            this.$vuetify.goTo(0)
+            }
         },
-        toTop () {
-          this.$vuetify.goTo(0)
+        beforeCreate() {
+            this.$store.dispatch('loadStoredFeedback')
         }
-        },
 
     }
 </script>
@@ -156,7 +150,6 @@ z-index: 100;
 }
 .scrollToTopBtn {
     z-index: 40 !important;
-    transition: 1s;
     height: 46px !important;
     width: 46px !important;
 }

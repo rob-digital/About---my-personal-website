@@ -78,7 +78,7 @@
                     id="scroll-target-likes"
                     :sendingFeedback="ratingApplied ? true : false"
                     v-on:rating="ratingRecived"
-                    :displayCard="displayWebsiteLikeCard ? true : false"
+                    :displayCard="userProvidedFeedback ? 1 : 0"
 
                     >
                        <vue-recaptcha
@@ -114,7 +114,7 @@ import FatalError from '../components/FatalError'
 import WebsiteLike from '../components/WebsiteLike'
 import { positionY } from '../shared/utils/positionYOfComponentsMixin'
  import VueRecaptcha from 'vue-recaptcha';
-
+import { mapState } from 'vuex'
 
     export default {
         mixins: [positionY],
@@ -146,8 +146,9 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
 
                 siteKey: '6LdRrLYZAAAAADGs1EGJgcHWAGizzYvvXwzDU4VM',
                 siteKey2: '6LdTxrYZAAAAAIQ0vvUbhvXIv2UX4fbO3oAaanE-',
-                recaptchaConfirmed: false,
+                recaptchaConfirmed: null,
 
+                userProvidedFeedback: this.$store.state.feedbackSent
             }
         },
 
@@ -202,11 +203,9 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
             }
 
             if ((this.recaptchaConfirmed === false && data.name && data.email && data.message) )
-
                 {
-
-                this.$emit('activateSnackbar3', true)
-            }
+                    this.$emit('activateSnackbar3', true)
+                }
             },
             ratingRecived(rating) {
 
@@ -223,8 +222,12 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
                     setTimeout(() => {
                         this.ratingApplied = false
                         this.$emit('activateSnackbar2', true)
+                        this.$store.dispatch('saveRating', 1)
                         this.displayWebsiteLikeCard = false
+                        this.userProvidedFeedback = this.$store.state.feedbackSent
+
                     }, 2000)
+
                 } )
                 .catch(err => {
                     if(422 === err.response.status) {
@@ -242,6 +245,9 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
                 isError500() {
                     return 500 === this.status
                 },
+                // checkIfRatingProvided() {
+                //     return this.userProvidedFeedback = this.$store.state.feedbackSent
+                // }
          },
 
 

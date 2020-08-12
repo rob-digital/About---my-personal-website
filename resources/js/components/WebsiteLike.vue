@@ -7,7 +7,7 @@
             min-height="76"
             :loading="sendingFeedback"
             :elevation="12"
-            v-show="displayCard"
+            v-if="displayCard === 0"
             >
             <div :class="`text-h5 text-sm-h4 text-center mb-6 mt-6`">
                 {{ ratingQuestion }}
@@ -46,7 +46,7 @@
         name: 'WebsiteLike',
         props: {
             sendingFeedback: Boolean,
-            displayCard: Boolean
+            displayCard: Number
 
         },
         data() {
