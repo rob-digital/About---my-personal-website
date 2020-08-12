@@ -18,7 +18,7 @@
                 small
             >
 
-                <v-card class="elevation-4 rounded-sm">
+                <v-card class="elevation-4 rounded">
 
                     <v-card-title class="title accent mainTitle headline" >{{ item.school }}</v-card-title>
                     <v-card-title class="">{{ item.course1 }}</v-card-title>

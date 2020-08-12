@@ -1,63 +1,44 @@
 <template>
    <v-container>
-            <!-- <v-row class="justify-center pb-12">
 
-                <v-col cols="12" sm="12" md="6">
-                    <p class="text-center white--text mb-12">Used Technologies:</p>
-                    <div class="techIconsContainer">
+        <p class="text-center white--text mb-12">Used Technologies:</p>
+        <v-row class="justify-center techIconsContainer">
 
-                    <div class="d-flex big-icon align-center"  v-for="(item, i) in icons" :key="i">
-
-                     <span class="iconify" :data-icon="item.icon" data-inline="false" color="white"></span>
-                     <p class="techTitles">{{ item.title }}</p>
-                     </div>
-
+            <v-col
+                v-for="(item, i) in icons" :key="i"
+                cols="6"
+                sm="6"
+                md="4"
+                lg="2"
+            >
+                <div>
+                    <div class="d-flex big-icon align-center justify-center">
+                        <span class="iconify" :data-icon="item.icon" data-inline="false" color="white"></span>
+                        <p class="techTitles">{{ item.title }}</p>
                     </div>
+                </div>
+            </v-col>
+        </v-row>
 
-                 </v-col>
-            </v-row> -->
+        <hr>
 
-<p class="text-center white--text mb-12">Used Technologies:</p>
-             <v-row class="justify-center techIconsContainer">
+        <v-row class="bottomRow pt-4">
 
-      <v-col
-        v-for="(item, i) in icons" :key="i"
-
-        cols="6"
-        sm="6"
-        md="4"
-        lg="2"
-      >
-      <div>
-          <div class="d-flex big-icon align-center justify-center">
-        <span class="iconify" :data-icon="item.icon" data-inline="false" color="white"></span>
-                     <p class="techTitles">{{ item.title }}</p>
-      </div>
-      </div>
-      </v-col>
-    </v-row>
-
-<hr>
-
-<v-row class="bottomRow pt-4">
-
-                    <v-col cols="12" sm="6" class="leftCol">
-                        <v-img
-                        class="logo"
-                        :src="getImageUrl('rrwd-logo-closed-white.svg')"
-                        ></v-img>
-                    </v-col>
+            <v-col cols="12" sm="6" class="leftCol">
+                <v-img
+                class="logo"
+                :src="getImageUrl('rrwd-logo-closed-white.svg')"
+                ></v-img>
+            </v-col>
 
 
-<v-col cols="12" sm="6" class="d-flex rightCol">
+            <v-col cols="12" sm="6" class="d-flex rightCol">
                 <span class="px-4 white--text copy">&copy; {{ new Date().getFullYear() }}</span>
-</v-col>
+            </v-col>
 
-            </v-row>
+        </v-row>
 
-
-
-            </v-container>
+    </v-container>
 
 </template>
 
@@ -129,12 +110,7 @@ import eee from '../../assets/images/rrwd-logo-closed-white.svg'
       justify-content: center !important;
 
   }
-// @media only screen and (max-width: 600px) {
-//   .techRow {
-//       justify-content: flex-start !important;
-//       margin-left: 10%;
-//   }
-// }
+
 .bottomRow{
     justify-content: space-between;
 }
@@ -145,6 +121,7 @@ import eee from '../../assets/images/rrwd-logo-closed-white.svg'
     .rightCol {
         justify-content: flex-end;
     }
+
 }
 @media only screen and (max-width: 599px) {
     .rightCol{
@@ -155,6 +132,11 @@ import eee from '../../assets/images/rrwd-logo-closed-white.svg'
     }
     .big-icon {
         flex-direction: column;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 1454px) {
+      .copy{
+        margin-right: 30px;
     }
 }
 </style>

@@ -10,9 +10,9 @@
 
                 <parallax
                 image="web.jpg"
-                :height="600"
-                text1="Vuetify.js"
-                text2="Build something nice"
+                :height="700"
+                text1="Robert Roksela - Web Development"
+                text2="Creative Solutions for the Web"
                 ></parallax>
 
 
@@ -72,13 +72,13 @@
 <!-- //! Rate the design -->
                 <!-- <v-container class="likesDiv" > -->
 
-                <v-fade-transition>
+
                     <form @submit.prevent="onSubmit">
                     <website-like
                     id="scroll-target-likes"
                     :sendingFeedback="ratingApplied ? true : false"
                     v-on:rating="ratingRecived"
-                    v-show="displayWebsiteLikeCard"
+                    :displayCard="displayWebsiteLikeCard ? true : false"
 
                     >
                        <vue-recaptcha
@@ -94,7 +94,7 @@
 
 
 
-                </v-fade-transition>
+
 
             </div>
 
@@ -250,15 +250,7 @@ import { positionY } from '../shared/utils/positionYOfComponentsMixin'
 
 <style lang="scss" scoped>
 
-.fade-enter-active, .fade-leave-active {
-  transition: all 2s ease;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: .5;
-}
-.likesDiv{
-    min-height: 220px;
-}
+
 @media only screen and (max-width: 600px) {
   .recaptchaRow {
       margin-left: -11% !important;

@@ -310,6 +310,7 @@ import FooterItems from '../components/FooterItems'
         activateSnackbar3() {
             this.snackbar3 = true
         },
+
     },
      computed: {
 
@@ -362,4 +363,5 @@ import FooterItems from '../components/FooterItems'
 .iconsColumn {
     justify-content: center;
 }
+
 </style>

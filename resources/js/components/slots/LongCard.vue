@@ -5,7 +5,7 @@
         v-slot:default="{ hover }">
 
             <v-card
-                class="mx-auto rounded-sm"
+                class="mx-auto rounded"
                 max-width="800"
                 :elevation="hover ? 12 : 8"
             >

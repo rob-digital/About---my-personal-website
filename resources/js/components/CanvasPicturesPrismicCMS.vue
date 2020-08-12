@@ -11,7 +11,7 @@
 
     <v-row>
     <v-col cols="12" md="8" lg="8" offset-md="2" offset-lg="2" class="pa-1">
-      <v-card class="rounded-sm">
+      <v-card class="rounded">
         <v-container fluid >
           <v-row class="mx-0 px-2">
             <v-col

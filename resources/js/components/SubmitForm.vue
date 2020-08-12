@@ -19,10 +19,9 @@
                         v-model="dataFields.name"
                         :error-messages="nameErrors"
                         background-color="grey lighten-4"
-                        class="rounded-sm"
+                        class="rounded"
                         label="Name"
                         required
-
                         solo
                         @input="$v.dataFields.name.$touch()"
                         @blur="$v.dataFields.name.$touch()"
@@ -40,7 +39,7 @@
                             required
                             background-color="grey lighten-4"
                             solo
-                            class="rounded-sm"
+                            class="rounded"
                             @input="$v.dataFields.email.$touch()"
                             @blur="$v.dataFields.email.$touch()"
                             ></v-text-field>
@@ -55,7 +54,7 @@
             <v-col cols="12" >
                 <v-textarea
                 solo
-                class="rounded-sm"
+                class="rounded"
                 background-color="grey lighten-4"
                 color="blue-grey darken-4"
                 name="input-7-4"
@@ -71,7 +70,7 @@
 
 
             <v-btn
-              class="mr-4 rounded-sm black--text"
+              class="mr-4 rounded black--text"
               color="grey lighten-5"
 
               :loading="loadingIcon"
@@ -84,7 +83,7 @@
 
             <v-btn
               @click="clear"
-              class="rounded-sm black--text"
+              class="rounded black--text"
               color="grey lighten-5"
             >clear</v-btn>
             </v-col>

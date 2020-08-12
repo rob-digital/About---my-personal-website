@@ -1,7 +1,27 @@
 <template>
     <v-app>
 
-
+        <v-tooltip left>
+        <template v-slot:activator="{ on, attrs }">
+            <v-btn
+                v-scroll="onScroll"
+                v-show="fab"
+                v-bind="attrs"
+                v-on="on"
+                fab
+                dark
+                fixed
+                bottom
+                class="scrollToTopBtn"
+                right
+                color="red"
+                @click="toTop"
+            >
+                <v-icon>keyboard_arrow_up</v-icon>
+            </v-btn>
+        </template>
+        <span>Scroll to Top</span>
+        </v-tooltip>
 
     <v-container class="lightDarkToggleContainer">
 
@@ -36,7 +56,8 @@
         name: 'Index',
         data() {
             return {
-                switch1: false
+                switch1: false,
+                fab: false
             }
         },
         methods: {
@@ -44,8 +65,17 @@
             toggleTheme() {
                 this.$vuetify.theme.themes.dark.anchor = '#41b883'
                 this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-            }
+            },
+            onScroll (e) {
+            if (typeof window === 'undefined') return
+            const top = window.pageYOffset ||   e.target.scrollTop || 0
+            this.fab = top > 20
         },
+        toTop () {
+          this.$vuetify.goTo(0)
+        }
+        },
+
     }
 </script>
 
@@ -120,5 +150,14 @@ z-index: 100;
     background-color: grey;
     border-radius: 50%;
     padding: 5px;
+}
+.v-tooltip__content{
+    z-index: 400 !important;
+}
+.scrollToTopBtn {
+    z-index: 40 !important;
+    transition: 1s;
+    height: 46px !important;
+    width: 46px !important;
 }
 </style>
