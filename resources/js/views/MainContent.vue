@@ -74,14 +74,8 @@
 
 
                     <form @submit.prevent="onSubmit">
-                    <website-like
-                    id="scroll-target-likes"
-                    :sendingFeedback="ratingApplied ? true : false"
-                    v-on:rating="ratingRecived"
-                    :displayCard="userProvidedFeedback ? 1 : 0"
 
-                    >
-                       <vue-recaptcha
+                    <vue-recaptcha
                     ref="invisibleRecaptcha"
                     @verify="onVerify"
                     @expired="onCaptchaExpired"
@@ -89,6 +83,13 @@
                     size="invisible"
                     :sitekey="siteKey2">
                     </vue-recaptcha>
+                     <website-like
+                    id="scroll-target-likes"
+                    :sendingFeedback="ratingApplied ? true : false"
+                    v-on:rating="ratingRecived"
+                    :displayCard="userProvidedFeedback ? 1 : 0"
+
+                    >
                     </website-like>
                     </form>
 
@@ -120,7 +121,8 @@ import { mapState } from 'vuex'
         mixins: [positionY],
         props: [
             'target',
-            'activateSkillsCircleAnimation'
+            'activateSkillsCircleAnimation',
+            'snackbar2'
 
         ],
          components: {
@@ -146,7 +148,7 @@ import { mapState } from 'vuex'
 
                 siteKey: '6LdRrLYZAAAAADGs1EGJgcHWAGizzYvvXwzDU4VM',
                 siteKey2: '6LdTxrYZAAAAAIQ0vvUbhvXIv2UX4fbO3oAaanE-',
-                recaptchaConfirmed: null,
+                recaptchaConfirmed: false,
 
                 userProvidedFeedback: this.$store.state.feedbackSent
             }
@@ -202,9 +204,9 @@ import { mapState } from 'vuex'
                })
             }
 
-            if ((this.recaptchaConfirmed === false && data.name && data.email && data.message) )
+             if ((!this.recaptchaConfirmed && data.name && data.email && data.message) )
                 {
-                    this.$emit('activateSnackbar3', true)
+                     this.$emit('activateSnackbar3', true)
                 }
             },
             ratingRecived(rating) {

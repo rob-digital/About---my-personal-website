@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app :switchControl="true">
 
         <v-tooltip left>
         <template v-slot:activator="{ on, attrs }">
@@ -27,14 +27,19 @@
     <v-container class="lightDarkToggleContainer">
 
         <v-layout justify-end>
-            <v-switch v-model="switch1" @change="toggleTheme" inset >
+            <v-switch
+              v-model="switch1"
+              @change="toggleTheme"
+              inset
+
+            >
             </v-switch>
         </v-layout>
 
     </v-container>
 
 
-    <router-view></router-view>
+    <router-view v-on:changeTheme="applyTheme"></router-view>
 
 
     </v-app>
@@ -64,7 +69,14 @@
             },
             toTop () {
             this.$vuetify.goTo(0)
+            },
+             applyTheme() {
+                this.toggleTheme()
+                this.switch1 = !this.switch1
             }
+        },
+        computed:{
+
         },
         beforeCreate() {
             this.$store.dispatch('loadStoredFeedback')
@@ -84,7 +96,10 @@
     z-index: 100;
 
 }
-
+.logo{
+      width: 146px;
+        height:36px;
+}
 .introSlot {
     text-transform: uppercase;
 }
@@ -153,4 +168,9 @@ z-index: 100;
     height: 46px !important;
     width: 46px !important;
 }
+// hide invisible recaptcha badge -------------
+// .grecaptcha-badge {
+// display: none !important;
+// visibility: hidden !important;
+// }
 </style>

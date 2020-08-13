@@ -52,7 +52,7 @@ console.log('------------------------------------');
         bottom: educationComponentBottom
     }
 
-    let contactComponentTop = document.querySelector('#scroll-target-contact').offsetTop
+    let contactComponentTop    = document.querySelector('#scroll-target-contact').offsetTop
     let contactComponentHeight = document.querySelector('#scroll-target-contact').offsetHeight
     let contactComponentBottom = contactComponentTop + contactComponentHeight
     let contactComponentObject = {

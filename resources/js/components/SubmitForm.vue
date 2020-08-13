@@ -32,7 +32,8 @@
                     cols="12"
                     md="6"
                     >
-                        <v-text-field
+
+                    <v-text-field
                             v-model="dataFields.email"
                             :error-messages="emailErrors"
                             label="E-mail"
@@ -44,11 +45,6 @@
                             @blur="$v.dataFields.email.$touch()"
                             ></v-text-field>
                     </v-col>
-
-
-
-
-
 
 
             <v-col cols="12" >
@@ -65,27 +61,22 @@
                 ></v-textarea>
 
 
+                <v-btn
+                class="mr-4 rounded black--text"
+                color="grey lighten-5"
 
+                :loading="loadingIcon"
+                @click=" $v.$touch(), clear, $emit('submit', dataFields)"
+                >
+                <!-- <v-icon left>done</v-icon> -->
+                submit</v-btn>
 
+                <v-btn
+                @click="clear"
+                class="rounded black--text"
+                color="grey lighten-5"
+                >clear</v-btn>
 
-
-            <v-btn
-              class="mr-4 rounded black--text"
-              color="grey lighten-5"
-
-              :loading="loadingIcon"
-              @click=" $v.$touch(), clear, $emit('submit', dataFields)"
-            >
-            <!-- <v-icon left>done</v-icon> -->
-            submit</v-btn>
-
-
-
-            <v-btn
-              @click="clear"
-              class="rounded black--text"
-              color="grey lighten-5"
-            >clear</v-btn>
             </v-col>
         </v-row>
         </form>

@@ -25,6 +25,9 @@
             <span>Robert Roksela - Web Development</span>
         </v-tooltip>
 
+        <v-img
+              :src="getImageUrl('me.jpg')"
+        ></v-img>
 
         <v-list class="mt-6">
             <v-list-item-group v-model="listPosition"  color="white">
@@ -49,10 +52,10 @@
 
 
             <v-row>
-            <v-col cols="10" offset="1" class="pa-1">
+            <v-col cols="10" offset="1" class="pa-1 pt-10">
 
                 <v-container fluid >
-                <v-row class="mx-0 pr-2" >
+                <v-row class="mx-0 " >
                     <v-col
 
                     v-for="(item, i) in socialIcons"
@@ -69,8 +72,11 @@
                     </v-col>
                 </v-row>
                 </v-container>
-
+                    <v-switch v-model="switch1" @change="toggleTheme" inset >
+                    </v-switch>
              </v-col>
+
+
              </v-row>
 
     </v-navigation-drawer>
@@ -91,7 +97,7 @@
         <v-footer
             :inset="footer.inset"
             app
-            class="blue-grey darken-3"
+            class="blue-grey darken-4"
             >
 
              <footer-items></footer-items>
@@ -124,6 +130,7 @@
            <v-snackbar
                 bottom
                 v-model="snackbar2"
+                :snackbar2="snackbar2"
                 >
                 {{ snackbarText2 }}
                     <template v-slot:action="{ attrs }">
@@ -133,6 +140,7 @@
                         class="rounded-0"
                         v-bind="attrs"
                         @click="snackbar2 = false"
+
                         >
                         Close
                         </v-btn>
@@ -179,7 +187,8 @@ import FooterItems from '../components/FooterItems'
       xsOnly: {
         type: Boolean,
         default: true
-      }
+      },
+
     },
     data() {
         return {
@@ -190,6 +199,7 @@ import FooterItems from '../components/FooterItems'
         positionYOfSkillsCircels: null,
         activateSkillsCircleAnimation: false,
         urls: [],
+        switch1: false,
 
         snackbar1: false,
         snackbarText1: 'Message sent succesfully',
@@ -197,6 +207,7 @@ import FooterItems from '../components/FooterItems'
         snackbarText2: 'Thank you for your feedback',
         snackbar3: false,
         snackbarText3: 'Please verify you\'re a human ',
+
 
         socialIcons: [
         `<svg width='32' height='19' data-name='twitter' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 77 64'>
@@ -217,10 +228,10 @@ import FooterItems from '../components/FooterItems'
         items: [
             { title: 'about', icon: 'portrait' },
             { title: 'services', icon: 'build' },
-             { title: 'live', icon: 'thumb_up' },
+             { title: 'live', icon: 'ondemand_video' },
             { title: 'hobby', icon: 'image' },
-            { title: 'education', icon: 'image' },
-            { title: 'contact', icon: 'thumb_up' },
+            { title: 'education', icon: 'import_contacts' },
+            { title: 'contact', icon: 'local_post_office' },
 
             ],
        footer: {
@@ -243,7 +254,7 @@ import FooterItems from '../components/FooterItems'
 
 
         window.addEventListener('scroll', this.checkScroll)
-          if (this.currentScroll >= this.currentPositions[0].top && this.currentScroll <  this.currentPositions[0].bottom) {
+                  if (this.currentScroll >= this.currentPositions[0].top && this.currentScroll <  this.currentPositions[0].bottom) {
                 this.listPosition = 0
             } else if(this.currentScroll >= this.currentPositions[1].top && this.currentScroll <  this.currentPositions[1].bottom) {
                 this.listPosition = 1
@@ -251,11 +262,9 @@ import FooterItems from '../components/FooterItems'
                 this.listPosition = 2
             } else if(this.currentScroll >= this.currentPositions[3].top && this.currentScroll <  this.currentPositions[3].bottom) {
                 this.listPosition = 3
-            }
-            else if(this.currentScroll >= this.currentPositions[4].top && this.currentScroll <  this.currentPositions[4].bottom) {
+            } else if(this.currentScroll >= this.currentPositions[4].top && this.currentScroll <  this.currentPositions[4].bottom) {
                 this.listPosition = 4
-            }
-            else if(this.currentScroll >= this.currentPositions[5].top && this.currentScroll <  this.currentPositions[5].bottom) {
+            } else if(this.currentScroll >= this.currentPositions[5].top && this.currentScroll <  this.currentPositions[5].bottom) {
                 this.listPosition = 5
             }
 
@@ -310,6 +319,9 @@ import FooterItems from '../components/FooterItems'
         activateSnackbar3() {
             this.snackbar3 = true
         },
+        toggleTheme() {
+            this.$emit('changeTheme', true)
+        },
 
     },
      computed: {
@@ -330,10 +342,13 @@ import FooterItems from '../components/FooterItems'
                 case 'md': return '4'
                 case 'lg': return '4'
                 case 'xl': return '4'
-
-
                 }
             },
+          swichToggle() {
+            if (this.$vuetify.theme.dark) {
+              console.log('dark')
+            }
+        }
   }
   }
 </script>
@@ -345,9 +360,14 @@ import FooterItems from '../components/FooterItems'
 // }
     .v-list-item__icon > i, .v-list-item__content {
         color: white !important;
+
+    }
+    .v-list-item__icon  {
+        margin: 12px 16px 12px 0px !important;
+
     }
     .logo{
-        margin: 10% 7%;
+        margin: 20% 7%;
     }
     .v-list{
         text-transform: uppercase !important;
@@ -358,6 +378,9 @@ import FooterItems from '../components/FooterItems'
  @media only screen and (max-width: 599px) {
     .icons {
         padding: 0px !important;
+    }
+     .logo{
+        display: none;
     }
 }
 .iconsColumn {

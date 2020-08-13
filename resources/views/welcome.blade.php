@@ -19,7 +19,7 @@
             };
         </script>
         <script src="https://static.cdn.prismic.io/prismic.min.js"></script>
-
+        </script>
     </head>
     <body>
         <div id="app">

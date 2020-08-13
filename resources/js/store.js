@@ -14,9 +14,7 @@ export default {
         },
         loadStoredFeedback(context) {
             const userFeedback = localStorage.getItem('userLeftFeedback')
-            console.log('------------------------------------');
-            console.log(userFeedback);
-            console.log('------------------------------------');
+          
             if(userFeedback) {
                 context.commit('sendRating', userFeedback)
             }

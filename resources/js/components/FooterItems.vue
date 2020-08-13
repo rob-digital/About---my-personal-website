@@ -1,7 +1,8 @@
 <template>
    <v-container>
-       
-        <p class="text-center white--text mb-12">Used Technologies:</p>
+
+        <p class="text-center white--text mb-12 footerTitle">Used Technologies:</p>
+
         <v-row class="justify-center techIconsContainer">
 
             <v-col
@@ -43,9 +44,7 @@
 </template>
 
 <script>
-import prismicIcon from '../../assets/icons/prismic.svg'
-import vuetifyIcon from '../../assets/icons/vuetify.svg'
-import eee from '../../assets/images/rrwd-logo-closed-white.svg'
+
 
     export default {
         data() {
@@ -92,7 +91,6 @@ import eee from '../../assets/images/rrwd-logo-closed-white.svg'
 .techTitles{
     margin-bottom: 0 !important;
     color: white;
-
 }
 
 .logo{
@@ -121,6 +119,9 @@ import eee from '../../assets/images/rrwd-logo-closed-white.svg'
     .rightCol {
         justify-content: flex-end;
     }
+    .techTitles{
+    font-size: 1.3rem;
+}
 
 }
 @media only screen and (max-width: 599px) {
@@ -134,9 +135,12 @@ import eee from '../../assets/images/rrwd-logo-closed-white.svg'
         flex-direction: column;
     }
 }
-@media only screen and (min-width: 600px) and (max-width: 1454px) {
-      .copy{
-        margin-right: 30px;
-    }
+
+.copy{
+    margin-right: 30px;
+}
+
+.footerTitle{
+    font-size: 1.5rem;
 }
 </style>
