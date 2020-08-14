@@ -11,7 +11,7 @@
                 <parallax
                 image="web.jpg"
                 :height="700"
-                text1="Robert Roksela - Web Development"
+                text0="Robert Roksela - Web Development"
                 text2="Creative Solutions for the Web"
                 ></parallax>
 
@@ -55,7 +55,7 @@
                  v-on:submit="submitContactForm"
                 ></submit-form>
 
-            <v-container fluid class="contactColor pb-10">
+            <v-container fluid class="lightBg pb-10">
                 <v-row class="recaptchaRow">
                     <v-col cols="10" sm="10" md="10" lg="8" offset="1" offset-sm="1" offset-md="1"  offset-lg="2" class="pa-1 ">
                     <vue-recaptcha
@@ -73,7 +73,7 @@
                 <!-- <v-container class="likesDiv" > -->
 
 
-                    <form @submit.prevent="onSubmit">
+                    <form @submit.prevent="ratingRecived">
 
                     <vue-recaptcha
                     ref="invisibleRecaptcha"
@@ -220,6 +220,7 @@ import { mapState } from 'vuex'
                 return axios.post('/api/likes', number)
                 .then(response => {
                     this.ratingApplied = true
+                    this.$refs.invisibleRecaptcha.execute()
 
                     setTimeout(() => {
                         this.ratingApplied = false
@@ -238,9 +239,9 @@ import { mapState } from 'vuex'
                    this.status = err.response.status
                 })
             },
-             onSubmit: function () {
-                this.$refs.invisibleRecaptcha.execute()
-            },
+            //  onSubmit: function () {
+            //     this.$refs.invisibleRecaptcha.execute()
+            // },
             },
 
             computed: {

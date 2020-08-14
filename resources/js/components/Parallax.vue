@@ -10,8 +10,9 @@
             justify="center"
             >
             <v-col class="text-center" cols="12">
-                <h1 class="display-1 font-weight-thin mb-4">{{ text1 }}</h1>
-                <h4 class="subheading">{{ text2 }}</h4>
+                <h1 class="display-1 font-weight-thin mb-4 textShadow">{{ text0 }}</h1>
+                <h2 class="display-1 font-weight-thin mb-4 textShadow">{{ text1 }}</h2>
+                <h3 class="subheading textShadow">{{ text2 }}</h3>
             </v-col>
             </v-row>
         </v-parallax>
@@ -31,7 +32,11 @@
                 type: String,
                 required: true
             },
-            text1: {
+            text0: {
+                type: String,
+                required: false
+            },
+              text1: {
                 type: String,
                 required: false
             },
@@ -50,5 +55,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+  .textShadow{
+      text-shadow: 2px 2px 2px #263238;
+  }
 </style>

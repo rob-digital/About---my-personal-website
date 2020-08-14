@@ -10,10 +10,8 @@
 
                 <v-col cols="12" >
 
-                    <p class="text-center">languages and frameworks I specialise in:</p>
                     <p class="text-center">languages and frameworks in which I specialise:</p>
-
-
+                    
                   <div id="scroll-target-skills" class="text-center">
                       <div>
                           <v-progress-circular

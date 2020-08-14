@@ -26,11 +26,13 @@
         </v-tooltip>
 
         <v-img
-              :src="getImageUrl('me.jpg')"
+              :src="getImageUrl(applyPhotoToDrawerSize)"
         ></v-img>
 
         <v-list class="mt-6">
             <v-list-item-group v-model="listPosition"  color="white">
+
+
             <v-list-item
                     v-for="item in items"
                     :key="item.title"
@@ -39,9 +41,15 @@
                     @click="$vuetify.goTo(`#scroll-target-${item.title}`, options)"
 
                 >
-                    <v-list-item-icon>
+
+                 <v-tooltip right :disabled="!activateTooltipOnSmallScreen" class="d-flex d-sm-none">
+                 <template v-slot:activator="{ on, attrs }">
+                    <v-list-item-icon v-bind="attrs" v-on="on">
                     <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
+                 </template>
+                 <span class="rts">{{ item.title }}</span>
+                 </v-tooltip>
 
                     <v-list-item-content>
                     <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -72,8 +80,15 @@
                     </v-col>
                 </v-row>
                 </v-container>
+
+                <v-row fluid class="d-none d-sm-flex blue-grey darken-2">
+                    <div class="switchModeDiv">
+                    <h5 class="text-center pt-4" v-show="switch1">to Light Mode</h5>
+                    <h5 class="text-center pt-4" v-show="!switch1">to Dark Mode</h5>
                     <v-switch v-model="switch1" @change="toggleTheme" inset >
                     </v-switch>
+                    </div>
+                </v-row>
              </v-col>
 
 
@@ -97,7 +112,7 @@
         <v-footer
             :inset="footer.inset"
             app
-            class="blue-grey darken-4"
+            class="blue-grey darken-3"
             >
 
              <footer-items></footer-items>
@@ -183,6 +198,7 @@ import FooterItems from '../components/FooterItems'
           FooterItems
       },
     props: {
+      switchControl: Boolean,
       source: String,
       xsOnly: {
         type: Boolean,
@@ -199,7 +215,8 @@ import FooterItems from '../components/FooterItems'
         positionYOfSkillsCircels: null,
         activateSkillsCircleAnimation: false,
         urls: [],
-        switch1: false,
+        switch1: null,
+        activateTooltipOnSmallScreen: false,
 
         snackbar1: false,
         snackbarText1: 'Message sent succesfully',
@@ -238,7 +255,8 @@ import FooterItems from '../components/FooterItems'
         inset: true,
         fixed: false
       },
-      targetItem: null
+      targetItem: null,
+      windowHeight: null
     }
     },
     mounted() {
@@ -248,10 +266,14 @@ import FooterItems from '../components/FooterItems'
         const urls = []
         urls.push(url1, url2, url3)
         this.urls = urls
+        const windowHeight = window.innerHeight
+         if (this.currentScroll + windowHeight >= this.positionYOfSkillsCircels ) {
+            this.activateSkillsCircleAnimation = true
+        }
+        this.windowHeight = windowHeight
 
+        this.switch1 = this.switchControl
        setTimeout(() => {                              // activate this to remove error in the console
-
-
 
         window.addEventListener('scroll', this.checkScroll)
                   if (this.currentScroll >= this.currentPositions[0].top && this.currentScroll <  this.currentPositions[0].bottom) {
@@ -286,16 +308,14 @@ import FooterItems from '../components/FooterItems'
             this.positionYOfSkillsCircels = el
         },
         checkScroll() {
-
+                const windowHeight = this.windowHeight
                 // const wind = window.pageYOffset
                 // const wind = document.documentElement.offsetHeight
                 const wind = document.documentElement.scrollTop
-                const windowHeight = window.innerHeight
+
                 this.currentScroll = wind
 
-                 if (this.currentScroll + windowHeight >= this.positionYOfSkillsCircels ) {
-                        this.activateSkillsCircleAnimation = true
-                     }
+
 
                 if (this.currentScroll >= this.currentPositions[0].top) {
 
@@ -326,8 +346,14 @@ import FooterItems from '../components/FooterItems'
     },
      computed: {
 
-        mini() {
-            return this.$vuetify.breakpoint.xsOnly;
+        mini: {
+            get() {
+                return this.$vuetify.breakpoint.xsOnly
+            },
+            set() {
+                return this.$vuetify.breakpoint.xsOnly
+            },
+
         },
         options () {
             return {
@@ -344,13 +370,34 @@ import FooterItems from '../components/FooterItems'
                 case 'xl': return '4'
                 }
             },
-          swichToggle() {
-            if (this.$vuetify.theme.dark) {
-              console.log('dark')
+        applyPhotoToDrawerSize() {
+               switch (this.$vuetify.breakpoint.name) {
+                case 'xs': return 'me6.jpg'
+                case 'sm': return 'me2.jpg'
+                case 'md': return 'me2.jpg'
+                case 'lg': return 'me2.jpg'
+                case 'xl': return 'me2.jpg'
+                }
+            },
+        },
+        watch: {
+            switchControl: function() {
+                if(this.switchControl) {
+                   this.switch1 = true
+                } else {
+                    this.switch1 = false
+                }
+            },
+            canvasFrameSize: function() {
+                if(this.canvasFrameSize === '12') {
+                 return this.activateTooltipOnSmallScreen = true
+              } else {
+                return  this.activateTooltipOnSmallScreen = false
+              }
             }
         }
   }
-  }
+
 </script>
 
 <style lang="scss" scoped>
@@ -386,5 +433,10 @@ import FooterItems from '../components/FooterItems'
 .iconsColumn {
     justify-content: center;
 }
-
+h5{
+   text-transform: uppercase;
+}
+.switchModeDiv{
+    width: 100%;
+}
 </style>

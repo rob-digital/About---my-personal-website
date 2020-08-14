@@ -1,5 +1,5 @@
 <template>
-    <v-app :switchControl="true">
+    <v-app>
 
         <v-tooltip left>
         <template v-slot:activator="{ on, attrs }">
@@ -28,7 +28,7 @@
 
         <v-layout justify-end>
             <v-switch
-              v-model="switch1"
+              v-model="switch2"
               @change="toggleTheme"
               inset
 
@@ -39,7 +39,7 @@
     </v-container>
 
 
-    <router-view v-on:changeTheme="applyTheme"></router-view>
+    <router-view v-on:changeTheme="applyTheme" :switchControl="switch2"></router-view>
 
 
     </v-app>
@@ -52,7 +52,7 @@
         name: 'Index',
         data() {
             return {
-                switch1: false,
+                switch2: false,
                 fab: false
             }
         },
@@ -72,7 +72,7 @@
             },
              applyTheme() {
                 this.toggleTheme()
-                this.switch1 = !this.switch1
+                this.switch2 = !this.switch2
             }
         },
         computed:{
@@ -155,11 +155,11 @@ z-index: 100;
         margin-left: 28px;
     }
 }
-.modeToggle {
-    background-color: grey;
-    border-radius: 50%;
-    padding: 5px;
-}
+// .modeToggle {
+//     background-color: grey;
+//     border-radius: 50%;
+//     padding: 5px;
+// }
 .v-tooltip__content{
     z-index: 400 !important;
 }
@@ -173,4 +173,10 @@ z-index: 100;
 // display: none !important;
 // visibility: hidden !important;
 // }
+.v-input__slot{
+    justify-content: center !important;
+}
+.v-application--is-ltr .v-input--selection-controls__input{
+    margin-right: 0px !important;
+}
 </style>

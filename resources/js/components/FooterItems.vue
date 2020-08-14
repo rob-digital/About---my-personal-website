@@ -1,7 +1,7 @@
 <template>
    <v-container>
 
-        <p class="text-center white--text mb-12 footerTitle">Used Technologies:</p>
+        <p class="text-center white--text mb-12 pt-8 footerTitle">Used Technologies:</p>
 
         <v-row class="justify-center techIconsContainer">
 

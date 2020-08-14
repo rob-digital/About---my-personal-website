@@ -1,8 +1,8 @@
 <template>
-    <v-container fluid class=" main pt-12 pb-12 likesDiv">
+    <v-container fluid class=" pt-12 pb-12 likesDiv main">
         <v-fade-transition>
             <v-card
-            class=" align-center justify-center pa-4 mx-auto rounded"
+            class=" align-center justify-center pa-4 mx-auto rounded blue-grey lighten-5"
             max-width="550"
             min-height="76"
             :loading="sendingFeedback"
@@ -79,6 +79,7 @@ button {
 }
 .likesDiv{
     min-height: 256px;
+
 }
 </style>
 

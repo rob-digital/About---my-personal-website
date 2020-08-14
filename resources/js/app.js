@@ -54,6 +54,7 @@ const app = new Vue({
                 colorBrown: colors.brown.darken4,
                 colorBlueDarken: colors.blueGrey.darken4,
                 lightBg: colors.blueGrey.lighten5,
+
                 textAccent: colors.red.darken1,
                 contactColor: colors.blueGrey.lighten2,
                 // footerColor: colors.grey.lighten1
@@ -64,7 +65,8 @@ const app = new Vue({
                 colorBlueDarken: colors.blueGrey.darken4,
                 lightBg: colors.blueGrey.darken3,
                 textAccent: colors.yellow.accent2,
-                contactColor: colors.grey.darken4
+                contactColor: colors.grey.darken4,
+
                 // footerColor: colors.grey.darken3
 
               }

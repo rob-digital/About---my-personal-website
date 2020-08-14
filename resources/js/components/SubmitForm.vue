@@ -1,5 +1,5 @@
 <template>
-    <div class="contactColor pt-4 pb-0">
+    <div class="lightBg pt-4 pb-0">
 
         <heading-intro class="introSlot pt-8 pb-12">
             <h2 >contact</h2>
@@ -118,7 +118,14 @@
         },
 
     }),
+    watch: {
+        loadingIcon: function() {
+            setTimeout(() => {
+                this.clear()
+            }, 3000)
 
+        }
+    },
     computed: {
 
       nameErrors () {
