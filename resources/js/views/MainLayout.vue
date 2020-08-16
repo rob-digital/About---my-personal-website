@@ -81,14 +81,14 @@
                 </v-row>
                 </v-container>
 
-                <v-row fluid class="d-none d-sm-flex blue-grey darken-2">
+                <!-- <v-row fluid class="d-none d-sm-flex blue-grey darken-2">
                     <div class="switchModeDiv">
                     <h5 class="text-center pt-4" v-show="switch1">to Light Mode</h5>
-                    <h5 class="text-center pt-4" v-show="!switch1">to Dark Mode</h5>
-                    <v-switch v-model="switch1" @change="toggleTheme" inset >
+                    <h5 class="text-center pt-4" v-show="!switch1">to Dark Mode</h5> -->
+                    <v-switch v-if="windowHeight >= 828" class="d-none d-sm-flex pt-8" v-model="switch1" @change="toggleTheme" inset >
                     </v-switch>
-                    </div>
-                </v-row>
+                    <!-- </div>
+                </v-row> -->
              </v-col>
 
 

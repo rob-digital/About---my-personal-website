@@ -169,14 +169,20 @@ z-index: 100;
     width: 46px !important;
 }
 // hide invisible recaptcha badge -------------
-// .grecaptcha-badge {
-// display: none !important;
-// visibility: hidden !important;
-// }
+.grecaptcha-badge {
+display: none !important;
+visibility: hidden !important;
+}
 .v-input__slot{
     justify-content: center !important;
 }
 .v-application--is-ltr .v-input--selection-controls__input{
     margin-right: 0px !important;
+}
+.v-input--switch__track {
+    color: white !important;
+}
+.theme--dark.v-input--switch .v-input--switch__track{
+    color: white !important;
 }
 </style>
