@@ -17,7 +17,7 @@
             <v-col
               v-for="(image, i) in fields.images"
               :key="i"
-              class="d-flex child-flex singleImg"
+              class=" child-flex singleImg"
               :cols="canvasFrameSize"
             >
 
