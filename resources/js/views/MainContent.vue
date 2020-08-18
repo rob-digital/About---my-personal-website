@@ -44,7 +44,8 @@
                 <parallax
                 image="mac.jpg"
                 :height="400"
-                text1="modern, clean and creative design solutions"
+                text3="“Digital design is like painting, except the paint never dries.”"
+                text4="Neville Brody"
                 ></parallax>
 
 

@@ -31,7 +31,6 @@ class SubmitContactForm extends Mailable
      */
     public function build()
     {
-
         return $this->markdown('mail.contact')->subject('Email from your website');
     }
 }

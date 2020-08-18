@@ -9,7 +9,7 @@
             :elevation="12"
             v-if="displayCard === 0"
             >
-            <div :class="`text-h5 text-sm-h4 text-center mb-6 mt-6`">
+            <div :class="`text-h5 text-sm-h4 text-center mb-6 mt-6 black--text`">
                 {{ ratingQuestion }}
             </div>
 

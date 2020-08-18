@@ -20,11 +20,11 @@
 
                 <v-card class="elevation-4 rounded">
 
-                    <v-card-title class="title accent mainTitle headline" >{{ item.school }}</v-card-title>
-                    <v-card-title class="">{{ item.course1 }}</v-card-title>
-                    <v-card-title v-show="item.course2" class="">{{ item.course2 }}</v-card-title>
-                    <v-card-title v-show="item.course3" class="">{{ item.course3 }}</v-card-title>
-                    <v-card-title v-show="item.achievement" class="font-weight-bold  textAccent--text ">{{ item.achievement }}</v-card-title>
+                    <v-card-title class="title fullWords accent mainTitle headline" >{{ item.school }}</v-card-title>
+                    <v-card-title class="fullWords">{{ item.course1 }}</v-card-title>
+                    <v-card-title v-show="item.course2" class="fullWords">{{ item.course2 }}</v-card-title>
+                    <v-card-title v-show="item.course3" class="fullWords">{{ item.course3 }}</v-card-title>
+                    <v-card-title v-show="item.achievement" class="font-weight-bold fullWords textAccent--text ">{{ item.achievement }}</v-card-title>
 
                 </v-card>
             </v-timeline-item>
@@ -97,5 +97,8 @@ import HeadingIntro from '../components/slots/Heading'
 }
 .v-card{
     margin-right: 5%;
+}
+.fullWords{
+ word-break: keep-all;
 }
 </style>

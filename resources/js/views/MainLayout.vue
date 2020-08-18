@@ -4,7 +4,7 @@
     <v-navigation-drawer
       v-model="drawer"
       app
-      :flat="false"
+      height="100%"
       floating
       :permanent="true"
       width="170"
@@ -48,7 +48,7 @@
                     <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
                  </template>
-                 <span class="rts">{{ item.title }}</span>
+                 <span>{{ item.title }}</span>
                  </v-tooltip>
 
                     <v-list-item-content>
@@ -62,7 +62,7 @@
             <v-row>
             <v-col cols="10" offset="1" class="pa-1 pt-10">
 
-                <v-container fluid >
+                <v-container v-if="windowHeight >= 640" fluid >
                 <v-row class="mx-0 " >
                     <v-col
 
@@ -256,8 +256,15 @@ import FooterItems from '../components/FooterItems'
         fixed: false
       },
       targetItem: null,
-      windowHeight: null
+      windowHeight: 0
     }
+    },
+    created() {
+        window.addEventListener('resize', this.handleWindowHeight)
+        this.handleWindowHeight()
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.handleWindowHeight)
     },
     mounted() {
         const url1 = `https://twitter.com/RobertRoksela`;
@@ -266,11 +273,11 @@ import FooterItems from '../components/FooterItems'
         const urls = []
         urls.push(url1, url2, url3)
         this.urls = urls
-        const windowHeight = window.innerHeight
+        const windowHeight = this.windowHeight
          if (this.currentScroll + windowHeight >= this.positionYOfSkillsCircels ) {
             this.activateSkillsCircleAnimation = true
         }
-        this.windowHeight = windowHeight
+
 
         this.switch1 = this.switchControl
        setTimeout(() => {                              // activate this to remove error in the console
@@ -342,6 +349,9 @@ import FooterItems from '../components/FooterItems'
         toggleTheme() {
             this.$emit('changeTheme', true)
         },
+        handleWindowHeight() {
+            this.windowHeight = window.innerHeight
+        }
 
     },
      computed: {
@@ -439,4 +449,21 @@ h5{
 .switchModeDiv{
     width: 100%;
 }
+  @media only screen and (min-width: 600px) and (max-width: 999px) {
+      .v-list-item__icon{
+          margin: 8px 16px 8px 0px !important;
+      }
+      .v-list-item__title{
+          font-size: .9rem;
+      }
+      .v-list-item .v-list-item__subtitle, .v-list-item .v-list-item__title {
+          line-height: 1;
+      }
+      .v-icon.v-icon{
+          font-size: 20px
+      }
+      .v-list-item {
+          min-height: 36px;
+      }
+  }
 </style>

@@ -13,6 +13,8 @@
                 <h1 class="display-1 font-weight-thin mb-4 textShadow">{{ text0 }}</h1>
                 <h2 class="display-1 font-weight-thin mb-4 textShadow">{{ text1 }}</h2>
                 <h3 class="subheading textShadow">{{ text2 }}</h3>
+                <h2 class="display-1 font-weight-thin font-italic mb-4 textShadow">{{ text3 }}</h2>
+                <h3 class="display-1 font-weight-thin mb-4 textShadow">{{ text4 }}</h3>
             </v-col>
             </v-row>
         </v-parallax>
@@ -41,6 +43,14 @@
                 required: false
             },
             text2: {
+                type: String,
+                required: false
+            },
+              text3: {
+                type: String,
+                required: false
+            },
+              text4: {
                 type: String,
                 required: false
             },

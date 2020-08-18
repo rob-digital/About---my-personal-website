@@ -39,9 +39,7 @@ export let positionY = {
         bottom: hobbyComponentBottom
     }
 
-console.log('------------------------------------');
-console.log('Height mounted'+hobbyComponentHeight);
-console.log('------------------------------------');
+
 
 
     let educationComponentTop = document.querySelector('#scroll-target-education').offsetTop
@@ -67,6 +65,7 @@ console.log('------------------------------------');
 
     this.$emit('positionYOfElements', positionYOfComponents)
     this.$emit('positionYOfSkillsCircles', skillsComponentPositionTop)
+
 
 }, 1000);
 
