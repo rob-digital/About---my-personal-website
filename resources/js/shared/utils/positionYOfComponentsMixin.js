@@ -4,16 +4,18 @@ export let positionY = {
 
     setTimeout(() => {
 
+
+    let skillsCirclesComponentTop = document.querySelector('#scroll-target-skills').offsetTop
+    let skillsCirclesComponentHeight = document.querySelector('#scroll-target-skills').offsetHeight;
+    let skillsCirclesComponentBottom = skillsCirclesComponentTop + skillsCirclesComponentHeight
+
     let aboutComponentTop = document.querySelector('#scroll-target-about').offsetTop
     let aboutComponentHeight = document.querySelector('#scroll-target-about').offsetHeight;
     let aboutComponentBottom = aboutComponentTop + aboutComponentHeight
     let aboutComponentObject = {
         top: aboutComponentTop,
-        bottom: aboutComponentBottom
+        bottom: skillsCirclesComponentBottom
     }
-
-    let skillsComponentPositionTop = document.querySelector('#scroll-target-skills').offsetTop
-
 
     let servicesComponentTop = document.querySelector('#scroll-target-services').offsetTop
     let servicesComponentHeight = document.querySelector('#scroll-target-services').offsetHeight
@@ -64,10 +66,13 @@ export let positionY = {
 
 
     this.$emit('positionYOfElements', positionYOfComponents)
-    this.$emit('positionYOfSkillsCircles', skillsComponentPositionTop)
+
 
 
 }, 1000);
+
+let skillsComponentPositionTop = document.querySelector('#scroll-target-skills').offsetTop
+this.$emit('positionYOfSkillsCircles', skillsComponentPositionTop)
 
  }
 }

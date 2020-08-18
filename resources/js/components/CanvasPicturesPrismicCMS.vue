@@ -33,10 +33,9 @@
     <v-dialog
       v-model="dialog"
       max-width="1024"
-
     >
 
-      <v-card >
+      <v-card>
         <v-card-title   class="headline">...</v-card-title>
 
 

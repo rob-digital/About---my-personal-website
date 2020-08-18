@@ -81,14 +81,22 @@
                 </v-row>
                 </v-container>
 
-                <!-- <v-row fluid class="d-none d-sm-flex blue-grey darken-2">
-                    <div class="switchModeDiv">
-                    <h5 class="text-center pt-4" v-show="switch1">to Light Mode</h5>
-                    <h5 class="text-center pt-4" v-show="!switch1">to Dark Mode</h5> -->
-                    <v-switch v-if="windowHeight >= 828" class="d-none d-sm-flex pt-8" v-model="switch1" @change="toggleTheme" inset >
+              <v-tooltip top class="d-flex d-sm-none">
+                 <template v-slot:activator="{ on, attrs }">
+                    <v-switch
+                      v-if="windowHeight >= 828"
+                      class="d-none d-sm-flex pt-8"
+                      v-model="switch1"
+                      @change="toggleTheme"
+                      inset
+                      v-on="on"
+                      v-bind="attrs"
+                    >
                     </v-switch>
-                    <!-- </div>
-                </v-row> -->
+                 </template>
+                 <span>Toggle Theme</span>
+              </v-tooltip>
+
              </v-col>
 
 
@@ -211,6 +219,7 @@ import FooterItems from '../components/FooterItems'
         drawer: true,
         listPosition: '',
         currentScroll: null,
+        currentScrollOnLoad: null,
         currentPositions:null,
         positionYOfSkillsCircels: null,
         activateSkillsCircleAnimation: false,
@@ -262,6 +271,7 @@ import FooterItems from '../components/FooterItems'
     created() {
         window.addEventListener('resize', this.handleWindowHeight)
         this.handleWindowHeight()
+
     },
     destroyed() {
         window.removeEventListener('resize', this.handleWindowHeight)
@@ -273,10 +283,25 @@ import FooterItems from '../components/FooterItems'
         const urls = []
         urls.push(url1, url2, url3)
         this.urls = urls
+
         const windowHeight = this.windowHeight
-         if (this.currentScroll + windowHeight >= this.positionYOfSkillsCircels ) {
+        this.currentScrollOnLoad = document.documentElement.scrollTop
+
+        console.log('------------------------------------');
+        console.log(this.currentScrollOnLoad);
+        console.log('------------------------------------');
+        console.log('------------------------------------');
+        console.log(windowHeight);
+        console.log('------------------------------------');
+        console.log('------------------------------------');
+        console.log(this.positionYOfSkillsCircels);
+        console.log('------------------------------------');
+         if (this.currentScrollOnLoad + windowHeight >= this.positionYOfSkillsCircels ) {
             this.activateSkillsCircleAnimation = true
+        } else {
+             this.activateSkillsCircleAnimation = false
         }
+
 
 
         this.switch1 = this.switchControl
@@ -322,7 +347,9 @@ import FooterItems from '../components/FooterItems'
 
                 this.currentScroll = wind
 
-
+                 if (this.currentScroll+ windowHeight >= this.positionYOfSkillsCircels ) {
+                    this.activateSkillsCircleAnimation = true
+                }
 
                 if (this.currentScroll >= this.currentPositions[0].top) {
 
@@ -465,5 +492,8 @@ h5{
       .v-list-item {
           min-height: 36px;
       }
+  }
+.v-input input{
+      display: none !important;
   }
 </style>

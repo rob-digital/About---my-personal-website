@@ -193,8 +193,10 @@ visibility: hidden !important;
     color: red !important;
 }
 }
-
-body{
-    overflow:hidden
-}
+.v-input input{
+      display: none !important;
+  }
+// body{
+//     overflow:hidden
+// }
 </style>
