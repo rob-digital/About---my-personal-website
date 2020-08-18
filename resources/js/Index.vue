@@ -196,7 +196,7 @@ visibility: hidden !important;
 .v-input input{
       display: none !important;
   }
-// body{
-//     overflow:hidden
-// }
+body{
+    overflow:hidden
+}
 </style>

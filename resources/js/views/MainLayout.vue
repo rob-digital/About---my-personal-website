@@ -62,7 +62,7 @@
             <v-row>
             <v-col cols="10" offset="1" class="pa-1 pt-10">
 
-                <v-container v-if="windowHeight >= 640" fluid >
+                <v-container v-if="windowHeight > 700" fluid >
                 <v-row class="mx-0 " >
                     <v-col
 
