@@ -6,7 +6,7 @@
         <meta name="viewport" content="minimum-scale=1 width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Robert Roksela - Web Development</title>
-
+        <link rel="shortcut icon" href="{{ asset('images/logo_square_small.png') }}">
         <!-- Fonts -->
         <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
         {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> --}}
