@@ -106,7 +106,7 @@
 
 
          <main-content
-           class="blue-grey darken-3"
+           class="blue-grey darken-3 main-content"
            :target="targetItem"
            :activateSkillsCircleAnimation="activateSkillsCircleAnimation"
            v-on:positionYOfElements="positionYReceived"
@@ -120,6 +120,7 @@
         <v-footer
             :inset="footer.inset"
             app
+            fixed
             class="blue-grey darken-3"
             >
 
@@ -495,5 +496,8 @@ h5{
   }
 .v-input input{
       display: none !important;
+  }
+  .main-content{
+      overflow: hidden;
   }
 </style>

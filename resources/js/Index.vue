@@ -124,10 +124,12 @@ a {
     bottom: 0;
     z-index: 0;
     margin-left: 170px;
+    overflow: hidden;
 }
 .v-main{
     padding-bottom: 40px !important;
 }
+
 .v-main__wrap {
     z-index: 10;
     -webkit-box-shadow: 0 8px 6px -6px black;
@@ -196,7 +198,5 @@ visibility: hidden !important;
 .v-input input{
       display: none !important;
   }
-body{
-    overflow:hidden
-}
+
 </style>

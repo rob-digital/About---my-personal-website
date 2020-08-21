@@ -1,3 +1,8 @@
+# From App URL to your domain
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^.*\.frb\.io$ [NC]
+RewriteRule .* https://www.roksela.me%{REQUEST_URI} [r=301,L,N]
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
