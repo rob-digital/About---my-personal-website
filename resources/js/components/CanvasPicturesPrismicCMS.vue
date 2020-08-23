@@ -167,8 +167,11 @@ import HeadingIntro from '../components/slots/Heading'
         },
         created() {
             this.getMultipleContent()
-            if(navigator.userAgent.indexOf("Safari") != -1) {
+            if(navigator.userAgent.indexOf("Safari") != 1) {
                 this.notSafari = true
+                console.log('------------------------------------');
+                console.log('Not Safari');
+                console.log('------------------------------------');
             }
         },
     }
