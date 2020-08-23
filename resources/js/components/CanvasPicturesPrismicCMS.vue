@@ -167,18 +167,24 @@ import HeadingIntro from '../components/slots/Heading'
         },
         created() {
             this.getMultipleContent()
-            if(navigator.userAgent.indexOf("Safari") != 1) {
-                this.notSafari = true
-                console.log('------------------------------------');
-                console.log('Not Safari');
-                console.log('------------------------------------');
-            }
-            else if(navigator.userAgent.indexOf("Safari") != -1) {
+            const isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent &&
+               navigator.userAgent.indexOf('CriOS') == -1 &&
+               navigator.userAgent.indexOf('FxiOS') == -1;
+
+               if(isSafari) {
                 this.notSafari = false
                 console.log('------------------------------------');
                 console.log('Hello from Safari');
                 console.log('------------------------------------');
             }
+            else if(!isSafari) {
+                this.notSafari = true
+                console.log('------------------------------------');
+                console.log('Not Safari');
+                console.log('------------------------------------');
+            }
+          
         },
     }
 </script>
