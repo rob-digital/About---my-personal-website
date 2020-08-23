@@ -173,6 +173,12 @@ import HeadingIntro from '../components/slots/Heading'
                 console.log('Not Safari');
                 console.log('------------------------------------');
             }
+            else if(navigator.userAgent.indexOf("Safari") != -1) {
+                this.notSafari = false
+                console.log('------------------------------------');
+                console.log('Hello from Safari');
+                console.log('------------------------------------');
+            }
         },
     }
 </script>
