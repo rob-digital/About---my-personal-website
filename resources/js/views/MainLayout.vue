@@ -288,15 +288,7 @@ import FooterItems from '../components/FooterItems'
         const windowHeight = this.windowHeight
         this.currentScrollOnLoad = document.documentElement.scrollTop
 
-        console.log('------------------------------------');
-        console.log(this.currentScrollOnLoad);
-        console.log('------------------------------------');
-        console.log('------------------------------------');
-        console.log(windowHeight);
-        console.log('------------------------------------');
-        console.log('------------------------------------');
-        console.log(this.positionYOfSkillsCircels);
-        console.log('------------------------------------');
+   
          if (this.currentScrollOnLoad + windowHeight >= this.positionYOfSkillsCircels ) {
             this.activateSkillsCircleAnimation = true
         } else {

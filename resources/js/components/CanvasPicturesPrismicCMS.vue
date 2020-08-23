@@ -19,6 +19,7 @@
               :key="i"
               class=" child-flex singleImg"
               :cols="canvasFrameSize"
+              :class="{'d-flex' : notSafari }"
             >
 
               <prismic-image class="thumbnails" :field="image" :lazy-src="image" @click="zoom(image)" @click.stop="dialog = true">
@@ -94,6 +95,7 @@ import HeadingIntro from '../components/slots/Heading'
             currentItem: 0,
             imagesArrayToBeReorder: [],
             reorderedImagesArray: [],
+            notSafari: null
 
             };
         },
@@ -165,7 +167,10 @@ import HeadingIntro from '../components/slots/Heading'
         },
         created() {
             this.getMultipleContent()
-        }
+            if(navigator.userAgent.indexOf("Safari") != -1) {
+                this.notSafari = true
+            }
+        },
     }
 </script>
 
