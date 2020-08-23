@@ -172,13 +172,11 @@ import HeadingIntro from '../components/slots/Heading'
                navigator.userAgent.indexOf('CriOS') == -1 &&
                navigator.userAgent.indexOf('FxiOS') == -1;
 
-               if(isSafari) {
+            if(isSafari) {
                 this.notSafari = false
-          
             }
             else if(!isSafari) {
                 this.notSafari = true
-
             }
 
         },
