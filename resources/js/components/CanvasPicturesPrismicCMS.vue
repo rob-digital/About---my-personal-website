@@ -174,17 +174,13 @@ import HeadingIntro from '../components/slots/Heading'
 
                if(isSafari) {
                 this.notSafari = false
-                console.log('------------------------------------');
-                console.log('Hello from Safari');
-                console.log('------------------------------------');
+          
             }
             else if(!isSafari) {
                 this.notSafari = true
-                console.log('------------------------------------');
-                console.log('Not Safari');
-                console.log('------------------------------------');
+
             }
-          
+
         },
     }
 </script>
