@@ -178,7 +178,6 @@ import HeadingIntro from '../components/slots/Heading'
             else if(!isSafari) {
                 this.notSafari = true
             }
-
         },
     }
 </script>
