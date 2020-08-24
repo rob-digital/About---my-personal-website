@@ -57,16 +57,16 @@ import HeadingIntro from '../components/slots/Heading'
                 {
                     title: 'web development',
                     icon: 'desktop_mac',
-                    text: 'I have built digital products that will meet the high standards and top expectations of my clients. This is achieved by emphasising their company’s greatest qualities and presenting these in the form of energetic content, which speaks to the users and encourages them to delve deeper into the website. Being up-to-date with constantly evolving web design trends and standards allows me to deliver original ideas with attractive constructions and progressive patterns.'
+                    text: 'Being a poassionated web develper shades light on my my ability to develop a high quality product that will represent your business online. Emphasising your gratest qualities and presenting them in the form of energetic content will attract users and potential customers. Staying up-to-date with constantly evolving web design trends and standards allows me to deliver original ideas with attractive constructions and progressive patterns.'
                 },
                 {
                     title: 'photogtaphy',
                     icon:  'photo_camera',
-                    text:  'Having such an interesting hobby as photography, I can deliver high quality pictures that will be conspicuous and your website will stand out'
+                    text:  'The visual aspect of your digital product is one of the first factors judged by users. Images on your website must be carefully selected in such a way that they can fully reflect the essence and character of your business. Emphasizing your greatest strengths by presenting them in a form of high quality photographs will attract users and encourage them to stay on the webiste and explore its content.'
                 },
                 {   title: 'modern design',
                     icon: 'brush',
-                    text: 'Being interested in web design & development, I constantly update my knowledge to be up to date with modern standards of web design'
+                    text: 'Interesting and eye-catching content is the key to online success.  Well planned information architecture presented in a form of attractive design invites new customers and keeps the regular ones. As a web developer, I stay up to date with standards of modern web design and can implement interesting solutions in an elegant and aesthetic manners.'
                 },
             ],
         })
