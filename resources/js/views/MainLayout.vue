@@ -13,7 +13,7 @@
     >
 
 
-        <v-tooltip bottom>
+        <v-tooltip bottom eager>
             <template v-slot:activator="{ on, attrs }">
                 <v-img
                 v-bind="attrs"
@@ -60,15 +60,34 @@
 
 
             <v-row>
+
             <v-col cols="10" offset="1" class="pa-1 pt-10">
 
-                <v-container v-if="windowHeight > 860" fluid >
+            <v-tooltip right class="d-flex d-sm-none">
+                 <template v-slot:activator="{ on, attrs }">
+                    <v-switch
+                      v-if="windowHeight >= 650"
+                      class="d-none d-sm-flex pt-8"
+                      :class="{ 'toTop1' : windowHeight < 787, 'toTop2' : windowHeight > 787 }"
+                      v-model="switch1"
+                      @change="toggleTheme"
+                      inset
+                      v-on="on"
+                      v-bind="attrs"
+                    >
+                    </v-switch>
+                 </template>
+                 <span>Toggle Theme</span>
+              </v-tooltip>
+
+                <v-container v-if="windowHeight > 746" fluid >
                 <v-row class="mx-0">
                     <v-col
 
                     v-for="(item, i) in socialIcons"
                     :key="i"
                     class="d-flex px-1 iconsColumn"
+                    :class="{ 'toBottom1' : windowHeight < 787,  'toBottom2' : windowHeight > 787}"
                     :cols="canvasFrameSize"
 
                     >
@@ -81,22 +100,7 @@
                 </v-row>
                 </v-container>
 
-              <v-tooltip top class="d-flex d-sm-none">
-                 <template v-slot:activator="{ on, attrs }">
-                    <v-switch
-                      v-if="windowHeight >= 650"
-                      class="d-none d-sm-flex pt-8 RRRRRRRRRRRRRRR"
-                      :class="{ 'toTop' : windowHeight >= 650 && windowHeight <= 860}"
-                      v-model="switch1"
-                      @change="toggleTheme"
-                      inset
-                      v-on="on"
-                      v-bind="attrs"
-                    >
-                    </v-switch>
-                 </template>
-                 <span>Toggle Theme</span>
-              </v-tooltip>
+
 
              </v-col>
 
@@ -124,6 +128,7 @@
             fixed
             class="blue-grey darken-3"
             >
+
 
              <footer-items></footer-items>
 
@@ -471,10 +476,8 @@ import FooterItems from '../components/FooterItems'
 h5{
    text-transform: uppercase;
 }
-.switchModeDiv{
-    width: 100%;
-}
-  @media only screen and (min-width: 600px) and (max-width: 1334px) {
+
+  @media only screen and (min-width: 600px) and (max-width: 1434px) {
       .v-list-item__icon{
           margin: 8px 16px 8px 0px !important;
       }
@@ -497,7 +500,16 @@ h5{
   .main-content{
       overflow: hidden;
   }
-  .toTop {
+  .toTop1 {
       margin-top: -20%
+  }
+   .toTop2 {
+      margin-top: -10%
+  }
+  .toBottom1 {
+      margin-top: 10%;
+  }
+   .toBottom2 {
+      margin-top: 30%;
   }
 </style>
