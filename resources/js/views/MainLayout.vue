@@ -62,7 +62,7 @@
             <v-row>
             <v-col cols="10" offset="1" class="pa-1 pt-10">
 
-                <v-container v-if="windowHeight > 760" fluid >
+                <v-container v-if="windowHeight > 860" fluid >
                 <v-row class="mx-0">
                     <v-col
 
@@ -84,8 +84,9 @@
               <v-tooltip top class="d-flex d-sm-none">
                  <template v-slot:activator="{ on, attrs }">
                     <v-switch
-                      v-if="windowHeight >= 828"
-                      class="d-none d-sm-flex pt-8"
+                      v-if="windowHeight >= 650"
+                      class="d-none d-sm-flex pt-8 RRRRRRRRRRRRRRR"
+                      :class="{ 'toTop' : windowHeight >= 650 && windowHeight <= 860}"
                       v-model="switch1"
                       @change="toggleTheme"
                       inset
@@ -304,6 +305,7 @@ import FooterItems from '../components/FooterItems'
        setTimeout(() => {                              // activate this to remove error in the console
 
         window.addEventListener('scroll', this.checkScroll)
+
                   if (this.currentScroll >= this.currentPositions[0].top && this.currentScroll <  this.currentPositions[0].bottom) {
                 this.listPosition = 0
             } else if(this.currentScroll >= this.currentPositions[1].top && this.currentScroll <  this.currentPositions[1].bottom) {
@@ -341,7 +343,7 @@ import FooterItems from '../components/FooterItems'
                 // const wind = document.documentElement.offsetHeight
                 const wind = document.documentElement.scrollTop
 
-                this.currentScroll = wind
+                this.currentScroll = wind + 1
 
                  if (this.currentScroll+ windowHeight >= this.positionYOfSkillsCircels ) {
                     this.activateSkillsCircleAnimation = true
@@ -472,7 +474,7 @@ h5{
 .switchModeDiv{
     width: 100%;
 }
-  @media only screen and (min-width: 600px) and (max-width: 999px) {
+  @media only screen and (min-width: 600px) and (max-width: 1334px) {
       .v-list-item__icon{
           margin: 8px 16px 8px 0px !important;
       }
@@ -494,5 +496,8 @@ h5{
   }
   .main-content{
       overflow: hidden;
+  }
+  .toTop {
+      margin-top: -20%
   }
 </style>
