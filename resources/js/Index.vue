@@ -195,7 +195,7 @@ visibility: hidden !important;
     color: red !important;
 }
 }
-.v-input input{
+#input-42{
       display: none !important;
   }
 
