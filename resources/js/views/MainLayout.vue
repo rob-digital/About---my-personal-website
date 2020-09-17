@@ -9,7 +9,7 @@
       :permanent="true"
       width="170"
       :mini-variant.sync="mini"
-      color="#263238"
+      color="#1e272b"
     >
 
 
