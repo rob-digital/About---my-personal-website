@@ -477,7 +477,7 @@ h5{
    text-transform: uppercase;
 }
 
-  @media only screen and (min-width: 600px) and (max-width: 1434px) {
+  @media only screen and (min-width: 600px)  {
       .v-list-item__icon{
           margin: 8px 16px 8px 0px !important;
       }

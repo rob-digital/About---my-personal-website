@@ -10,7 +10,7 @@
 
                 <parallax
                 image="web.jpg"
-                :height="700"
+                :height="600"
                 text0="Robert Roksela - Web Development"
                 text2="Creative Solutions for the Web"
                 ></parallax>
