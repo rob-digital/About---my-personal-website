@@ -412,7 +412,7 @@ import FooterItems from '../components/FooterItems'
             },
         applyPhotoToDrawerSize() {
                switch (this.$vuetify.breakpoint.name) {
-                case 'xs': return 'me6.jpg'
+                case 'xs': return ''
                 case 'sm': return 'me2.jpg'
                 case 'md': return 'me2.jpg'
                 case 'lg': return 'me2.jpg'
