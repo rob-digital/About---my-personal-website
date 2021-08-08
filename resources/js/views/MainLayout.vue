@@ -412,11 +412,11 @@ import FooterItems from '../components/FooterItems'
             },
         applyPhotoToDrawerSize() {
                switch (this.$vuetify.breakpoint.name) {
-                case 'xs': return ''
-                case 'sm': return 'rob_mini.jpg'
-                case 'md': return 'rob_mini.jpg'
-                case 'lg': return 'rob_mini.jpg'
-                case 'xl': return 'rob_mini.jpg'
+                case 'xs': return 'logo_square_small.png'
+                case 'sm': return 'rr.jpg'
+                case 'md': return 'rr.jpg'
+                case 'lg': return 'rr.jpg'
+                case 'xl': return 'rr.jpg'
                 }
             },
         },
