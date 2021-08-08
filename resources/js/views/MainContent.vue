@@ -19,7 +19,7 @@
                 <about class="about" id="scroll-target-about"></about>
 
 
-                <skills :activateSkillsCircleAnimation="activateSkillsCircleAnimation"></skills>
+                <skills :activateSkillsCircleAnimation="activateSkillsCircleAnimation">aaaaaaaaaaaaaa</skills>
 
 
                 <services id="scroll-target-services"></services>
@@ -137,7 +137,7 @@ import { mapState } from 'vuex'
             EducationStepper,
             CanvasPicturesPrismicCMS,
             LiveProjects,
-            VueRecaptcha,
+            VueRecaptcha
         },
         data() {
             return {
@@ -146,6 +146,7 @@ import { mapState } from 'vuex'
                 submitting: false,
                 ratingApplied: false,
                 displayWebsiteLikeCard: true,
+                countWebsiteLikes: null,
 
                 siteKey: '6LdRrLYZAAAAADGs1EGJgcHWAGizzYvvXwzDU4VM',
                 siteKey2: '6LdTxrYZAAAAAIQ0vvUbhvXIv2UX4fbO3oAaanE-',
@@ -153,6 +154,9 @@ import { mapState } from 'vuex'
 
                 userProvidedFeedback: this.$store.state.feedbackSent
             }
+        },
+        created() {
+            this.countLikes()
         },
 
         methods: {
@@ -172,7 +176,14 @@ import { mapState } from 'vuex'
                    }, 100)
                 },
 
-
+            countLikes() {
+               return axios.get("/api/websiteLikes")
+                .then(response => {
+                    let data = response.data.data
+                    let count = data.filter(el => el.likes === 1)
+                    console.log(count.length)
+                })
+            },
              submitContactForm(data) {
                  if (this.recaptchaConfirmed) {
 
@@ -218,7 +229,7 @@ import { mapState } from 'vuex'
 
 
 
-                return axios.post('/api/likes', number)
+                return axios.post('/api/websiteLikes', number)
                 .then(response => {
                     this.ratingApplied = true
                     this.$refs.invisibleRecaptcha.execute()

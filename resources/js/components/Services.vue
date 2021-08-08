@@ -57,7 +57,7 @@ import HeadingIntro from '../components/slots/Heading'
                 {
                     title: 'web development',
                     icon: 'desktop_mac',
-                    text: 'Being a poassionated web develper shades light on my my ability to develop a high quality product that will represent your business online. Emphasising your gratest qualities and presenting them in the form of energetic content will attract users and potential customers. Staying up-to-date with constantly evolving web design trends and standards allows me to deliver original ideas with attractive constructions and progressive patterns.'
+                    text: 'Being a passionated web develper shades light on my my ability to develop a high quality product that will represent your business online. Emphasising your gratest qualities and presenting them in the form of energetic content will attract users and potential customers. Staying up-to-date with constantly evolving web design trends and standards allows me to deliver original ideas with attractive constructions and progressive patterns.'
                 },
                 {
                     title: 'photogtaphy',

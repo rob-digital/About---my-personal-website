@@ -148,7 +148,10 @@ z-index: 100;
     margin-left: 85px;
 }
 
-
+.theme--dark.v-input, .theme--dark.v-input input, .theme--dark.v-input textarea
+{
+    color: black !important;
+}
 
 // .modeToggle {
 //     background-color: grey;
