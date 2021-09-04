@@ -19,7 +19,7 @@
                 <about class="about" id="scroll-target-about"></about>
 
 
-                <skills :activateSkillsCircleAnimation="activateSkillsCircleAnimation">aaaaaaaaaaaaaa</skills>
+                <skills :activateSkillsCircleAnimation="activateSkillsCircleAnimation"></skills>
 
 
                 <services id="scroll-target-services"></services>
@@ -181,7 +181,6 @@ import { mapState } from 'vuex'
                 .then(response => {
                     let data = response.data.data
                     let count = data.filter(el => el.likes === 1)
-                    console.log(count.length)
                 })
             },
              submitContactForm(data) {

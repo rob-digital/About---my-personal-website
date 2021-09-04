@@ -136,9 +136,9 @@ import { required, maxLength, email } from 'vuelidate/lib/validators'
         // if (!files.length)
         //     return;
         // this.createImage(files[0]);
-        console.log('------------------------------------');
-        console.log(e);
-        console.log('------------------------------------');
+        // console.log('------------------------------------');
+        // console.log(e);
+        // console.log('------------------------------------');
         },
         createImage(file) {
             let reader = new FileReader();
@@ -150,7 +150,7 @@ import { required, maxLength, email } from 'vuelidate/lib/validators'
         },
         uploadImage(){
             axios.post('/api/uploadImage',{image: this.image}).then(response => {
-                console.log(response);
+                // console.log(response);
             });
         }
     },
